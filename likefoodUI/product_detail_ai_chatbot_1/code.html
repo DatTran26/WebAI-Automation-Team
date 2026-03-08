@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LIKEFOOD - Phở Broth Concentrate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#8B1E2D", 
+                        "primary-hover": "#6c1723",
+                        "primary-light": "#f3e8ea",
+                        "background-light": "#FCFAFA", 
+                        "background-dark": "#221310",
+                        "text-main": "#2D2422",
+                        "text-secondary": "#6D5D59",
+                        "brand-red": "#8B1E2D", 
+                        "cream-accent": "#EBE5DE",
+                        "live-deal": "#BD3829"
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.375rem",
+                        full: "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-text-main font-sans antialiased min-h-screen flex flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 w-full bg-[#FCFAFA]/95 backdrop-blur-md border-b border-[#EBE5DE]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<div class="flex items-center gap-12">
+<a class="flex items-center gap-2 group" href="#">
+<div class="text-primary size-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl font-light">soup_kitchen</span>
+</div>
+<h2 class="text-text-main text-2xl font-serif font-bold tracking-tight group-hover:text-primary transition-colors">LIKEFOOD</h2>
+</a>
+<div class="hidden md:flex flex-1 w-96">
+<div class="relative w-full text-text-secondary focus-within:text-primary border-b border-text-secondary/20 hover:border-text-secondary/50 transition-colors">
+<div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="block w-full pl-8 pr-3 py-2 border-none bg-transparent placeholder-text-secondary/60 focus:outline-none focus:ring-0 sm:text-sm font-light tracking-wide" placeholder="Search for delicacies..." type="text"/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<nav class="hidden lg:flex gap-8">
+<a class="text-text-main hover:text-primary text-xs font-medium uppercase tracking-widest transition-colors" href="#">Live Deals</a>
+<a class="text-text-main hover:text-primary text-xs font-medium uppercase tracking-widest transition-colors" href="#">Specialties</a>
+<a class="text-text-main hover:text-primary text-xs font-medium uppercase tracking-widest transition-colors" href="#">Journal</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex items-center justify-center px-6 py-2 border border-primary text-xs uppercase tracking-widest font-medium rounded-sm text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                        Sign In
+                    </button>
+<button class="p-2 text-text-main hover:text-primary transition-colors relative group">
+<span class="material-symbols-outlined font-light">shopping_bag</span>
+<span class="absolute top-1 right-1 block h-2 w-2 rounded-full bg-brand-red ring-2 ring-[#FCFAFA]"></span>
+</button>
+<button class="p-2 text-text-main hover:text-primary transition-colors">
+<span class="material-symbols-outlined font-light">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<nav aria-label="Breadcrumb" class="flex mb-8">
+<ol class="flex items-center space-x-3 text-xs uppercase tracking-widest">
+<li><a class="text-text-secondary hover:text-primary transition-colors" href="#">Home</a></li>
+<li><span class="text-text-secondary/40">/</span></li>
+<li><a class="text-text-secondary hover:text-primary transition-colors" href="#">Vietnamese Specialties</a></li>
+<li><span class="text-text-secondary/40">/</span></li>
+<li><span class="text-primary font-medium border-b border-primary/20 pb-0.5">Phở Broth Concentrate</span></li>
+</ol>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="aspect-[4/3] w-full bg-[#EBE5DE] rounded-sm overflow-hidden relative group">
+<img alt="Detailed shot of steaming bowl of Pho with beef" class="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105" data-alt="Steaming bowl of Pho with beef slices and fresh herbs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKBgC6UrMmU0okkb7HynEQ4uGPsU9zippsa9NsO51ayL_wNw1WpgCmSbowJbXaRwCeGm8VUEGEdoUg3cKWMubpheh0tYnh29RlmwGoKDoLhPhlG03-NP5zJlEN3ZdjytXJwPsPMJRwQoDILJLJFYL3BDtuW3Vb6FtsP_4NHNOcziDjTQRsWXknnHmAthCMebFSoRoAxM5oXnbaxdCcYtFwxT4arLb8ObHcRU11_SkI2MFssXg3vODb2GLY2erEZHYr_FNk4sq3gRwz"/>
+<div class="absolute top-0 left-0 bg-brand-red text-white px-4 py-2 text-xs uppercase tracking-widest font-medium">
+                    Editor's Pick
+                </div>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<button class="aspect-square rounded-sm overflow-hidden border border-primary p-0.5 transition-all">
+<img alt="Thumbnail of pho bowl" class="w-full h-full object-cover" data-alt="Thumbnail of steaming Pho bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuTsXbKMRoo8bhi_waYks0nz4GBCwHgYj7gq8RleYds2Yz1cbxdQlcq4cDhDKfTBfeEkh_oKx0XJKS9c-MA0EbCyLevtVTDrIiMtUlbTtQa6UkjLHPoGmhAnLuResy91sP0CQk3POJq72sJb2DptFSgjrn-3DYOjg8b3FEu4tvonsQ02k3FpRcHt6kU7zXOEALXpcZWh_la1ev8SM4Tl_Jgoc0zgR4UyKqOXdm62ak_6FVEtTE-WPqL0ciMmjivV6a_NQWswtA_dFm"/>
+</button>
+<button class="aspect-square rounded-sm overflow-hidden border border-transparent hover:border-text-secondary/30 transition-all bg-[#EBE5DE]">
+<img alt="Close up of broth concentrate jar" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" data-alt="Glass jar of Pho broth concentrate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_ZizgqP8cb5UHNg4R1QCzXirS9ED9nx_iNFSmSBL7S0B6ezUDW0w0-nkW2_3mO2idPEpG6X1DbKZznGOZN0Pk6OhlQu38acPzNkqZgx4VXi0fPehp1JPnVuzgh3OKla9BhXJ0Di8pGSd3DeMtmP1Ui8DfRMeqsa9gGKRgXVxp9kL-1S1-UeW0MVDaYgtlU_PA-XYovDDYFH_d560IU3fkw9Fbb6AbUo7hsaUT5Diz7B2iZkDoy11BgsvAn9vadaCB6yMiQUwosIYz"/>
+</button>
+<button class="aspect-square rounded-sm overflow-hidden border border-transparent hover:border-text-secondary/30 transition-all bg-[#EBE5DE]">
+<img alt="Ingredients layout with spices" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" data-alt="Star anise, cinnamon, and ginger ingredients layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkLhZ5JtYM2FwhqA6z91Ijn9XXfBu-C-55WbdJ1pFsMPLTBbCP8H_lOuO40YDDd8-qfEGb5HLaYd-xU1s-AkH3CtWpgOuzJwJOULK91b-odznsDriXQt4hYyzQSF5cRIiGelplrw5oLfo5_mHQ7CQoArpGhfToArxq3jRTnVVgLnJRgo4_QX3BxhNVjjXZc6UlgkBg7w_1rskaLebgSScTA7WQXo6M2IxAGH70lFnMZMLdoKLBZmbVQQWl4BjICBpqFQcw8nBZKCD6"/>
+</button>
+<button class="aspect-square rounded-sm overflow-hidden border border-transparent hover:border-text-secondary/30 transition-all bg-[#EBE5DE] flex items-center justify-center group relative">
+<img alt="Video thumbnail of cooking process" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" data-alt="Chef pouring hot broth over noodles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO9voxAcUwfWST0Yv4NKpeAd3ltpJzWAGGAUHhIy_cmrXeDF5_R7RmPtCkQzldmmVj1u81k0e-iNkxNt0AX3HiSXGVmMH5znSZ5yTXMCP_eARe9_L7pTSPl1VNPTxJatHMkwB225fBKFoHa2txmv6M3GLz7v3HtwZMVGt8uDG-CFlfA3foCI6Q-UQfKTwzm-ERkj4olx3aIcCDggiVpyF515aXT2RqzYMfWOlSUMnxydv1q_kG4Ae-wCGLM0nKXRfrA1_8QJhViufd"/>
+<div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/0 transition-colors">
+<span class="material-symbols-outlined text-white text-3xl drop-shadow-sm font-light">play_circle</span>
+</div>
+</button>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col h-full">
+<div class="sticky top-32">
+<div class="mb-6 border-b border-text-secondary/10 pb-6">
+<h1 class="text-4xl font-serif font-medium text-text-main mb-3 leading-tight">Phở Broth Concentrate <br/><span class="text-2xl text-text-secondary italic">Hanoi Style</span></h1>
+<div class="flex items-center gap-4">
+<div class="flex text-primary text-sm gap-0.5">
+<span class="material-symbols-outlined fill-current text-[16px]">star</span>
+<span class="material-symbols-outlined fill-current text-[16px]">star</span>
+<span class="material-symbols-outlined fill-current text-[16px]">star</span>
+<span class="material-symbols-outlined fill-current text-[16px]">star</span>
+<span class="material-symbols-outlined fill-current text-[16px]">star_half</span>
+</div>
+<span class="text-xs uppercase tracking-widest text-text-secondary border-b border-text-secondary/30 hover:text-primary cursor-pointer transition-colors">Read 128 Reviews</span>
+</div>
+</div>
+<div class="flex items-baseline gap-4 mb-8">
+<span class="text-3xl font-serif text-text-main">$18.99</span>
+<span class="text-lg text-text-secondary/60 line-through font-light">$24.00</span>
+</div>
+<div class="bg-live-deal text-white p-5 mb-8 relative overflow-hidden shadow-sm border border-live-deal/20">
+<div class="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+</span>
+<div>
+<p class="font-serif italic text-lg leading-none mb-1">Live Deal Active</p>
+<p class="text-white/80 text-xs font-sans tracking-wide uppercase">Offer ends in <span class="font-mono text-white font-medium">04:23:12</span></p>
+</div>
+</div>
+<button class="text-xs uppercase tracking-widest bg-white text-live-deal hover:bg-white/90 px-4 py-2 transition-colors flex items-center gap-2 font-medium">
+                            Join Stream <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="absolute -bottom-4 -right-4 text-white/10 font-serif italic text-8xl leading-none select-none pointer-events-none">Live</div>
+</div>
+<div class="mb-8 space-y-4">
+<span class="text-xs uppercase tracking-widest text-text-secondary">Select Size</span>
+<div class="flex gap-4">
+<button class="flex-1 py-3 px-4 border border-primary bg-primary text-white font-medium text-sm shadow-sm transition-all text-center">
+                            12oz Jar
+                        </button>
+<button class="flex-1 py-3 px-4 border border-text-secondary/20 text-text-main hover:border-primary/50 hover:text-primary font-medium text-sm transition-all bg-transparent text-center">
+                            24oz Jar
+                        </button>
+<button class="flex-1 py-3 px-4 border border-text-secondary/10 text-text-secondary/40 font-medium text-sm bg-text-secondary/5 cursor-not-allowed text-center relative overflow-hidden">
+<span class="relative z-10">5 Gallon</span>
+<span class="absolute inset-0 flex items-center justify-center">
+<span class="w-full h-px bg-text-secondary/40 rotate-12"></span>
+</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4 mb-8">
+<button class="w-full bg-primary hover:bg-primary-hover text-white text-sm uppercase tracking-widest font-medium py-4 shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-3 group">
+                        Add to Cart 
+                        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform font-light">shopping_bag</span>
+</button>
+<button class="w-full bg-transparent border border-text-main hover:bg-text-main hover:text-white text-text-main text-sm uppercase tracking-widest font-medium py-3 transition-colors">
+                        Buy Now
+                    </button>
+</div>
+<div class="grid grid-cols-3 gap-4 py-6 border-t border-text-secondary/10">
+<div class="flex flex-col items-center text-center gap-2 group">
+<span class="material-symbols-outlined text-2xl text-text-secondary group-hover:text-primary transition-colors font-light">spa</span>
+<span class="text-[10px] uppercase tracking-widest text-text-secondary">100% Natural</span>
+</div>
+<div class="flex flex-col items-center text-center gap-2 group">
+<span class="material-symbols-outlined text-2xl text-text-secondary group-hover:text-primary transition-colors font-light">local_shipping</span>
+<span class="text-[10px] uppercase tracking-widest text-text-secondary">Free Shipping</span>
+</div>
+<div class="flex flex-col items-center text-center gap-2 group">
+<span class="material-symbols-outlined text-2xl text-text-secondary group-hover:text-primary transition-colors font-light">verified</span>
+<span class="text-[10px] uppercase tracking-widest text-text-secondary">Authentic</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-24 grid grid-cols-1 lg:grid-cols-12 gap-16 border-t border-text-secondary/10 pt-16">
+<div class="lg:col-span-8 space-y-16">
+<section>
+<h3 class="text-3xl font-serif text-text-main mb-6">
+                    Product Story
+                </h3>
+<div class="prose prose-stone prose-lg text-text-secondary font-light">
+<p class="leading-relaxed mb-6 first-letter:text-5xl first-letter:font-serif first-letter:float-left first-letter:mr-3 first-letter:text-primary first-letter:mt-[-6px]">
+                        Experience the soulful taste of Hanoi in your own kitchen. Our Phở Broth Concentrate is slow-simmered for 24 hours using premium beef bones, charred ginger, star anise, and cinnamon. No MSG, no preservatives—just pure, concentrated flavor that honors tradition.
+                    </p>
+<p class="leading-relaxed">
+                        Simply mix 1 part concentrate with 3 parts boiling water, add your noodles and toppings, and enjoy a restaurant-quality bowl of Phở in minutes. It is the perfect base for your culinary creativity.
+                    </p>
+</div>
+</section>
+<section class="bg-[#F2EBE6] p-10 border border-[#EBE5DE]">
+<h3 class="text-2xl font-serif text-text-main mb-8 flex items-center gap-3">
+                    Ingredients &amp; Nutrition
+                </h3>
+<div class="grid md:grid-cols-2 gap-12">
+<div>
+<h4 class="font-serif italic text-lg text-primary mb-4">The Ingredients</h4>
+<ul class="space-y-3 text-sm font-light text-text-main">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check</span>
+<span>Beef Bone Broth Reduction</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check</span>
+<span>Fish Sauce (Anchovy, Salt)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check</span>
+<span>Charred Ginger &amp; Onion</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check</span>
+<span>Spices (Star Anise, Cinnamon, Cloves)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check</span>
+<span>Rock Sugar</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="font-serif italic text-lg text-primary mb-4">Nutrition Facts <span class="text-xs font-sans not-italic text-text-secondary ml-2">(per 1 tbsp)</span></h4>
+<div class="space-y-3 font-light text-sm">
+<div class="flex justify-between border-b border-text-secondary/10 pb-2">
+<span class="text-text-secondary">Calories</span>
+<span class="font-medium text-text-main">35</span>
+</div>
+<div class="flex justify-between border-b border-text-secondary/10 pb-2">
+<span class="text-text-secondary">Protein</span>
+<span class="font-medium text-text-main">4g</span>
+</div>
+<div class="flex justify-between border-b border-text-secondary/10 pb-2">
+<span class="text-text-secondary">Sodium</span>
+<span class="font-medium text-text-main">680mg</span>
+</div>
+<div class="flex justify-between pb-2">
+<span class="text-text-secondary">Carbs</span>
+<span class="font-medium text-text-main">2g</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-8 pb-4 border-b border-text-secondary/10">
+<h3 class="text-3xl font-serif text-text-main">
+                        Customer Reviews
+                    </h3>
+<button class="text-primary text-xs uppercase tracking-widest font-medium border-b border-primary hover:text-primary-hover hover:border-primary-hover transition-colors pb-0.5">Write a Review</button>
+</div>
+<div class="bg-white border border-[#EBE5DE] p-8 mb-10 flex flex-col md:flex-row items-center gap-10">
+<div class="flex flex-col items-center text-center">
+<span class="text-6xl font-serif text-text-main mb-2">4.8</span>
+<div class="flex text-primary mb-2 gap-1">
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+<span class="material-symbols-outlined text-lg fill-current">star</span>
+<span class="material-symbols-outlined text-lg fill-current">star_half</span>
+</div>
+<span class="text-xs text-text-secondary uppercase tracking-wider">128 Reviews</span>
+</div>
+<div class="flex-1 w-full space-y-3">
+<div class="flex items-center gap-4 text-xs tracking-wide">
+<span class="w-12 text-right font-medium text-text-main">5 Stars</span>
+<div class="flex-1 h-1.5 bg-[#F2EBE6]"><div class="h-full bg-primary w-[80%]"></div></div>
+<span class="w-8 text-right text-text-secondary">80%</span>
+</div>
+<div class="flex items-center gap-4 text-xs tracking-wide">
+<span class="w-12 text-right font-medium text-text-main">4 Stars</span>
+<div class="flex-1 h-1.5 bg-[#F2EBE6]"><div class="h-full bg-primary w-[12%]"></div></div>
+<span class="w-8 text-right text-text-secondary">12%</span>
+</div>
+<div class="flex items-center gap-4 text-xs tracking-wide">
+<span class="w-12 text-right font-medium text-text-main">3 Stars</span>
+<div class="flex-1 h-1.5 bg-[#F2EBE6]"><div class="h-full bg-primary w-[5%]"></div></div>
+<span class="w-8 text-right text-text-secondary">5%</span>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<div class="border-b border-text-secondary/10 pb-8">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-[#EBE5DE] overflow-hidden grayscale">
+<img alt="User avatar" class="h-full w-full object-cover" data-alt="Portrait of smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA3TrvuKx0525XJLYOWuVY1J_65vBTQSB7iTrsAE2GQ3sNHOVud2_jgqowLQ4dpOJHhKJU1qAlAbl4sdwvmVJgES-KoHWJq-JiSBfdeFyGrPExWD_EoWkSJGNOUZKOtYIO_BmRiXYWWWyJKrP9QPwIrdFa0nK4z4knqJ_-Of9fYBhRS3mfq2E31QYXPnW7cZuH-QZ9uStZ9fig3H6KQ0vVaoaB0UVYO85TCIBN7aCrxzQkITN4qojAZsACvkgX-BSGZXsfldRN_yoH"/>
+</div>
+<div>
+<p class="font-medium text-text-main text-sm">Sarah Nguyen</p>
+<div class="flex text-primary text-xs gap-0.5 mt-1">
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+</div>
+</div>
+</div>
+<span class="text-xs text-text-secondary italic">2 days ago</span>
+</div>
+<p class="text-text-secondary font-light leading-relaxed italic">"Honestly, I was skeptical. How good can a jar be? But this tastes just like my mom's cooking. The aroma when you add the hot water is incredible."</p>
+</div>
+<div class="border-b border-text-secondary/10 pb-8">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-serif italic text-lg">
+                                    JD
+                                </div>
+<div>
+<p class="font-medium text-text-main text-sm">John Doe</p>
+<div class="flex text-primary text-xs gap-0.5 mt-1">
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star_half</span>
+</div>
+</div>
+</div>
+<span class="text-xs text-text-secondary italic">1 week ago</span>
+</div>
+<p class="text-text-secondary font-light leading-relaxed italic">"Great flavor depth. A bit salty for my taste if I follow the instructions exactly, so I add a little more water. Will buy again!"</p>
+</div>
+</div>
+</section>
+</div>
+<div class="lg:col-span-4">
+<div class="sticky top-32 bg-white p-6 border border-[#EBE5DE]">
+<h3 class="font-serif text-xl text-text-main mb-6 border-b border-text-secondary/10 pb-3">Pair With</h3>
+<div class="space-y-6">
+<div class="flex gap-4 group cursor-pointer">
+<div class="h-20 w-20 bg-[#FCFAFA] overflow-hidden shrink-0">
+<img alt="Rice noodles package" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Package of dry rice noodles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4pPYI4KXl9-D9YP8jiOkbKeIiktao0W0c2RELCG_TtSx3qefGE_apVsIpMaTiaHKplP9IOJHjWpYZ6vvjjuvjYbY9ao8KSstbRZaTAfBRowaGki99xP10yyKmBQStOoHjuAvvGbBLGUUQi7cXSHgvyLZKlGi2_98WPr0lZVkNKTJ0Cc0p5RE1m5w1ZJkq-Eg7_jdiUXF37Co5rx4wE-ROlBqWDnuNmqO9rQMzRhFMS7Xt-5JqkJsuPlQv8qnWnKIPoMErV2rH0CXY"/>
+</div>
+<div class="flex flex-col justify-between py-1 flex-1">
+<div>
+<p class="text-sm font-medium text-text-main group-hover:text-primary font-serif leading-tight mb-1">Premium Rice Noodles (Bánh Phở)</p>
+<p class="text-xs font-bold text-text-secondary">$4.50</p>
+</div>
+<button class="text-xs uppercase tracking-widest text-text-secondary hover:text-primary text-left flex items-center gap-1 group-hover:underline">
+                                Add <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<div class="flex gap-4 group cursor-pointer">
+<div class="h-20 w-20 bg-[#FCFAFA] overflow-hidden shrink-0">
+<img alt="Hoisin Sauce bottle" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Bottle of Hoisin Sauce" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARpjHUh2swYynw59K2N7CK8xtLmAKO60OTEHblaGMdZW9E1GBYKS6gRCyqwTPrfE8nd5J3uY8lM4wMQDe35z5MI_nPO84mAQov4XmJdyhT-BkayuV35uCPG69PTj5qZFfESBIYkZRpZLYe5D0jZ0vpMneYwH_HhZdAgB8Wl3QN0fr9-buvUc7AEix_Yo5HyIbVMIdcun-cTsj3-6LXlc-eYVollstkZbqWGWgIse0nHGKYMaAyKcJ-ORIIbbF54cwQBBimwafuQyme"/>
+</div>
+<div class="flex flex-col justify-between py-1 flex-1">
+<div>
+<p class="text-sm font-medium text-text-main group-hover:text-primary font-serif leading-tight mb-1">Artisan Hoisin Sauce</p>
+<p class="text-xs font-bold text-text-secondary">$6.99</p>
+</div>
+<button class="text-xs uppercase tracking-widest text-text-secondary hover:text-primary text-left flex items-center gap-1 group-hover:underline">
+                                Add <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<div class="flex gap-4 group cursor-pointer">
+<div class="h-20 w-20 bg-[#FCFAFA] overflow-hidden shrink-0">
+<img alt="Sriracha bottle" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Bottle of chili hot sauce" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC0yI0A5wv02Ty_lgjX1-blUqgK4WDHF3nzDkLJGigMnNrI5ucgrqZXLaRQDAdOUw64b2SFsjN6BSyTq3ojmdjajCU1j1SFJjM9j8XG-gKU3txsRsYxn6pw-VJcvQKqV2qpDRWqKiFVev-Jn6kEcKFxYoorxoSYbdVvacReqzkAZ89B4YBb-6YUq_DEFiG5J3qGLnHxZ_58thwZhJgRfyLQzpXeNIYS2HcCmjUThS1bqC7ph063BV5W38uY2vPv75s1U4593dSf-Pd"/>
+</div>
+<div class="flex flex-col justify-between py-1 flex-1">
+<div>
+<p class="text-sm font-medium text-text-main group-hover:text-primary font-serif leading-tight mb-1">Garlic Chili Sauce</p>
+<p class="text-xs font-bold text-text-secondary">$5.25</p>
+</div>
+<button class="text-xs uppercase tracking-widest text-text-secondary hover:text-primary text-left flex items-center gap-1 group-hover:underline">
+                                Add <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 border border-text-main text-text-main hover:bg-text-main hover:text-white py-3 text-xs uppercase tracking-widest font-medium transition-colors">
+                    Add All to Cart ($35.73)
+                </button>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-[#F2EBE6] border-t border-[#EBE5DE] mt-24 py-16">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="text-3xl font-serif font-bold text-text-main mb-6 tracking-tight">LIKEFOOD</h2>
+<p class="text-text-secondary mb-10 max-w-md mx-auto font-light leading-relaxed">Curating the authentic flavors of Vietnam directly to your doorstep. Experience culinary excellence through live connection.</p>
+<div class="flex justify-center gap-8 text-xs font-medium uppercase tracking-widest text-text-main mb-10">
+<a class="hover:text-primary transition-colors" href="#">Our Story</a>
+<a class="hover:text-primary transition-colors" href="#">Shipping Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Returns</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<p class="text-[10px] text-text-secondary/60 uppercase tracking-widest">© 2023 LIKEFOOD Inc. All rights reserved.</p>
+</div>
+</footer>
+<div class="fixed bottom-6 right-6 z-50 group">
+<div class="absolute bottom-20 right-0 w-80 bg-white shadow-2xl border border-[#EBE5DE] opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 origin-bottom-right">
+<div class="bg-primary p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-white/90">smart_toy</span>
+<div>
+<p class="text-white font-serif font-medium text-lg italic">Chef AI</p>
+<p class="text-white/70 text-[10px] uppercase tracking-wider">Culinary Assistant</p>
+</div>
+</div>
+<button class="text-white/70 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<div class="p-5 h-72 bg-[#FCFAFA] overflow-y-auto space-y-4">
+<div class="flex gap-3">
+<div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 border border-primary/20">
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+</div>
+<div class="bg-white p-3 shadow-sm text-sm font-light text-text-main border border-[#EBE5DE] max-w-[85%]">
+                    Hello! Looking for cooking tips for the Phở concentrate?
+                </div>
+</div>
+<div class="flex gap-3 flex-row-reverse">
+<div class="bg-primary text-white p-3 shadow-sm text-sm font-light max-w-[85%]">
+                    Yes, what meat should I use?
+                </div>
+</div>
+<div class="flex gap-3">
+<div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 border border-primary/20">
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+</div>
+<div class="bg-white p-3 shadow-sm text-sm font-light text-text-main border border-[#EBE5DE] max-w-[85%]">
+                    Thinly sliced sirloin or eye round is best! Put it raw in the bowl and pour boiling broth over it.
+                </div>
+</div>
+</div>
+<div class="p-4 border-t border-[#EBE5DE] bg-white">
+<div class="flex items-center gap-2 border-b border-text-secondary/20 pb-2">
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full p-0 text-text-main placeholder-text-secondary/40 font-light" placeholder="Ask about recipes..." type="text"/>
+<button class="text-primary hover:text-primary-hover transition-colors">
+<span class="material-symbols-outlined text-xl">send</span>
+</button>
+</div>
+</div>
+</div>
+<button class="h-14 w-14 bg-text-main hover:bg-primary text-white shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-105 rounded-sm">
+<span class="material-symbols-outlined text-2xl font-light">chat_bubble_outline</span>
+<span class="absolute top-0 right-0 h-3 w-3 bg-green-500 border border-white"></span>
+</button>
+</div>
+</body></html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Details - LIKEFOOD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8b1e2d",
+                        "gold": "#d4af37",
+                        "background-light": "#fcfafa",
+                        "background-dark": "#201214",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .bg-paper-texture {
+            background-color: var(--bg-color, #fcfafa);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+        .dark .bg-paper-texture {
+            --bg-color: #201214;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-paper-texture text-slate-900 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+<header class="flex items-center justify-between border-b border-primary/10 px-10 py-6 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm shadow-primary/5">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined text-3xl">restaurant</span>
+<h2 class="text-2xl font-display font-bold tracking-widest uppercase">LIKEFOOD</h2>
+</div>
+<label class="hidden lg:flex flex-col min-w-40 max-w-64">
+<div class="flex w-full items-stretch h-10 border-b border-primary/30 overflow-hidden bg-transparent focus-within:border-primary transition-all">
+<div class="text-primary/70 flex items-center justify-center pr-3">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="w-full flex-1 bg-transparent border-none focus:outline-none focus:ring-0 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 font-display italic text-lg px-0" placeholder="Search culinary delights..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-8">
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-800 dark:text-slate-200 hover:text-primary transition-colors text-xs font-semibold uppercase tracking-widest" href="#">Shop</a>
+<a class="text-slate-800 dark:text-slate-200 hover:text-primary transition-colors text-xs font-semibold uppercase tracking-widest" href="#">Categories</a>
+<a class="text-slate-800 dark:text-slate-200 hover:text-primary transition-colors text-xs font-semibold uppercase tracking-widest" href="#">Our Story</a>
+</nav>
+<div class="flex items-center gap-6 border-l border-primary/10 pl-8">
+<button class="text-slate-800 dark:text-slate-200 hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined text-2xl">shopping_bag</span>
+<span class="absolute -top-1 -right-2 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">2</span>
+</button>
+<div class="bg-cover bg-center rounded-full w-10 h-10 border border-primary/20 shadow-sm cursor-pointer" data-alt="User profile avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAcrjhTyqSdfjgTL3ea31In05vg4DVQgr1cN8AaE4SoUsz0Me_j5MZWOoeCj0oBsoon57UMZoQjj_i1ID8eFDtVn7rY1ZATyoYQSH1a2MfTQJIfdcWZJzwhMSEuB1l0i54IUsYM9AMxZZglOOOaPoLENA-CKzkvP0b2z0uF9e8VQ3UhmgqSbninczzMLOl36DR1p_tD-4UTG61Wf_RJwgBZP4JkHUdvEI14Ht0q0tB1WS4WkXN7AJfZmDWVfGaC6OFIDlsT3QtUr83r");'></div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-[90rem] w-full mx-auto flex flex-col lg:flex-row gap-12 py-12 px-6 lg:px-12">
+<aside class="w-full lg:w-64 flex-shrink-0">
+<div class="sticky top-32">
+<div class="flex items-center gap-5 mb-10 pb-8 border-b border-primary/10">
+<div class="bg-cover bg-center rounded-full w-16 h-16 border border-primary/20 shadow-sm" data-alt="User profile avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAyeioPTHm4D-wvDmclpszpUaoC6Tcw4wXepL0OqDYKGZeTH3cqNAqqMpMt8c9Fma_jSmrpYcTHMruWj4wgVU4xj7qMu6ifPrJ-NK8M35tLKHH4I4vcftuEMEipQi5yq0ejiqpdUa9KHacgZPfP8Gv2kGsKFs68tqhw7cEYLClhmkn3PYqV-x7tR8kq0lIb3iG6VWXs8vXH1Ubhkcx4e_5miDirRvid1gtf6EJV2IlcfQKc0-dVW_qbCz40kfp91JRPTUK9Am7_wU1");'></div>
+<div>
+<h1 class="font-display font-semibold text-2xl text-slate-900 dark:text-white">John Doe</h1>
+<p class="text-primary text-xs font-bold uppercase tracking-widest mt-1">Epicurean</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary transition-all group rounded-lg hover:bg-black/5 dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">person</span>
+<span class="text-xs font-bold uppercase tracking-widest">Profile</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-primary bg-white/60 dark:bg-black/20 border-l-2 border-primary transition-all rounded-r-lg shadow-sm" href="#">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+<span class="text-xs font-bold uppercase tracking-widest">The Archives</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary transition-all group rounded-lg hover:bg-black/5 dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">location_on</span>
+<span class="text-xs font-bold uppercase tracking-widest">Addresses</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-primary transition-all group rounded-lg hover:bg-black/5 dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">stars</span>
+<span class="text-xs font-bold uppercase tracking-widest">Loyalty Points</span>
+</a>
+</nav>
+</div>
+</aside>
+<section class="flex-1 lg:pl-10 lg:border-l border-primary/10 relative">
+<header class="mb-12 border-b border-primary/10 pb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+<div>
+<h2 class="font-display text-5xl md:text-6xl text-primary mb-4 drop-shadow-sm">Order #LF-10255</h2>
+<p class="font-display italic text-2xl text-slate-600 dark:text-slate-400">Placed on October 10, 2024</p>
+</div>
+<span class="inline-block px-4 py-2 text-sm font-bold tracking-widest uppercase border border-primary text-primary dark:text-primary/80 dark:border-primary/50 bg-primary/5 shadow-sm">Processing</span>
+</header>
+<div class="flex flex-col lg:flex-row gap-12">
+<div class="flex-1 space-y-8">
+<h3 class="font-display italic text-3xl text-primary border-b border-primary/10 pb-4">Your Culinary Selection</h3>
+<div class="space-y-6">
+<div class="flex gap-6 items-center py-4 border-b border-primary/5">
+<div class="w-24 h-32 bg-cover bg-center border border-slate-200 shadow-sm flex-shrink-0" data-alt="Premium Vietnamese coffee beans" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD90gT2ic2HbFNooxOsBc_3VCVPObkLdz_dRPWb9AMqnGlRgtCdcl8rQzsnk9csUl-OZ7xzuLE2GW-1lUMnIqF2TqMSZded2oTr4eiJNTbAa_NTJQK4zojTrCZBng6zw7oDw8_GcpT8kUFSB7pUDYrT18nhPtcKd4CMoMu5YVe4c8IBU19BsQO07MeyZPbJyeg2DBUzA-QFIx5fNKnF2d8TM026SkM57vF6I6er63bGixywsdo9qs0yGN8i_FVJ7MkCHB-LXIZFCUt3");'></div>
+<div class="flex-1">
+<h4 class="font-display text-xl font-semibold text-slate-900 dark:text-white">Premium Vietnamese Coffee Beans</h4>
+<p class="text-sm text-slate-500 uppercase tracking-widest mt-1">Qty: 1</p>
+</div>
+<p class="font-display text-2xl text-slate-900 dark:text-white">$45.00</p>
+</div>
+<div class="flex gap-6 items-center py-4 border-b border-primary/5">
+<div class="w-24 h-32 bg-cover bg-center border border-slate-200 shadow-sm flex-shrink-0" data-alt="Artisanal fish sauce bottle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAPacdxONGY3UOLeU2R4lPhhLvQshTvu1KOE1a-Rm1fsp9X4PU6F2kzZ_4jNXz29FmYjaSE04CLSV5l4IbyxSGBxn00lIvenpMFebpX6FLJbbxsZpxGaEfG7ZQ6eHCx7-KTP8BGeMvVRxr-woLDbQiZOSTUcTvTwSbSHaTct5ktaHPRGoCoviV4h_8q9Dxa-EORM2eK-rp2eVRClvvnaZjXNc-wpdtKkTuchyddMc1Ex90ja-obAF5lUq9QUjoxFM6zyTAjo0jS0GoI");'></div>
+<div class="flex-1">
+<h4 class="font-display text-xl font-semibold text-slate-900 dark:text-white">Artisanal Fish Sauce</h4>
+<p class="text-sm text-slate-500 uppercase tracking-widest mt-1">Qty: 2</p>
+</div>
+<p class="font-display text-2xl text-slate-900 dark:text-white">$60.00</p>
+</div>
+<div class="flex gap-6 items-center py-4">
+<div class="w-24 h-32 bg-cover bg-center border border-slate-200 shadow-sm flex-shrink-0" data-alt="Premium loose leaf tea" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCMCilIcq-kTGnRINUPgtp9HYCHSvGLuLoLMjk88ty5M8puxGpCFMQUyKYJjS3VHzVQbHkdfz2vXPxg4RDSePt4kC5w1zOki1VWyZmipjlLs9nncaoeKCKrhuRYMW4JQFEEHTll8FNigZqQKrkGaARcvBRNcnpj9p7nhTZ2adK9lTMfbFU2ohfmt5WpA1AyOxSadxDZXIeBth29AIT35XabulWeV8F4w2D6k8u5lysupOJ5e1jr99PSl_jyUDWsahOWowc97m-w0YMJ");'></div>
+<div class="flex-1">
+<h4 class="font-display text-xl font-semibold text-slate-900 dark:text-white">Premium Loose Leaf Tea</h4>
+<p class="text-sm text-slate-500 uppercase tracking-widest mt-1">Qty: 1</p>
+</div>
+<p class="font-display text-2xl text-slate-900 dark:text-white">$40.00</p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-8 pt-8 border-t border-primary/10 mt-8">
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-400 bg-white/60 dark:bg-black/20 px-4 py-3 rounded-lg border border-primary/10 shadow-sm flex-1">
+<span class="material-symbols-outlined text-3xl text-primary">local_shipping</span>
+<span class="text-sm font-semibold uppercase tracking-widest">Domestic US Shipping</span>
+</div>
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-400 bg-white/60 dark:bg-black/20 px-4 py-3 rounded-lg border border-primary/10 shadow-sm flex-1">
+<span class="material-symbols-outlined text-3xl text-primary">lock</span>
+<span class="text-sm font-semibold uppercase tracking-widest">Secure Stripe Payment</span>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-80 flex-shrink-0 space-y-8 relative">
+<div class="bg-white dark:bg-black/60 p-8 rounded-xl border border-primary shadow-lg shadow-black/5 relative z-10">
+<h3 class="font-display italic text-2xl text-primary mb-6 border-b border-primary/10 pb-4">Order Details</h3>
+<div class="space-y-6">
+<div>
+<p class="text-xs font-bold tracking-widest uppercase text-slate-500 mb-2">Shipping Address</p>
+<p class="text-sm leading-relaxed text-slate-800 dark:text-slate-200">
+                                    John Doe<br/>
+                                    123 Culinary Lane, Apt 4B<br/>
+                                    San Francisco, CA 94105<br/>
+                                    United States
+                                </p>
+</div>
+<div class="pt-4 border-t border-primary/10">
+<p class="text-xs font-bold tracking-widest uppercase text-slate-500 mb-2">Billing Method</p>
+<div class="flex items-center gap-2 text-slate-800 dark:text-slate-200">
+<span class="material-symbols-outlined text-xl text-primary">credit_card</span>
+<p class="text-sm">Visa ending in 4242</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-primary/10 space-y-4">
+<div class="flex justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-400">Subtotal</span>
+<span class="font-semibold text-slate-900 dark:text-white">$145.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-400">Shipping</span>
+<span class="font-semibold text-slate-900 dark:text-white">$10.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-400">Tax</span>
+<span class="font-semibold text-slate-900 dark:text-white">$12.50</span>
+</div>
+<div class="flex justify-between items-end pt-4 border-t border-primary/10">
+<span class="font-bold tracking-widest uppercase text-sm text-slate-900 dark:text-white">Total</span>
+<span class="font-display text-4xl text-slate-900 dark:text-white drop-shadow-sm">$167.50</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<button class="w-full bg-primary hover:bg-slate-900 dark:hover:bg-white dark:hover:text-slate-900 text-white text-sm font-bold tracking-widest uppercase py-4 px-6 transition-all text-center border border-primary hover:border-slate-900 shadow-lg shadow-primary/20 hover:shadow-xl flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-xl">shopping_cart</span>
+                            Re-order this Journey
+                        </button>
+<div class="flex flex-col gap-2">
+<a class="inline-flex items-center justify-center gap-2 text-primary hover:text-slate-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest py-3 bg-white/60 dark:bg-black/20 rounded-lg hover:bg-white border border-transparent hover:border-primary/10 shadow-sm" href="#">
+<span class="material-symbols-outlined text-lg">download</span>
+                                Download PDF Invoice
+                            </a>
+<a class="inline-flex items-center justify-center gap-2 text-primary hover:text-slate-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest py-3 bg-white/60 dark:bg-black/20 rounded-lg hover:bg-white border border-transparent hover:border-primary/10 shadow-sm" href="#">
+<span class="material-symbols-outlined text-lg">chat</span>
+                                Support Chat
+                            </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

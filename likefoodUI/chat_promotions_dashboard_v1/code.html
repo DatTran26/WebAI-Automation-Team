@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>High-Trust Seller &amp; Discovery Chat v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#831A2D",
+                        "background-light": "#FCFAFA",
+                        "background-dark": "#1a1012",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#251518",
+                        "accent-gold": "#C8A951",
+                        "charcoal": "#2A2A2A",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .font-serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }.typing-dot {
+            animation: typing 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }.copy-animation:active {
+            transform: scale(0.95);
+            transition: transform 0.1s;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-charcoal dark:text-slate-100 font-display min-h-screen flex flex-col antialiased h-screen">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-primary/10 bg-surface-light dark:bg-surface-dark px-10 py-5 shrink-0 shadow-sm z-10 sticky top-0">
+<div class="flex items-center gap-4 text-primary dark:text-primary-light">
+<div class="size-6">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight uppercase tracking-widest font-serif-italic">Heritage VNM</h2>
+</div>
+<div class="flex flex-1 justify-end gap-10">
+<nav class="flex items-center gap-10 hidden md:flex">
+<a class="text-slate-500 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest" href="#">Discover</a>
+<a class="text-slate-500 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest" href="#">Live Events</a>
+<a class="text-primary dark:text-primary border-b border-primary pb-1 text-xs font-bold uppercase tracking-widest" href="#">Messages</a>
+<a class="text-slate-500 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest" href="#">Orders</a>
+</nav>
+<div class="flex gap-6 items-center border-l border-slate-200 dark:border-slate-700 pl-6">
+<button class="text-slate-400 dark:text-slate-300 hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+<span class="absolute top-0 right-0 size-2 bg-primary rounded-full ring-2 ring-white dark:ring-surface-dark"></span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shadow-sm cursor-pointer" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQ5Rzke7x6eZnWABP5VNepew-NITQgWxEAK9uLx2_p0eLlHn_eC39HoKg5SW4iGASUoRn8p5ZyLF9QfUR-uVTnbbSi8ETPFDVEyUKspC6ctdhhS6Fdi2EvsQ3YLOj29N-rLoHWjonCWTO3G7Tmqg6M0y61r_zNQMVpkvs3l8iqNdxlLSzk1eT9KaERojDRVt4RxdCGIkg_BLavtDmYXywPuDpEoecmwkHNHuq50GEwXzfesgj4O9v8cgGoe41v0CyHetOmqo9ED4zm");'></div>
+</div>
+</div>
+</header>
+<main class="flex-1 flex overflow-hidden">
+<section class="flex-1 flex flex-col min-w-0 border-r border-slate-200 dark:border-primary/10">
+<div class="flex flex-1 overflow-hidden h-full">
+<aside class="w-80 bg-surface-light dark:bg-surface-dark border-r border-slate-200 dark:border-primary/10 flex flex-col overflow-y-auto shrink-0 z-10 shadow-[2px_0_8px_-4px_rgba(0,0,0,0.05)] h-full">
+<div class="p-6 border-b border-slate-200 dark:border-primary/10">
+<h1 class="text-2xl font-bold text-charcoal dark:text-white mb-4 font-serif"><span class="font-serif-italic text-primary font-normal">Trusted</span> Artisans</h1>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-slate-700 rounded-full py-2.5 pl-10 pr-4 text-sm focus:ring-1 focus:ring-primary focus:border-primary text-charcoal dark:text-slate-200 placeholder-slate-400 transition-shadow" placeholder="Search sellers..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-2">
+<div class="flex items-center gap-4 px-6 py-4 border-l-2 border-primary bg-primary/5 dark:bg-primary/10 cursor-pointer transition-colors relative">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-14 shadow-sm border border-slate-100 dark:border-slate-800" data-alt="Hanoi Silk Artisans logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8JaS5iJ9zpp3vT76G6drEI_8iiTchblP8qwowGLmsAzkQ0InDYm3sQHOh2wvsasxyypZbKV5RsZTuQs7PQ2RHDQi802Let1EdiZAJOLfEaAOld4CUFqohlitUnDNxWqwyfSHRA39L8Kr9KXUzhTg4HfXF8Z3usdEyrhzsMJyrU0zI-UFFlfvvh7CgC9VOsNiwESvtp2Yn0dsHlv8ennPJRnH6CXOq74GFzVl3iNNqXYN9piQwI80WhUbmwCWiKsAj6LPP6vieayCk");'></div>
+<span class="absolute bottom-0 right-0 size-3.5 bg-green-500 border-2 border-white dark:border-surface-dark rounded-full"></span>
+<div class="absolute -top-1 -right-1 bg-accent-gold rounded-full size-5 flex items-center justify-center border-2 border-white shadow-sm">
+<span class="material-symbols-outlined text-[10px] text-white">verified</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<p class="text-charcoal dark:text-white text-base font-bold truncate font-serif">Hanoi Silk Artisans</p>
+<span class="text-primary text-[10px] font-bold uppercase tracking-wider">Just now</span>
+</div>
+<p class="text-primary dark:text-primary-light text-sm truncate font-medium italic font-serif">Typing...</p>
+</div>
+</div>
+<div class="flex items-center gap-4 px-6 py-4 border-l-2 border-transparent cursor-pointer hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-14 shadow-sm border border-slate-100 dark:border-slate-800" data-alt="Hue Royal Tea logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2YEcoVwsliMQrvVIJdNQE-6EUnasbZ9x6-ix8ll-t82yKKOwnjvXLSNsEOa_ZBiqwAqdVZPJLeKt81efHgHbSmUlYiR9xsBE6YYRDtjUPSWuRcVj7JKAllKq-jda3NYPxouTEe7aL1_V90XHYGbD4Lr7wVgRJAa8R7uRzPGgot-8F3ekCRMWKDSETJUhHiGQasvzRih7XhI0L4mH6Q8tftudBDpBtKDI8nVJLdCIwBF3oRPtFrqHCkSnbp87UezLiO2dypXA-9VA4");'></div>
+<div class="absolute -top-1 -right-1 bg-accent-gold rounded-full size-5 flex items-center justify-center border-2 border-white shadow-sm">
+<span class="material-symbols-outlined text-[10px] text-white">verified</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<p class="text-charcoal dark:text-slate-200 text-base font-bold truncate font-serif">Hue Royal Tea</p>
+<span class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">1h ago</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm truncate">Your premium order has been shipped.</p>
+</div>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col bg-background-light dark:bg-background-dark relative h-full">
+<div class="px-10 py-10 bg-surface-light dark:bg-surface-dark border-b border-slate-200 dark:border-primary/10 z-10 shrink-0">
+<div class="flex flex-col gap-6 relative">
+<div class="absolute top-0 right-0 flex gap-3">
+<button class="text-primary bg-transparent hover:bg-primary hover:text-white px-6 py-2.5 rounded-full text-xs font-bold transition-all uppercase tracking-widest border border-primary">
+                                View Store
+                            </button>
+</div>
+<div class="flex flex-col items-center justify-center text-center max-w-2xl mx-auto pt-2">
+<div class="relative mb-6">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-24 shadow-sm border border-slate-200 dark:border-slate-700" data-alt="Hanoi Silk Artisans logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2x60SJRBvlUhgnVKvml1K2WGp2U_rz-oeWJBE5UUiExxFkpHrlpOG3Rs26pbxw-vaES55G4cZT-1A1ZifHHadWb10ZtHhOxnYu6_3tLNvXt4kFv75k5MGbKyH3_oJ0lF_KsylwXCCw61-cel2z48Mr7gGE53JWuBUvDszoCTSPtSQ3QnA85QbaAu-X5k_Wz0AWloJ_59BGoBrZGNWoRlZF77EWt8z9C03pPYk9nhCVpwBr9qTgvd6VELkMHeVpq8iddWfHODFqxTj");'></div>
+<span class="absolute bottom-1 right-1 size-5 bg-green-500 border-2 border-white dark:border-surface-dark rounded-full"></span>
+</div>
+<h3 class="text-charcoal dark:text-white font-bold text-4xl md:text-5xl font-serif tracking-tight mb-6">Hanoi Silk Artisans</h3>
+<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-slate-600 dark:text-slate-400 border-y border-slate-200 dark:border-slate-700 py-4 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-accent-gold text-lg">star</span>
+<span class="font-bold text-charcoal dark:text-slate-200">4.9</span>
+<span class="text-slate-400 uppercase text-xs tracking-wider">(2.4k Reviews)</span>
+</div>
+<div class="hidden sm:block w-px h-4 bg-slate-300 dark:bg-slate-700"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg text-slate-400">schedule</span>
+<span class="uppercase text-xs tracking-wider font-bold">Replies &lt; 5m</span>
+</div>
+<div class="hidden sm:block w-px h-4 bg-slate-300 dark:bg-slate-700"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg text-slate-400">location_on</span>
+<span class="uppercase text-xs tracking-wider font-bold">Hanoi, VN</span>
+</div>
+<div class="hidden sm:block w-px h-4 bg-slate-300 dark:bg-slate-700"></div>
+<span class="bg-accent-gold/10 text-accent-gold px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">workspace_premium</span> Certified Heritage
+                            </span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-10 pb-28 space-y-8 bg-background-light dark:bg-background-dark">
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-start">
+<div class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-700 text-charcoal dark:text-slate-200 px-6 py-4 rounded-2xl rounded-tl-sm max-w-[70%] shadow-sm">
+<p class="text-base leading-relaxed">Xin chào! I saw the Imperial Lotus Scarf during the livestream. Is it possible to add custom initials?</p>
+</div>
+</div>
+<span class="text-[11px] font-medium text-slate-400 ml-2 uppercase tracking-wider">10:42 AM</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-end">
+<div class="bg-primary text-white px-6 py-4 rounded-2xl rounded-tr-sm max-w-[70%] shadow-sm">
+<p class="text-base leading-relaxed">Hello! Thank you for your interest. Yes, we can customize the embroidery with up to 3 initials in gold thread.</p>
+</div>
+</div>
+<div class="flex justify-end items-center gap-1.5 mr-2 text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+<span>10:45 AM</span>
+<span class="material-symbols-outlined text-[14px] text-primary">done_all</span>
+</div>
+</div>
+<div class="flex justify-start mt-6">
+<div class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-700 px-5 py-4 rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1.5 h-12">
+<div class="w-2 h-2 bg-slate-300 dark:bg-slate-600 rounded-full typing-dot"></div>
+<div class="w-2 h-2 bg-slate-300 dark:bg-slate-600 rounded-full typing-dot"></div>
+<div class="w-2 h-2 bg-slate-300 dark:bg-slate-600 rounded-full typing-dot"></div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 w-full p-6 bg-surface-light/95 dark:bg-surface-dark/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-700 z-20">
+<div class="flex items-center gap-4 bg-slate-50 dark:bg-background-dark rounded-full px-5 py-2.5 border border-slate-200 dark:border-slate-700 focus-within:ring-1 focus-within:ring-primary focus-within:border-primary transition-all max-w-4xl mx-auto">
+<button class="text-slate-400 hover:text-primary transition-colors p-1.5 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">add_circle</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-base text-charcoal dark:text-slate-200 placeholder-slate-400 py-2" placeholder="Message Hanoi Silk Artisans..." type="text"/>
+<button class="bg-primary hover:bg-primary/90 text-white rounded-full size-10 flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</div>
+</div>
+</div></section>
+<aside class="w-[420px] bg-surface-light dark:bg-surface-dark overflow-y-auto flex flex-col shrink-0 border-l border-slate-200 dark:border-primary/10 h-full">
+<div class="p-8 space-y-10 flex-1 bg-background-light dark:bg-background-dark">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-xl">history</span>
+<h2 class="text-lg font-bold text-charcoal dark:text-white uppercase tracking-widest font-serif">Recently Viewed</h2>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex gap-5">
+<div class="w-28 h-28 bg-cover bg-center rounded-lg shrink-0 border border-slate-100 dark:border-slate-800 relative" data-alt="Embroidered Silk Scarf" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB9Zjv9tiJrCCNV_k-qXhaoin73S1whlXobbOcSIIwNWdpcb29HxMCzumG58C8tu7C95liwrIBo89vGpcg2kQ2MtI8BHgnKxl4NtpUWMQmtOrz8oakuhyeLsdKZrbLdCMoQ4EDQsQXu3sJaNxdTIvsfrJ3kTihTgLzlOTKEy8-REZSVarkZRFvcqkpo7WL9hUe1hVOSXq-My5Ex86Uga4Lb6QfcoT32OwLoS8MSU1pCNSLEAMhfovfO2gz33BzEvd1xZI-XzC8ryif3');">
+<span class="absolute top-2 left-2 bg-primary text-white text-[9px] font-bold px-2 py-1 rounded flex items-center gap-1 uppercase tracking-widest shadow-sm">
+<span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span> Live
+                                    </span>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<h4 class="font-bold text-charcoal dark:text-white text-sm line-clamp-2 leading-snug font-serif">Imperial Lotus Silk Scarf - Hand Embroidered</h4>
+<p class="text-xs text-slate-500 mt-2 font-medium">Featured 5 mins ago</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="text-primary font-bold text-base font-serif">₫1,200,000</span>
+<button class="text-slate-400 hover:text-primary hover:bg-primary/5 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-xl">shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-accent-gold text-xl">local_activity</span>
+<h2 class="text-lg font-bold text-charcoal dark:text-white uppercase tracking-widest font-serif">Available Offers</h2>
+</div>
+<div class="relative bg-surface-light dark:bg-surface-dark rounded-xl border border-accent-gold/30 overflow-hidden mb-6 shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-accent-gold"></div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="px-2.5 py-1 bg-slate-50 dark:bg-slate-800 text-slate-500 text-[10px] font-bold uppercase tracking-widest rounded border border-slate-200 dark:border-slate-700">Livestream Exclusive</span>
+<h4 class="text-xl font-bold text-charcoal dark:text-white mt-3 font-serif">20% Off Silk</h4>
+</div>
+<button class="flex items-center gap-1.5 bg-surface-light dark:bg-surface-dark hover:bg-slate-50 text-accent-gold px-4 py-2 rounded text-xs font-bold uppercase tracking-widest border border-accent-gold transition-all copy-animation shadow-sm">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+                                        HANOI20
+                                    </button>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">Valid for all hand-embroidered items from this seller.</p>
+<details class="group border-t border-slate-100 dark:border-slate-700 pt-4">
+<summary class="flex justify-between items-center text-xs text-slate-500 font-bold uppercase tracking-wider cursor-pointer list-none hover:text-primary transition-colors">
+<span>Expires in 2 hrs</span>
+<span class="flex items-center gap-1 group-open:text-primary">
+                                            Terms <span class="material-symbols-outlined text-lg transition-transform group-open:rotate-180">expand_more</span>
+</span>
+</summary>
+<div class="mt-3 text-xs leading-relaxed text-slate-500 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-100 dark:border-slate-700">
+                                        Max discount ₫500,000. Not combinable with other offers. Single use per user.
+                                    </div>
+</details>
+</div>
+<div class="absolute -left-3 top-[65%] -translate-y-1/2 size-6 bg-background-light dark:bg-background-dark rounded-full border-r border-accent-gold/30"></div>
+<div class="absolute -right-3 top-[65%] -translate-y-1/2 size-6 bg-background-light dark:bg-background-dark rounded-full border-l border-accent-gold/30"></div>
+</div>
+<div class="relative bg-surface-light dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-slate-800 dark:bg-slate-400"></div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="px-2.5 py-1 bg-slate-50 dark:bg-slate-800 text-slate-500 text-[10px] font-bold uppercase tracking-widest rounded border border-slate-200 dark:border-slate-700">Standard</span>
+<h4 class="text-xl font-bold text-charcoal dark:text-white mt-3 font-serif">Free Delivery</h4>
+</div>
+<button class="flex items-center gap-1.5 bg-surface-light dark:bg-surface-dark hover:bg-slate-50 text-slate-700 dark:text-slate-300 px-4 py-2 rounded text-xs font-bold uppercase tracking-widest border border-slate-300 dark:border-slate-600 transition-all copy-animation shadow-sm">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+                                        FREESHIP
+                                    </button>
+</div>
+<details class="group border-t border-slate-100 dark:border-slate-700 pt-4 mt-2">
+<summary class="flex justify-between items-center text-xs text-slate-500 font-bold uppercase tracking-wider cursor-pointer list-none hover:text-slate-800 dark:hover:text-white transition-colors">
+<span>Valid until Dec 31</span>
+<span class="flex items-center gap-1">
+                                            Terms <span class="material-symbols-outlined text-lg transition-transform group-open:rotate-180">expand_more</span>
+</span>
+</summary>
+<div class="mt-3 text-xs leading-relaxed text-slate-500 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-100 dark:border-slate-700">
+                                        Valid on orders over ₫500,000 nationwide.
+                                    </div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</body></html>
