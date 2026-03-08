@@ -79,7 +79,7 @@ ck.md
 .vscode-test/
 .history/
 .claude/
-
+.vscode
 # root project control files (local-only)
 CLAUDE.md
 AGENTS.md
