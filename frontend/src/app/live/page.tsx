@@ -4,13 +4,33 @@ import { Users, Play, Volume2, Settings, Maximize, ShoppingBag, ArrowRight, Plus
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useCartStore } from "@/store/cartStore"
+import { Breadcrumb } from "@/components/ui/breadcrumb"
+
+const LIVE_PRODUCTS = [
+    {
+        id: "live-robusta-premium",
+        name: "Trung Nguyen Legend - Premium Robusta",
+        price: 19.99,
+        image: "https://images.unsplash.com/photo-1559525839-b184a4d698c7?q=80&w=400&auto=format&fit=crop",
+    },
+    {
+        id: "live-dried-jackfruit",
+        name: "Vinamit Dried Jackfruit (Mit Say) - 250g",
+        price: 12.50,
+        image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=400&auto=format&fit=crop",
+    },
+]
 
 export default function LivePage() {
     const [chatMessage, setChatMessage] = useState("")
+    const addItem = useCartStore((s) => s.addItem)
 
     return (
         <main className="flex-1 flex flex-col lg:flex-row overflow-hidden min-h-[calc(100vh-73px)] relative">
             <div className="flex-1 flex flex-col overflow-y-auto p-4 lg:p-8 gap-8 relative">
+                <Breadcrumb items={[{ label: "Live" }]} />
+
                 {/* Video Player Area */}
                 <div className="relative w-full aspect-video bg-charcoal rounded-2xl overflow-hidden shadow-2xl group flex-shrink-0 lg:flex-none max-h-[60vh]">
                     <div
@@ -102,7 +122,10 @@ export default function LivePage() {
                             <span>852 claimed</span>
                             <span className="text-brand">Limited stock remaining</span>
                         </div>
-                        <button className="w-full bg-brand hover:bg-brand-hover text-white font-semibold py-3.5 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-3 hover:-translate-y-0.5">
+                        <button
+                            onClick={() => addItem({ ...LIVE_PRODUCTS[0], quantity: 1 })}
+                            className="w-full bg-brand hover:bg-brand-hover text-white font-semibold py-3.5 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-3 hover:-translate-y-0.5"
+                        >
                             <ShoppingBag className="w-5 h-5" />
                             <span className="uppercase tracking-wider text-sm">Add to Cart</span>
                         </button>
@@ -115,9 +138,9 @@ export default function LivePage() {
                         <h3 className="text-soft-black dark:text-white font-serif font-medium text-xl">
                             Products in this Live
                         </h3>
-                        <button className="text-taupe text-sm hover:text-brand font-medium flex items-center gap-1 transition-colors group">
+                        <Link href="/collection" className="text-taupe text-sm hover:text-brand font-medium flex items-center gap-1 transition-colors group">
                             View Full Collection <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </button>
+                        </Link>
                     </div>
                     <div className="flex overflow-x-auto gap-5 pb-4 pt-2 snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0">
                         {/* Card 1 - Currently Featured */}
@@ -139,7 +162,10 @@ export default function LivePage() {
                                         <div className="bg-brand h-1 rounded-full w-[85%]"></div>
                                     </div>
                                     <p className="text-[10px] text-taupe mb-3 font-medium text-right">85% Claimed</p>
-                                    <button className="w-full bg-brand text-white hover:bg-brand-hover text-xs font-semibold py-2.5 rounded-xl transition-colors flex items-center justify-center gap-1 uppercase tracking-wider">
+                                    <button
+                                        onClick={() => addItem({ ...LIVE_PRODUCTS[0], quantity: 1 })}
+                                        className="w-full bg-brand text-white hover:bg-brand-hover text-xs font-semibold py-2.5 rounded-xl transition-colors flex items-center justify-center gap-1 uppercase tracking-wider"
+                                    >
                                         <Plus className="w-4 h-4" /> Add to Cart
                                     </button>
                                 </div>
@@ -162,7 +188,10 @@ export default function LivePage() {
                                         <div className="bg-mustard h-1 rounded-full w-[45%]"></div>
                                     </div>
                                     <p className="text-[10px] text-taupe mb-3 font-medium text-right">Fast Selling</p>
-                                    <button className="w-full bg-warm-white dark:bg-background-dark hover:bg-stone-beige/30 text-soft-black dark:text-white border border-stone-beige/50 text-xs font-semibold py-2.5 rounded-xl transition-colors flex items-center justify-center gap-1 uppercase tracking-wider">
+                                    <button
+                                        onClick={() => addItem({ ...LIVE_PRODUCTS[1], quantity: 1 })}
+                                        className="w-full bg-warm-white dark:bg-background-dark hover:bg-stone-beige/30 text-soft-black dark:text-white border border-stone-beige/50 text-xs font-semibold py-2.5 rounded-xl transition-colors flex items-center justify-center gap-1 uppercase tracking-wider"
+                                    >
                                         <Plus className="w-4 h-4" /> Add to Cart
                                     </button>
                                 </div>

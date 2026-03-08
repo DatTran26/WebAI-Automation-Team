@@ -3,12 +3,17 @@
 import { Search, BadgeCheck, Star, Clock, MapPin, Award, CheckCheck, PlusCircle, Send, History, ShoppingCart, Ticket, Copy, ChevronDown } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
+import { Breadcrumb } from "@/components/ui/breadcrumb"
 
 export default function MessagesPage() {
     const [message, setMessage] = useState("")
 
     return (
-        <main className="flex-1 flex min-h-[80vh] w-full max-w-[1920px] mx-auto border-t border-stone-beige/30">
+        <main className="flex-1 flex flex-col w-full max-w-[1920px] mx-auto border-t border-stone-beige/30">
+            <div className="px-4 md:px-8 pt-4">
+                <Breadcrumb items={[{ label: "Messages" }]} />
+            </div>
+            <div className="flex-1 flex min-h-[80vh]">
             <section className="flex-1 flex flex-col min-w-0 border-r border-stone-beige/30">
                 <div className="flex flex-1 overflow-hidden h-full">
                     {/* Chat List Sidebar */}
@@ -286,6 +291,7 @@ export default function MessagesPage() {
                     </div>
                 </div>
             </aside>
+            </div>
         </main>
     )
 }

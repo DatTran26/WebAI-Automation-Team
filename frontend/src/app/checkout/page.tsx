@@ -5,6 +5,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Loader2, ChevronRight, ShieldCheck, ArrowRight } from "lucide-react"
 import { CheckoutSummary } from "./checkout-summary"
+import { Breadcrumb } from "@/components/ui/breadcrumb"
 
 export default function CheckoutPage() {
     const { items, totalPrice, clearCart } = useCartStore()
@@ -68,15 +69,8 @@ export default function CheckoutPage() {
 
     return (
         <main className="flex-grow w-full max-w-[1320px] mx-auto px-4 md:px-8 py-8 md:py-12">
-            {/* Breadcrumb */}
             <div className="mb-10">
-                <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider mb-6 text-taupe">
-                    <a className="hover:text-brand transition-colors" href="/cart">Cart</a>
-                    <ChevronRight className="w-3 h-3" />
-                    <span className="text-brand font-semibold">Checkout</span>
-                    <ChevronRight className="w-3 h-3" />
-                    <span>Confirmation</span>
-                </div>
+                <Breadcrumb items={[{ label: "Cart", href: "/cart" }, { label: "Checkout" }]} />
                 <h1 className="text-3xl md:text-4xl font-serif font-medium text-soft-black dark:text-white mb-2">Checkout</h1>
                 <p className="text-taupe">Complete your purchase of authentic Vietnamese specialties.</p>
             </div>
