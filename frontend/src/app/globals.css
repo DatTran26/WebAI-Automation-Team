@@ -1,0 +1,201 @@
+/* LikeFood Premium Artisan Editorial Theme */
+/* Fonts loaded via link tags in layout.tsx: Playfair Display + Inter */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* === LikeFood Premium Artisan Color System === */
+
+  /* Primary Brand Colors */
+  --color-brand: #8B1538;
+  --color-brand-hover: #6E1030;
+  --color-brand-light: #A91D45;
+  --color-terracotta: #BE3A2B;
+  --color-terracotta-hover: #A03224;
+  --color-moss: #1F5A43;
+  --color-moss-light: #287855;
+
+  /* Secondary Colors */
+  --color-mustard: #C6A64A;
+  --color-mustard-light: #D4B85E;
+  --color-charcoal: #2F2F2F;
+  --color-dust-rose: #E7D9D6;
+
+  /* Neutral Colors */
+  --color-ivory: #FAF7F2;
+  --color-warm-white: #F6F1EB;
+  --color-stone-beige: #E6DED4;
+  --color-taupe: #7A726A;
+  --color-soft-black: #1E1B18;
+
+  /* Semantic aliases */
+  --color-primary: #8B1538;
+  --color-primary-dark: #6E1030;
+  --color-accent: #F5EBDD;
+  --color-background-light: #FAF7F2;
+  --color-background-dark: #1a0f0f;
+  --color-surface-light: #FFFFFF;
+  --color-surface-dark: #261515;
+  --color-text-main: #1E1B18;
+  --color-text-muted: #7A726A;
+  --color-gold: #C6A64A;
+  --color-gold-light: #D4B85E;
+  --color-gold-dark: #a8863a;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+
+  /* shadcn variable bindings */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Premium Artisan Radius (soft rounded) */
+  --radius: 0.625rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --radius-4xl: 2.5rem;
+}
+
+:root {
+  --background: #FAF7F2;
+  --foreground: #1E1B18;
+  --card: #FFFFFF;
+  --card-foreground: #1E1B18;
+  --popover: #FFFFFF;
+  --popover-foreground: #1E1B18;
+  --primary: #8B1538;
+  --primary-foreground: #FAF7F2;
+  --secondary: #F6F1EB;
+  --secondary-foreground: #1E1B18;
+  --muted: #F6F1EB;
+  --muted-foreground: #7A726A;
+  --accent: #F5EBDD;
+  --accent-foreground: #1E1B18;
+  --destructive: oklch(0.58 0.22 27);
+  --border: #E6DED4;
+  --input: #E6DED4;
+  --ring: #8B1538;
+  --chart-1: #8B1538;
+  --chart-2: #1F5A43;
+  --chart-3: #BE3A2B;
+  --chart-4: #C6A64A;
+  --chart-5: #2F2F2F;
+  --sidebar: #FAF7F2;
+  --sidebar-foreground: #1E1B18;
+  --sidebar-primary: #8B1538;
+  --sidebar-primary-foreground: #FAF7F2;
+  --sidebar-accent: #F6F1EB;
+  --sidebar-accent-foreground: #1E1B18;
+  --sidebar-border: #E6DED4;
+  --sidebar-ring: #8B1538;
+}
+
+.dark {
+  --background: #1a0f0f;
+  --foreground: #F5EBDD;
+  --card: #261515;
+  --card-foreground: #F5EBDD;
+  --popover: #261515;
+  --popover-foreground: #F5EBDD;
+  --primary: #C4385A;
+  --primary-foreground: #FAF7F2;
+  --secondary: #2F2222;
+  --secondary-foreground: #F5EBDD;
+  --muted: #2F2222;
+  --muted-foreground: #9A8E86;
+  --accent: #3A2525;
+  --accent-foreground: #F5EBDD;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: rgba(255,255,255,0.1);
+  --input: rgba(255,255,255,0.15);
+  --ring: #C4385A;
+  --chart-1: #C4385A;
+  --chart-2: #2D8A6A;
+  --chart-3: #D05040;
+  --chart-4: #D4B85E;
+  --chart-5: #888;
+  --sidebar: #261515;
+  --sidebar-foreground: #F5EBDD;
+  --sidebar-primary: #C4385A;
+  --sidebar-primary-foreground: #FAF7F2;
+  --sidebar-accent: #2F2222;
+  --sidebar-accent-foreground: #F5EBDD;
+  --sidebar-border: rgba(255,255,255,0.1);
+  --sidebar-ring: #C4385A;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+
+  /* Premium typography baseline */
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Utility: hide scrollbar for horizontal carousels */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Soft fade-in animation */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+/* Subtle hover zoom for images */
+.hover-zoom:hover img {
+  transform: scale(1.03);
+  transition: transform 0.7s ease;
+}
