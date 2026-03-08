@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cart &amp; Product Comparison v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d41142",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221015",
+                        "surface": "#ffffff",
+                        "surface-dark": "#2a151b",
+                        "border-light": "#f1e5e8",
+                        "border-dark": "#3d1f28",
+                        "text-primary": "#1b0d11",
+                        "text-secondary": "#9a4c5f",
+                        "text-primary-dark": "#fdfbfc",
+                        "text-secondary-dark": "#e5b1be"
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-primary dark:text-text-primary-dark min-h-screen antialiased">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark px-10 py-3 bg-surface dark:bg-surface-dark rounded-t-xl shadow-sm">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">storefront</span>
+</div>
+<h2 class="text-text-primary dark:text-text-primary-dark text-xl font-bold leading-tight tracking-[-0.015em]">Premium Live Commerce</h2>
+</div>
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark overflow-hidden">
+<div class="text-text-secondary dark:text-text-secondary-dark flex items-center justify-center pl-4 bg-transparent">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden text-text-primary dark:text-text-primary-dark focus:outline-none focus:ring-0 border-none bg-transparent h-full placeholder:text-text-secondary dark:placeholder:text-text-secondary-dark px-4 pl-2 text-sm font-normal leading-normal" placeholder="Search products..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-text-primary dark:text-text-primary-dark text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-text-primary dark:text-text-primary-dark text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Categories</a>
+<a class="text-text-primary dark:text-text-primary-dark text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Live Events</a>
+<a class="text-text-primary dark:text-text-primary-dark text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">About</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-background-light dark:bg-background-dark text-text-primary dark:text-text-primary-dark hover:bg-border-light dark:hover:bg-border-dark transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+<span class="absolute top-1 right-1 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-primary ring-2 ring-surface dark:ring-surface-dark"></span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-background-light dark:bg-background-dark text-text-primary dark:text-text-primary-dark hover:bg-border-light dark:hover:bg-border-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLZvILkHzs6Che3fI2-9KB12VizWaS5V5n7Oq7zbJMyxEd_PJMA-vx7gUBI7H_y8UFYkStMYi-6f7kx4HZ1vtVla0Ayy8m71wUSRtrpWzJPjVUvmlPCZrY9gFOqeAl-Lirvk-_DnAkY7Tn1gkFAP1R556DYUnz_oKrCDoiKjbtxg5YJwCxTF7m7wL_krS-3Hqx_uovj-TSQhYpiwEKLGdUTBBS2T_BPm3O8NxRFnCpeaj1_BCGomaFSzvIoGqRfayohlWDm3e6t2S3");'></div>
+</div>
+</div>
+</header>
+<div class="bg-surface dark:bg-surface-dark shadow-sm">
+<div class="flex border-b border-border-light dark:border-border-dark px-10 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-text-secondary dark:text-text-secondary-dark hover:text-text-primary dark:hover:text-text-primary-dark transition-colors pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Shopping Cart (3)</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-text-primary dark:text-text-primary-dark pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Product Comparison</p>
+</a>
+</div>
+</div>
+<main class="flex-1 bg-surface dark:bg-surface-dark rounded-b-xl shadow-sm p-10 flex flex-col gap-8">
+<div class="flex flex-col gap-2">
+<h1 class="text-text-primary dark:text-text-primary-dark text-4xl font-bold leading-tight tracking-tight">Compare Products</h1>
+<p class="text-text-secondary dark:text-text-secondary-dark text-base font-normal leading-relaxed max-w-2xl">A detailed editorial guide to choosing your perfect Vietnamese specialty coffee, comparing origin, roast, and flavor profiles side-by-side.</p>
+</div>
+<div class="overflow-x-auto @container rounded-xl border border-border-light dark:border-border-dark">
+<table class="w-full text-left min-w-[800px]">
+<thead class="bg-background-light dark:bg-background-dark border-b border-border-light dark:border-border-dark">
+<tr>
+<th class="px-6 py-5 text-text-primary dark:text-text-primary-dark w-1/4 text-sm font-bold uppercase tracking-wider">
+                                            Attribute
+                                        </th>
+<th class="px-6 py-5 w-1/4 border-l border-border-light dark:border-border-dark">
+<div class="flex flex-col gap-3">
+<div class="aspect-square w-24 rounded-lg bg-cover bg-center mb-2" data-alt="Bag of Da Lat Arabica coffee beans" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCX74w33ZuHQYsx4EGM4d6buzqb-5L7sruiVdZYwEWS6svQeRV53bIG-Hoe0OYaLsvs4Ck1TBWngtZQXQr4lPZTXhwhYUgvOPzyHYn_xdGGEGjMtlD9MiGB5j9-n9Nqardj3-DzPCguhkrD9gwCCZ-W5zihhxiZQXzrbl98egiqt7Uq6eNUJPaGtpcMekWONWBJXHDo-pOR6o9jXnt4wCuHT7_K7EeHuI5F1u48vldoHFt7Zns-nq8Ldn8M4V71yTj1d0us9WbeloZ7');"></div>
+<span class="text-text-primary dark:text-text-primary-dark text-lg font-bold leading-tight">Da Lat Arabica</span>
+<span class="text-primary font-medium">$24.00</span>
+</div>
+</th>
+<th class="px-6 py-5 w-1/4 border-l border-border-light dark:border-border-dark">
+<div class="flex flex-col gap-3">
+<div class="aspect-square w-24 rounded-lg bg-cover bg-center mb-2" data-alt="Bag of Buon Ma Thuot Robusta coffee beans" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDCv_ME4cKwlzzsYrsjRtgdPq5L_1PM6FpMjmnWtGmG0DfmYRdvCynPtAbkX7tJllMZH7dOTIcRdmW5XMHvJLfAO9elI2Xf1tlih5G4OlUEgCrg198NB9mUGcFy010XN6H7QEDUcWal76vyoee6E7B2hHJY9xDa6oPjQjDQy-reytFgRpNyUmHwfsRslria_Ujq7PTHyyDqDBLNjkT4XJUIP73VFSCEj9ZOHDI60pFMB7JLpKTY_bBuqd_w4_jI5KFVlyKjYTzlEnFC');"></div>
+<span class="text-text-primary dark:text-text-primary-dark text-lg font-bold leading-tight">Buon Ma Thuot Robusta</span>
+<span class="text-primary font-medium">$18.50</span>
+</div>
+</th>
+<th class="px-6 py-5 w-1/4 border-l border-border-light dark:border-border-dark">
+<div class="flex flex-col gap-3">
+<div class="aspect-square w-24 rounded-lg bg-cover bg-center mb-2" data-alt="Bag of Khe Sanh Liberica coffee beans" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAV5TdbKShOwFsn4TcAnxW4d25JXBa7D1bCCxiNf0BhdHU7sMyjJZY5J8JHJF7Ulr-W-bAswwoTpKMc2_sWvyrn0QR8kiijGFFPx6Thg8sCjRHJPnIYtT14utd2MpcZwSaBo-0WZxsAeMne2D05-1lJaqUPuX3W5Jy-B8LqfICRQLr_9KqKMYf3i5R4siUJqcdi3gRYXvHEb_-7AabCYyGMrTxvhwm5Jqc0IXTaOiNv3w4-DEVSqhJu3cXN3fTZ2c9bF-rp6g-UYZjk');"></div>
+<span class="text-text-primary dark:text-text-primary-dark text-lg font-bold leading-tight">Khe Sanh Liberica</span>
+<span class="text-primary font-medium">$28.00</span>
+</div>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-light dark:divide-border-dark bg-surface dark:bg-surface-dark">
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/50 transition-colors">
+<td class="px-6 py-4 text-text-primary dark:text-text-primary-dark text-sm font-bold">Origin</td>
+<td class="px-6 py-4 border-l border-border-light dark:border-border-dark text-text-secondary dark:text-text-secondary-dark text-sm">
+                                            Da Lat, Central Highlands
+                                        </td>
+<td class="px-6 py-4 border-l border-border-light dark:border-border-dark text-text-secondary dark:text-text-secondary-dark text-sm">
+                                            Buon Ma Thuot, Dak Lak
+                                        </td>
+<td class="px-6 py-4 border-l border-border-light dark:border-border-dark text-text-secondary dark:text-text-secondary-dark text-sm">
+                                            Khe Sanh, Quang Tri
+                                        </td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/50 transition-colors">
+<td class="px-6 py-4 text-text-primary dark:text-text-primary-dark text-sm font-bold">Roast Level</td>
+<td class="px-6 py-4 border-l border-border-light dark:border-border-dark text-text-secondary dark:text-text-secondary-dark text-sm">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">Medium Roast</span>
+</td>
+<td class="px-6 py-4 border-l border-border-light dark:border-border-dark text-text-secondary dark:text-text-secondary-dark text-sm">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-slate-800/10 dark:bg-slate-200/10 px-2.5 py-0.5 text-xs font-medium text-slate-800 dark:text-slate-200">Dark Roast</span>
+</td>
+<td class="px-6 py-4 border-l border-border-light dark:border-border-dark text-text-secondary dark:text-text-secondary-dark text-sm">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-[#d4b011]/10 px-2.5 py-0.5 text-xs font-medium text-[#b3950f]">Light Roast</span>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/50 transition-colors">
+<td class="px-6 py-4 text-text-primary dark:text-text-primary-dark text-sm font-bold">Caffeine Content</td>
+<td class="px-6 py-4 border-l border-border-light dark:border-border-dark text-text-secondary dark:text-text-secondary-dark text-sm">Medium (1.2% - 1.5%)</td>
+<td class="px-6 py-4 border-l border-border-light dark:border-border-dark text-text-secondary dark:text-text-secondary-dark text-sm">High (2.2% - 2.7%)</td>
+<td class="px-6 py-4 border-l border-border-light dark:border-border-dark text-text-secondary dark:text-text-secondary-dark text-sm">Low (1.0% - 1.2%)</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/50 transition-colors">
+<td class="px-6 py-4 text-text-primary dark:text-text-primary-dark text-sm font-bold">Flavor Notes</td>
+<td class="px-6 py-4 border-l border-border-light dark:border-border-dark text-text-secondary dark:text-text-secondary-dark text-sm">
+                                            Floral aromatics, bright citrus acidity, sweet caramel finish.
+                                        </td>
+<td class="px-6 py-4 border-l border-border-light dark:border-border-dark text-text-secondary dark:text-text-secondary-dark text-sm">
+                                            Bold dark chocolate, roasted nuts, earthy undertones, full body.
+                                        </td>
+<td class="px-6 py-4 border-l border-border-light dark:border-border-dark text-text-secondary dark:text-text-secondary-dark text-sm">
+                                            Intense fruity aromas, wine-like acidity, smoky jackfruit hints.
+                                        </td>
+</tr>
+<tr class="bg-background-light/30 dark:bg-background-dark/30">
+<td class="px-6 py-6 text-text-primary dark:text-text-primary-dark text-sm font-bold">Action</td>
+<td class="px-6 py-6 border-l border-border-light dark:border-border-dark">
+<button class="w-full flex items-center justify-center rounded-lg bg-surface dark:bg-surface-dark border border-primary text-primary px-4 py-2 text-sm font-bold hover:bg-primary hover:text-white transition-colors">
+                                                Add to Cart
+                                            </button>
+</td>
+<td class="px-6 py-6 border-l border-border-light dark:border-border-dark">
+<button class="w-full flex items-center justify-center rounded-lg bg-surface dark:bg-surface-dark border border-primary text-primary px-4 py-2 text-sm font-bold hover:bg-primary hover:text-white transition-colors">
+                                                Add to Cart
+                                            </button>
+</td>
+<td class="px-6 py-6 border-l border-border-light dark:border-border-dark">
+<button class="w-full flex items-center justify-center rounded-lg bg-surface dark:bg-surface-dark border border-primary text-primary px-4 py-2 text-sm font-bold hover:bg-primary hover:text-white transition-colors">
+                                                Add to Cart
+                                            </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex justify-center mt-4 border-t border-border-light dark:border-border-dark pt-8">
+<div class="flex w-full max-w-[600px] gap-4">
+<button class="flex flex-1 items-center justify-center rounded-lg h-12 px-6 bg-primary text-white text-base font-bold shadow-md hover:bg-primary/90 transition-colors">
+                                    Proceed to Checkout
+                                </button>
+<button class="flex flex-1 items-center justify-center rounded-lg h-12 px-6 bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark text-text-primary dark:text-text-primary-dark text-base font-bold hover:bg-border-light dark:hover:bg-border-dark transition-colors">
+                                    Return to Cart
+                                </button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</body></html>

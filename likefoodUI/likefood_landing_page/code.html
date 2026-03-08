@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LIKEFOOD - Premium Vietnamese Specialties</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#8B1E2D",
+              "primary-dark": "#6b1723",
+              "accent": "#F5EBDD",
+              "background-light": "#FDFCF8",
+              "background-dark": "#1a0f0f",
+              "surface-light": "#ffffff",
+              "surface-dark": "#261515",
+              "text-main": "#2d1b17",
+              "text-muted": "#8c7672",
+            },
+            fontFamily: {
+              "sans": ["Inter", "sans-serif"],
+              "serif": ["Playfair Display", "serif"],
+            },
+            borderRadius: {
+              "DEFAULT": "0.125rem", 
+              "lg": "0.25rem", 
+              "xl": "0.5rem", 
+              "2xl": "1rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style type="text/tailwindcss">
+    @layer utilities {
+      .font-serif {
+        font-family: 'Playfair Display', serif;
+      }
+    }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-accent font-sans antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-primary/10 dark:border-primary/20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md px-4 md:px-10 py-4">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">soup_kitchen</span>
+</div>
+<h2 class="text-primary dark:text-accent text-2xl font-serif font-bold leading-tight tracking-tight">LIKEFOOD</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-center gap-8">
+<div class="flex items-center gap-8 lg:gap-12">
+<a class="text-text-main dark:text-accent/80 hover:text-primary dark:hover:text-primary-light transition-colors text-sm font-medium tracking-wide uppercase" href="#">Shop</a>
+<a class="text-text-main dark:text-accent/80 hover:text-primary dark:hover:text-primary-light transition-colors text-sm font-medium tracking-wide uppercase" href="#">Live</a>
+<a class="text-text-main dark:text-accent/80 hover:text-primary dark:hover:text-primary-light transition-colors text-sm font-medium tracking-wide uppercase" href="#">Stories</a>
+<a class="text-text-main dark:text-accent/80 hover:text-primary dark:hover:text-primary-light transition-colors text-sm font-medium tracking-wide uppercase" href="#">Concierge</a>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 hover:bg-accent dark:hover:bg-primary/20 text-text-main dark:text-accent transition-colors">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 hover:bg-accent dark:hover:bg-primary/20 text-text-main dark:text-accent transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+<span class="absolute top-2 right-2 h-2 w-2 rounded-full bg-primary ring-2 ring-white dark:ring-background-dark"></span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 hover:bg-accent dark:hover:bg-primary/20 text-text-main dark:text-accent transition-colors">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center w-full">
+<div class="w-full max-w-[1440px] px-4 md:px-10 py-6 md:py-10 flex flex-col gap-16">
+<section class="@container">
+<div class="relative w-full rounded-xl overflow-hidden min-h-[600px] flex flex-col justify-end p-8 md:p-16 shadow-2xl">
+<div class="absolute inset-0 bg-cover bg-center z-0 transition-transform duration-[2000ms] hover:scale-105" data-alt="Vietnamese Pho noodle soup flat lay" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCi8A4o-w9GPr4roAPSu0XzRMjBUUzZPe3WDLfc46WvHzbHuGZwvTBO-FLeH-jDVLHCkzb5pOYCtdpmIUzQmd70ijgAqC-0Eg8agfQ5FkVUPsK9BIxUPyxXaMTrMK2WIJshn_68YSnftTr39cUqU_MJccMdzN2dXb5DwR66VQZ4vq_Ox9Oazavt_sxc3b76S_3Xs0lhpaY214gusMm3IcCekHcHKSMLTYxhK9f1hYq905NRa1FwWHg9S9A7HwNaLk7SPpJJBqAmOyGu');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent z-0 mix-blend-multiply"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-0"></div>
+<div class="relative z-10 flex flex-col gap-6 max-w-3xl">
+<div class="flex items-center gap-3 mb-2">
+<span class="flex h-2.5 w-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.6)]"></span>
+<span class="text-accent text-xs font-bold uppercase tracking-[0.2em]">Live from Vietnam</span>
+</div>
+<h1 class="text-white text-5xl md:text-7xl font-serif font-medium leading-none tracking-tight">
+                                Authentic Flavors,<br/><span class="italic">Curated for You.</span>
+</h1>
+<p class="text-accent/90 text-lg md:text-xl font-light max-w-xl leading-relaxed font-sans mb-4">
+                                Experience the taste of home with premium Vietnamese specialties, streamed live from artisanal producers directly to your doorstep.
+                            </p>
+<div class="flex flex-wrap gap-5">
+<button class="flex items-center justify-center rounded-sm h-14 px-10 bg-white hover:bg-accent text-primary text-base font-bold tracking-wide transition-all shadow-lg hover:shadow-xl">
+                                    Shop Collection
+                                </button>
+<button class="flex items-center justify-center rounded-sm h-14 px-10 bg-transparent hover:bg-white/10 text-white border border-white/40 text-base font-medium tracking-wide transition-all backdrop-blur-sm">
+<span class="material-symbols-outlined mr-2 text-[22px]">play_circle</span>
+                                    Watch Live
+                                </button>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-end justify-between mb-8 border-b border-primary/10 pb-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3 mb-1">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+</span>
+<span class="text-xs font-bold text-primary uppercase tracking-widest">On Air</span>
+</div>
+<h2 class="text-text-main dark:text-white text-4xl font-serif font-medium">Live Sessions</h2>
+</div>
+<a class="text-primary font-serif italic text-lg hover:text-primary-dark border-b border-transparent hover:border-primary transition-all pb-0.5" href="#">View all broadcasts</a>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="group relative rounded-lg overflow-hidden bg-white dark:bg-surface-dark border border-stone-100 dark:border-stone-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row h-full">
+<div class="relative w-full md:w-5/12 aspect-[4/5] md:aspect-auto">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="People drinking coffee in Saigon cafe" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDhYR595XLmtzb7VRaCnhP--ZLmySw2Bi7dPom5_qcq1VzzilC4hSG7TbvH9ZKELx-IZ8aTLYFtQUW33sOBUgA9J25mrELF4y_r_HfubnlXNgA3RDyO1_L_NPJP9y_WoK9aKfN1rgRu7Sszo2dyfD6DIZSkyG0lzOdckNpHNeXXSh9KT3l8UvegkgCu_jswgPizwpWOk2IBirJtgRDZ-GWwfF4q-QPZyZXEE9t5wGv9W3PNXcbvOugDxWXAd2eJnQRqEHnq37ZiMjDu');">
+</div>
+<div class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold tracking-wider px-3 py-1.5 uppercase rounded-sm">Live</div>
+<div class="absolute bottom-4 left-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-md p-3 rounded-sm border-l-2 border-primary">
+<p class="text-xs text-text-muted dark:text-stone-400 uppercase tracking-wide mb-1">Featured</p>
+<p class="font-serif font-bold text-primary dark:text-accent">$18.99</p>
+</div>
+</div>
+<div class="p-8 flex flex-col justify-center flex-1 bg-accent/20 dark:bg-white/5">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Host" class="w-10 h-10 rounded-full border-2 border-white dark:border-stone-700 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbDDn0Ry5mOXJGMR_j9doM_nsH-vUg5Iah_-UwLvaGRVj4411nooLGh4vux3PavOyYsa9Vpca1SGnfHpj2_pCTf-sW6wlqgHcG31k7MAlwtiXD9VaYgNohou0qGW7kyZFna0zOaklHG0wHVLzA9e7SpjFVQSlFQlJ-rkR2N81dIrbWBIIkkHh-rlKF4GGzJjjF1uoDG2FKk6YXLWCNqKnf2GrJt1y9G2G6CmlhnKpg3QTDiSC9OokzXcPRVwxE-ba5Hbal6JlyAvEW"/>
+<div>
+<p class="text-xs text-text-muted dark:text-stone-400 uppercase tracking-wider">Host</p>
+<span class="text-text-main dark:text-stone-200 text-sm font-semibold font-serif">Linh Nguyen</span>
+</div>
+</div>
+<h3 class="text-primary dark:text-white text-2xl font-serif font-medium leading-snug mb-3 group-hover:text-primary-dark transition-colors">
+                                    Saigon Mornings:<br/>Premium Robusta
+                                </h3>
+<p class="text-text-main/70 dark:text-stone-400 text-sm mb-6 leading-relaxed line-clamp-3">
+                                    Join us for an exclusive tasting session of the finest Robusta beans directly from the highlands. Uncover the notes of dark chocolate and caramel.
+                                </p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex items-center gap-1 text-xs font-medium text-text-muted">
+<span class="material-symbols-outlined text-[16px]">visibility</span> 1.2k watching
+                                    </div>
+<button class="px-6 py-2.5 bg-primary text-white text-sm font-medium tracking-wide rounded-sm hover:bg-primary-dark transition-colors font-serif italic">
+                                        Join Stream
+                                    </button>
+</div>
+</div>
+</div>
+<div class="group relative rounded-lg overflow-hidden bg-white dark:bg-surface-dark border border-stone-100 dark:border-stone-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row h-full">
+<div class="relative w-full md:w-5/12 aspect-[4/5] md:aspect-auto">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Making traditional Banh Mi sandwich" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB3j57aMHa7CP_bMeTT6GvrWP3HLtJAwBRVlTP19d9QUrYfmS8q25ql-9Ish1VHNMqee9uzMGicQLOeiiuMzw4sCvgExcg1OQJqAS71aPou--8UIhbZ3kOdfX6SZACHxBvjeihy0kbNK01LOthLIlqrIiridR5AM1Aqdx_j2-4KXHLsEMCKhx3ZyFr2nhejKjAjhQ3UzxZhrGzADtvQVpDw27OMh00f6NETOiXAaSJWi-T9F8t6Qy2R732kztUXaOVHWRykCkIm0zov');">
+</div>
+<div class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold tracking-wider px-3 py-1.5 uppercase rounded-sm">Live</div>
+<div class="absolute bottom-4 left-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-md p-3 rounded-sm border-l-2 border-primary">
+<p class="text-xs text-text-muted dark:text-stone-400 uppercase tracking-wide mb-1">Featured</p>
+<p class="font-serif font-bold text-primary dark:text-accent">$32.50</p>
+</div>
+</div>
+<div class="p-8 flex flex-col justify-center flex-1 bg-accent/20 dark:bg-white/5">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Host" class="w-10 h-10 rounded-full border-2 border-white dark:border-stone-700 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ0Ix4l-8Up4xd7rFx_2bCHtJURmCr5UhBzRbs5DSzRZz8AAXGtuSkn4jWGSkCvqCXjFavRaYNbGYcqEK6cQcZ0BvpRtBCmuRjFaAIVgFXaHotqb3Mqfih3tsuSkL5ZawCZOOZrsgmTWsbpHoxkdFNU9viqRGgPsfbJ-ZTioSWoECN7PXGQVqi3Sm0uYPU_qF1SEnWXND3O9x901Og1QM340foil2CqfPDyOxzzznlo-4ScvEVTXeHXOy4g8uAE8A6RUuyleRMx57d"/>
+<div>
+<p class="text-xs text-text-muted dark:text-stone-400 uppercase tracking-wider">Host</p>
+<span class="text-text-main dark:text-stone-200 text-sm font-semibold font-serif">Chef Tuan</span>
+</div>
+</div>
+<h3 class="text-primary dark:text-white text-2xl font-serif font-medium leading-snug mb-3 group-hover:text-primary-dark transition-colors">
+                                    The Art of Banh Mi:<br/>Secret Sauce
+                                </h3>
+<p class="text-text-main/70 dark:text-stone-400 text-sm mb-6 leading-relaxed line-clamp-3">
+                                    Master the assembly of the perfect Banh Mi. Featuring our limited edition artisanal pate and chili sauce kits available only now.
+                                </p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex items-center gap-1 text-xs font-medium text-text-muted">
+<span class="material-symbols-outlined text-[16px]">visibility</span> 856 watching
+                                    </div>
+<button class="px-6 py-2.5 border border-primary text-primary hover:bg-primary hover:text-white dark:text-accent dark:border-accent dark:hover:bg-accent dark:hover:text-primary text-sm font-medium tracking-wide rounded-sm transition-colors font-serif italic">
+                                        Watch Now
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between border-b border-primary/10 pb-6">
+<div class="flex flex-col gap-1">
+<span class="text-xs font-bold text-text-muted uppercase tracking-widest">Discover &amp; Taste</span>
+<h2 class="text-text-main dark:text-white text-4xl font-serif font-medium">Curated Collections</h2>
+</div>
+<div class="flex gap-2 mt-4 md:mt-0">
+<button class="p-3 rounded-full border border-stone-200 dark:border-stone-700 hover:bg-primary hover:text-white hover:border-primary text-text-main dark:text-white transition-all">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<button class="p-3 rounded-full border border-stone-200 dark:border-stone-700 hover:bg-primary hover:text-white hover:border-primary text-text-main dark:text-white transition-all">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
+<a class="group flex flex-col items-center justify-center gap-3 min-w-[140px] md:min-w-[160px] p-6 rounded-lg bg-surface-light dark:bg-surface-dark border border-stone-100 dark:border-stone-800 hover:border-primary/30 hover:bg-accent/10 hover:shadow-lg transition-all cursor-pointer" href="#">
+<div class="h-14 w-14 rounded-full bg-accent dark:bg-primary/20 text-primary flex items-center justify-center transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-3xl">coffee</span>
+</div>
+<span class="text-sm font-serif font-bold text-text-main dark:text-white group-hover:text-primary transition-colors text-center">Specialty Coffee</span>
+</a>
+<a class="group flex flex-col items-center justify-center gap-3 min-w-[140px] md:min-w-[160px] p-6 rounded-lg bg-surface-light dark:bg-surface-dark border border-stone-100 dark:border-stone-800 hover:border-primary/30 hover:bg-accent/10 hover:shadow-lg transition-all cursor-pointer" href="#">
+<div class="h-14 w-14 rounded-full bg-accent dark:bg-primary/20 text-primary flex items-center justify-center transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-3xl">nutrition</span>
+</div>
+<span class="text-sm font-serif font-bold text-text-main dark:text-white group-hover:text-primary transition-colors text-center">Dried Delicacies</span>
+</a>
+<a class="group flex flex-col items-center justify-center gap-3 min-w-[140px] md:min-w-[160px] p-6 rounded-lg bg-surface-light dark:bg-surface-dark border border-stone-100 dark:border-stone-800 hover:border-primary/30 hover:bg-accent/10 hover:shadow-lg transition-all cursor-pointer" href="#">
+<div class="h-14 w-14 rounded-full bg-accent dark:bg-primary/20 text-primary flex items-center justify-center transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-3xl">local_dining</span>
+</div>
+<span class="text-sm font-serif font-bold text-text-main dark:text-white group-hover:text-primary transition-colors text-center">Spices &amp; Sauces</span>
+</a>
+<a class="group flex flex-col items-center justify-center gap-3 min-w-[140px] md:min-w-[160px] p-6 rounded-lg bg-surface-light dark:bg-surface-dark border border-stone-100 dark:border-stone-800 hover:border-primary/30 hover:bg-accent/10 hover:shadow-lg transition-all cursor-pointer" href="#">
+<div class="h-14 w-14 rounded-full bg-accent dark:bg-primary/20 text-primary flex items-center justify-center transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-3xl">card_giftcard</span>
+</div>
+<span class="text-sm font-serif font-bold text-text-main dark:text-white group-hover:text-primary transition-colors text-center">Gifts</span>
+</a>
+<a class="group flex flex-col items-center justify-center gap-3 min-w-[140px] md:min-w-[160px] p-6 rounded-lg bg-surface-light dark:bg-surface-dark border border-stone-100 dark:border-stone-800 hover:border-primary/30 hover:bg-accent/10 hover:shadow-lg transition-all cursor-pointer" href="#">
+<div class="h-14 w-14 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-500 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:bg-primary/10 group-hover:text-primary">
+<span class="material-symbols-outlined text-3xl">apps</span>
+</div>
+<span class="text-sm font-serif font-bold text-stone-500 group-hover:text-primary transition-colors text-center">All Categories</span>
+</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
+<div class="group flex flex-col gap-4">
+<div class="relative aspect-[3/4] overflow-hidden rounded-sm bg-stone-100 dark:bg-stone-800">
+<img alt="Premium Dried Mango Slices" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 saturate-[.95] group-hover:saturate-100" data-alt="Dried mango slices in packaging" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdpkAc_XgHecUhHDStLitFEw5KZ6Pyn82Y0Kbk6lvai0f_AzhQnBO4_MDWs-3npYzxUCIIuilXIkvsDYZhYvwwPGFbtaf3-eCfeQk2H-5SvfzzZTl4HRW3aEryEBKYeOU4j47BnvN0G_rA_Z_Ea5fe-eoW-QBpjHSD-1BLjuDiBJ8eHxTxp4b2loWkevAsxSCFBeDNIqJb_fqWpjiyA-joq3IwrnuC6lFk9WRVHXwTMUv4QAULxzJKuOIflc4cFPUoxV2VKOkbrj-W"/>
+<div class="absolute top-0 left-0 flex flex-col gap-1 p-2">
+<span class="bg-accent text-primary text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded-sm shadow-sm border border-primary/10">Editor's Choice</span>
+</div>
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-black/60 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-opacity text-primary hover:bg-primary hover:text-white">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-primary/90 to-transparent">
+<button class="w-full py-3 bg-white text-primary text-xs font-bold uppercase tracking-widest rounded-sm shadow-lg hover:bg-accent transition-colors">Add to Cart</button>
+</div>
+</div>
+<div class="text-center">
+<h3 class="font-serif font-bold text-lg text-text-main dark:text-white leading-tight group-hover:text-primary transition-colors mb-1">Premium Dried Mango</h3>
+<p class="text-xs text-text-muted dark:text-stone-400 uppercase tracking-wider mb-2">Sweet &amp; Chewy</p>
+<span class="font-bold text-md text-primary font-sans">$12.00</span>
+</div>
+</div>
+<div class="group flex flex-col gap-4">
+<div class="relative aspect-[3/4] overflow-hidden rounded-sm bg-stone-100 dark:bg-stone-800">
+<img alt="Traditional Fish Sauce Bottle" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 saturate-[.95] group-hover:saturate-100" data-alt="Bottle of traditional fish sauce" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfU7Z2Z4sd4jUz8mHHnNjaOVepwAzlQ4gv0LzvtKhxY5_GMLbYUyNf3TIqxOYzl5MNifAWOcOaa93MW9H1IFQtw4Q6-8TGSwkFJrxrFcoNigJTaChjsmGKSHWnysmwkW6YGDrAXOuihiyTcTj5m0ww3onKKXhd2ISqJxlXNdbvdV99q7pPyFuWJKtFbFlCy00D2sqcYFDgoJ3vO-8Ru2b5_qZrgr0Zpritl1C501S3qulM8rJuovru4MsJjQFEgbrtK_II29PSnP-K"/>
+<div class="absolute top-0 left-0 flex flex-col gap-1 p-2">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded-sm shadow-sm">Live Deal</span>
+</div>
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-black/60 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-opacity text-primary hover:bg-primary hover:text-white">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-primary/90 to-transparent">
+<button class="w-full py-3 bg-white text-primary text-xs font-bold uppercase tracking-widest rounded-sm shadow-lg hover:bg-accent transition-colors">Add to Cart</button>
+</div>
+</div>
+<div class="text-center">
+<h3 class="font-serif font-bold text-lg text-text-main dark:text-white leading-tight group-hover:text-primary transition-colors mb-1">Phu Quoc Fish Sauce</h3>
+<p class="text-xs text-text-muted dark:text-stone-400 uppercase tracking-wider mb-2">40°N Protein</p>
+<span class="font-bold text-md text-primary font-sans">$9.50</span>
+</div>
+</div>
+<div class="group flex flex-col gap-4">
+<div class="relative aspect-[3/4] overflow-hidden rounded-sm bg-stone-100 dark:bg-stone-800">
+<img alt="Instant Pho Noodle Box" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 saturate-[.95] group-hover:saturate-100" data-alt="Box of instant pho noodles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6vYPI7obYGpxMmKA1k9Gz93j4YwnximG0a1WdkADOMGEJyZDZclynijeDSM1RejL8AZ8TNKUcCyaVq_5JotFe6yTB12wyZnPBvmoo-3S4dzR36rmUoT5rVuFEvpRRZOWqVrwpY2dKUpFCWcxVkyN-cAoLqBDgC-fB8PJ1Wgn7MDhVfefKamRn5czjzJlAMSKoADQjI7KgpBLFbWFai7NU4Sqb5oyV3QwcDNam8H9d1y_MZrMwojgjVDjXHfmTDU0h7j1QGPkmzUwy"/>
+<div class="absolute top-0 left-0 flex flex-col gap-1 p-2">
+<span class="bg-white/90 text-primary border border-primary/20 text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded-sm shadow-sm backdrop-blur-sm">Trending</span>
+</div>
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-black/60 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-opacity text-primary hover:bg-primary hover:text-white">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-primary/90 to-transparent">
+<button class="w-full py-3 bg-white text-primary text-xs font-bold uppercase tracking-widest rounded-sm shadow-lg hover:bg-accent transition-colors">Add to Cart</button>
+</div>
+</div>
+<div class="text-center">
+<h3 class="font-serif font-bold text-lg text-text-main dark:text-white leading-tight group-hover:text-primary transition-colors mb-1">Hanoi Style Pho Kit</h3>
+<p class="text-xs text-text-muted dark:text-stone-400 uppercase tracking-wider mb-2">Makes 4 Servings</p>
+<span class="font-bold text-md text-primary font-sans">$15.99</span>
+</div>
+</div>
+<div class="group flex flex-col gap-4">
+<div class="relative aspect-[3/4] overflow-hidden rounded-sm bg-stone-100 dark:bg-stone-800">
+<img alt="Vietnamese Cashew Nuts" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 saturate-[.95] group-hover:saturate-100" data-alt="Bowl of roasted cashew nuts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-Q5VqV5rqB09s37M5Z8Z0DW0c2Y-Tc1t97xC8WxfH7hkdKtJea6cOWKrUSIJJ95VRsB7tlWjhiVJDskY9qFeIx77IW717mrSyyL9sskmhspGhXewwHOzK-FPc7eD0JtOOY1e85XPtIIcGHBYk6wvUtpjN175Rkq4apHEfgxK0YM_kL3QPqntz93ehSsT3zZs2cRSTSWpDtu9mrMNRFoeuuHSy2WWTqnSuencEzrJaG2hUKizQGeAMhabCmR_VkDyDnqRIBxoSpzG6"/>
+<div class="absolute top-0 left-0 flex flex-col gap-1 p-2">
+<span class="bg-accent text-primary text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded-sm shadow-sm border border-primary/10">Staff Pick</span>
+</div>
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-black/60 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-opacity text-primary hover:bg-primary hover:text-white">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-primary/90 to-transparent">
+<button class="w-full py-3 bg-white text-primary text-xs font-bold uppercase tracking-widest rounded-sm shadow-lg hover:bg-accent transition-colors">Add to Cart</button>
+</div>
+</div>
+<div class="text-center">
+<h3 class="font-serif font-bold text-lg text-text-main dark:text-white leading-tight group-hover:text-primary transition-colors mb-1">Roasted Cashews</h3>
+<p class="text-xs text-text-muted dark:text-stone-400 uppercase tracking-wider mb-2">Salted &amp; Skin-on</p>
+<span class="font-bold text-md text-primary font-sans">$14.50</span>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-accent/40 dark:bg-surface-dark border border-primary/5 rounded-lg p-8 md:p-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 relative z-10">
+<div>
+<span class="text-xs font-bold text-primary uppercase tracking-widest block mb-2">Schedule</span>
+<h2 class="text-text-main dark:text-white text-3xl font-serif font-medium leading-tight mb-2">Upcoming Streams</h2>
+<p class="text-text-muted dark:text-stone-400 font-light text-lg">Set reminders for exclusive product launches.</p>
+</div>
+<button class="text-primary font-bold text-sm uppercase tracking-wider flex items-center gap-2 hover:gap-3 transition-all">
+                             Full Schedule <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="flex flex-col gap-4 relative z-10">
+<div class="flex flex-col md:flex-row items-center gap-6 p-6 bg-white dark:bg-background-dark rounded-sm shadow-sm border-l-4 border-primary hover:shadow-md transition-all">
+<div class="flex flex-col items-center justify-center min-w-[100px] text-center">
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Today</span>
+<span class="text-2xl font-serif font-bold text-text-main dark:text-white">18:00</span>
+</div>
+<div class="h-14 w-14 rounded-full border-2 border-accent flex-shrink-0 overflow-hidden">
+<img alt="Host Avatar" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGuqtkGUDkqAw3hS42nWbTvTv-mMO0GMVXzYfyneBYMBz4zFdMojO8XzRy7pmWB6dtyg264ntjjRdIG8B1Qp78XdYzui4mslxNAFmK0Z04qeOq1665YUyk1vKtPwZnxMneRnDGVTEDLNNm7e_5ZMShoyTS8UPJU76rTeVN97FKuiTx4K0Laf_m8XdIE5EHNzNWnEOTjfSjEwlxGMfGw8N6XGPDgP8kJGKTgGl2kwTfQ-rVy5EJrF1jwglbJtdK_wtL4puu9k_VlGVf"/>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h3 class="font-serif font-bold text-xl text-text-main dark:text-white mb-1">Traditional Mooncake Making</h3>
+<p class="text-sm text-text-muted dark:text-stone-400">with Artisan Mai • <span class="text-primary italic">Includes pre-order discounts</span></p>
+</div>
+<button class="px-6 py-2 rounded-sm bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all text-xs font-bold uppercase tracking-wider w-full md:w-auto">
+                                Remind Me
+                            </button>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-6 p-6 bg-white dark:bg-background-dark rounded-sm shadow-sm border-l-4 border-stone-200 dark:border-stone-700 hover:border-primary transition-all group">
+<div class="flex flex-col items-center justify-center min-w-[100px] text-center">
+<span class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-1">Tomorrow</span>
+<span class="text-2xl font-serif font-bold text-stone-400 group-hover:text-text-main dark:group-hover:text-white transition-colors">09:00</span>
+</div>
+<div class="h-14 w-14 rounded-full border-2 border-stone-100 dark:border-stone-800 flex-shrink-0 overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+<img alt="Host Avatar" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyTRxjwuV4QXyfLFj0ht9CMPeWX_oMjPrcbrIknpZHgd0RWGh29GUbFNgdsLXe3Et7eA2nNezDQR89cBEvGe1j_ypvrxP91ndHmqN-lVxJx-Ezi6aSGNxkCX8KxKvVkhPLCuSxMxNuNbj4QmTsVYhSaqJt7sKstsgjPu1b6c7WpzSgimB2QDVntS5vpxz5S-PW6m2aX1_NG7fcd221EE1hkVG3zIYZOkEZ-KHmRsdKZs6ILgKv1bVmbSVzHROA81bB3-M3rO3aXs1H"/>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h3 class="font-serif font-bold text-xl text-stone-500 group-hover:text-text-main dark:group-hover:text-white transition-colors">Morning Coffee Rituals</h3>
+<p class="text-sm text-text-muted dark:text-stone-400">with Barista Hai • Filter coffee sets showcase</p>
+</div>
+<button class="px-6 py-2 rounded-sm border border-stone-200 dark:border-stone-700 text-stone-400 group-hover:text-primary group-hover:border-primary transition-all text-xs font-bold uppercase tracking-wider w-full md:w-auto">
+                                Remind Me
+                            </button>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-12">
+<div class="order-2 md:order-1 flex flex-col gap-8">
+<div>
+<span class="text-xs font-bold text-primary uppercase tracking-widest block mb-3">Our Promise</span>
+<h2 class="text-4xl md:text-5xl font-serif font-medium tracking-tight text-text-main dark:text-white leading-tight">
+                                From Vietnam to Your Table,<br/>
+<span class="italic text-primary">With Transparency.</span>
+</h2>
+</div>
+<p class="text-text-muted dark:text-stone-400 text-lg leading-relaxed font-light">
+                            LIKEFOOD is a bridge connecting you directly with local artisans. We believe in the power of live video to show you exactly where your food comes from. Ask questions in real-time and shop with the confidence of a connoisseur.
+                        </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10 pt-6">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-3xl text-primary font-light">verified_user</span>
+<div>
+<h4 class="font-serif font-bold text-text-main dark:text-white text-lg">Authentic Source</h4>
+<p class="text-sm text-text-muted dark:text-stone-500 leading-relaxed mt-1">Direct partnerships with verified local producers.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-3xl text-primary font-light">flight_takeoff</span>
+<div>
+<h4 class="font-serif font-bold text-text-main dark:text-white text-lg">Fast Shipping</h4>
+<p class="text-sm text-text-muted dark:text-stone-500 leading-relaxed mt-1">Expedited logistics to ensure peak freshness.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-3xl text-primary font-light">videocam</span>
+<div>
+<h4 class="font-serif font-bold text-text-main dark:text-white text-lg">Live Interaction</h4>
+<p class="text-sm text-text-muted dark:text-stone-500 leading-relaxed mt-1">Real-time Q&amp;A with sellers during streams.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-3xl text-primary font-light">eco</span>
+<div>
+<h4 class="font-serif font-bold text-text-main dark:text-white text-lg">Sustainable</h4>
+<p class="text-sm text-text-muted dark:text-stone-500 leading-relaxed mt-1">Supporting eco-friendly farming practices.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2 relative h-[500px] md:h-[600px] pl-8">
+<div class="absolute top-0 right-0 w-[85%] h-[85%] rounded-sm overflow-hidden shadow-2xl z-10 border-8 border-white dark:border-background-dark">
+<img alt="Farmer harvesting tea leaves" class="h-full w-full object-cover sepia-[.2]" data-alt="Vietnamese farmer harvesting in tea field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA39yk97WjxP92c6U1F_ENZYYc2koFbgvH1CQVgvqYqyMiNglu_KjK0SwK28rLavXBA8FCivro_rG7jirWMMOFLxmogGamfgwzQNmiVQ58UAFuo3vazmnYRk-CoCD4FnKOYyFL2SzuDbvV6Sn9nojIoIm7bFoqWmUZsm7PA3s_zz_-dpNEV-q17__Whf2Ch7bA5nknt0da67ZwR6GosqPPuuWENnnGMLCXPnLzxPOenq2W3E4PJZFCmHd-NqsE_jPLmabT-jO_eG5e2"/>
+</div>
+<div class="absolute bottom-0 left-0 w-3/5 h-3/5 rounded-sm overflow-hidden shadow-xl border-8 border-white dark:border-background-dark z-20">
+<img alt="Close up of spices" class="h-full w-full object-cover" data-alt="Close up of various colorful spices" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhcScHSKL-PZIx4M5G41_jnlzPoABNvB5siPJS7tVNLbXB_kS96ZB3KdGPca7iXeJwEq_VL6DyhB2deGkX_sadODpSZeCfKtSpJyxfGVMwGMQ-7SPg4q-aurPIGL7gKbpAk1sUqhR0QEfCMoJtV99UzYg5Nlgh8viOKmoovKBQ_LokuoFEVY99GFEL87qEhXFRxpe7OQoegP3XxCO547mDob25lFNi-XqqNuW3Y_vAXjR8JQSk8_qbjT4A0qtoWPekM1a3luhHjF71"/>
+</div>
+<div class="absolute -z-10 top-20 right-20 w-full h-full bg-accent dark:bg-primary/10 rounded-full blur-3xl opacity-60"></div>
+</div>
+</section>
+<section class="rounded-lg bg-primary text-white p-10 md:p-20 text-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/30 pointer-events-none"></div>
+<div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center gap-8">
+<h2 class="text-4xl md:text-5xl font-serif font-medium tracking-tight">Taste Vietnam Today</h2>
+<p class="text-accent/90 text-lg font-light leading-relaxed">Join 50,000+ food lovers. Get <span class="font-bold border-b border-accent/50">10% off</span> your first live order when you subscribe to our editorial newsletter.</p>
+<div class="flex flex-col sm:flex-row gap-0 w-full max-w-md shadow-2xl">
+<input class="flex-1 rounded-l-sm border-none px-6 py-4 text-text-main focus:ring-2 focus:ring-accent bg-white placeholder-stone-400" placeholder="Enter your email address" type="email"/>
+<button class="bg-surface-dark hover:bg-black text-white font-bold py-4 px-8 rounded-r-sm transition-colors uppercase tracking-wider text-sm">Subscribe</button>
+</div>
+<p class="text-xs text-white/50 mt-2">No spam, just flavor. Unsubscribe anytime.</p>
+</div>
+</section>
+</div>
+</main>
+<footer class="bg-background-light dark:bg-background-dark border-t border-primary/10 dark:border-primary/20 py-16 px-4 md:px-10">
+<div class="w-full max-w-[1440px] mx-auto grid grid-cols-2 md:grid-cols-12 gap-10">
+<div class="col-span-2 md:col-span-4 pr-0 md:pr-10">
+<div class="flex items-center gap-3 text-primary mb-6">
+<span class="material-symbols-outlined text-3xl">soup_kitchen</span>
+<h2 class="text-text-main dark:text-white text-xl font-serif font-bold tracking-tight">LIKEFOOD</h2>
+</div>
+<p class="text-sm text-text-muted dark:text-stone-500 mb-8 leading-relaxed font-light">
+                        Bringing the authentic, unadulterated flavors of Vietnam to your doorstep through immersive, high-trust live commerce experiences.
+                    </p>
+<div class="flex gap-5">
+<a class="text-text-main/50 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-text-main/50 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">thumb_up</span></a>
+<a class="text-text-main/50 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
+</div>
+</div>
+<div class="col-span-1 md:col-span-2 md:col-start-6">
+<h4 class="font-serif font-bold text-text-main dark:text-white mb-6 text-lg">Shop</h4>
+<ul class="flex flex-col gap-3 text-sm text-text-muted dark:text-stone-400">
+<li><a class="hover:text-primary transition-colors" href="#">Best Sellers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">New Arrivals</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Live Deals</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Gift Sets</a></li>
+</ul>
+</div>
+<div class="col-span-1 md:col-span-2">
+<h4 class="font-serif font-bold text-text-main dark:text-white mb-6 text-lg">Company</h4>
+<ul class="flex flex-col gap-3 text-sm text-text-muted dark:text-stone-400">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Our Producers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Press</a></li>
+</ul>
+</div>
+<div class="col-span-2 md:col-span-3">
+<h4 class="font-serif font-bold text-text-main dark:text-white mb-6 text-lg">Support</h4>
+<ul class="flex flex-col gap-3 text-sm text-text-muted dark:text-stone-400">
+<li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Order Status</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="w-full max-w-[1440px] mx-auto mt-16 pt-8 border-t border-stone-100 dark:border-stone-800 flex flex-col md:flex-row justify-between items-center text-xs text-stone-400 font-light">
+<p>© 2023 LIKEFOOD Inc. All rights reserved.</p>
+<div class="flex gap-8 mt-4 md:mt-0 uppercase tracking-widest">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

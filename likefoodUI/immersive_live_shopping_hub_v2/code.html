@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LIKEFOOD - Live Experience</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#881337","primary-dark": "#4c0519",
+                        "primary-light": "#be123c",
+                        "background-light": "#FFFBF7","background-dark": "#2a0a18","surface-dark": "#451a2d","surface-highlight": "#63263d",
+                        "text-main": "#2a0a18",
+                        "text-muted": "#9d8a8f",
+                        "text-light": "#fdf2f8",
+                        "accent-gold": "#C5A059",
+                        "accent-gold-light": "#e4c685",
+                    },
+                    fontFamily: {
+                        sans: ["Be Vietnam Pro", "sans-serif"],
+                        serif: ["Playfair Display", "serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "0.75rem",
+                        xl: "1rem",
+                        '2xl': "1.5rem",
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light font-sans text-text-main min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-accent-gold/20 bg-background-light/95 backdrop-blur-md px-6 py-4 lg:px-10 shadow-sm">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 text-primary">
+<svg class="h-full w-full" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-primary font-serif text-2xl font-bold tracking-tight">LIKEFOOD</h2>
+</div>
+<div class="hidden md:flex flex-col min-w-64 max-w-sm">
+<div class="flex w-full items-center rounded-full bg-stone-100 border border-stone-200 h-10 px-4 focus-within:ring-1 focus-within:ring-primary focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-stone-400 text-[20px]">search</span>
+<input class="w-full bg-transparent border-none text-sm text-stone-800 placeholder:text-stone-400 focus:ring-0 px-3" placeholder="Search curated specialties..."/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-stone-600 text-sm font-medium hover:text-primary transition-colors font-serif" href="#">Home</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-0.5 font-serif" href="#">Live Studio</a>
+<a class="text-stone-600 text-sm font-medium hover:text-primary transition-colors font-serif" href="#">Marketplace</a>
+<a class="text-stone-600 text-sm font-medium hover:text-primary transition-colors font-serif" href="#">Journal</a>
+</nav>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-full size-10 text-stone-600 hover:bg-stone-100 transition-colors">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+</button>
+<div class="relative">
+<button class="flex items-center justify-center rounded-full size-10 bg-primary text-white hover:bg-primary-dark transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</button>
+<span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-accent-gold text-[10px] font-bold text-white border border-white">2</span>
+</div>
+<button class="flex items-center justify-center rounded-full size-10 text-stone-600 hover:bg-stone-100 transition-colors">
+<span class="material-symbols-outlined text-[24px]">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col lg:flex-row overflow-hidden h-[calc(100vh-73px)] relative bg-background-light">
+<div class="flex-1 flex flex-col overflow-y-auto p-4 lg:p-8 gap-8 relative scrollbar-hide">
+<div class="relative w-full aspect-video bg-background-dark rounded-2xl overflow-hidden shadow-2xl group flex-shrink-0 lg:flex-none max-h-[60vh]">
+<div class="absolute inset-0 bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAsNt559W1MSP2QbE1LGstu4pEKbHFkOQ0rXynGIc0krLJxA77qLLVMvirNZYWo8e4eU2TpZIQZ4iCazsgFlvPCK4IqXH75LDJ10_TsZ-RAFLhxR2dHAvQLLR3Av2JP-r_zzR9bfZ6OtQTiuc1OcwoWhJvLEmUagD_4y85I6dKgEmKgBClg9bR_fYNAxn6MDkpl9XzzPWEg-Eme7eCIy7-wCOCu_7hrUwpmCd6Eeb7CFcFGCdj1eNLwNC9WJ-bFi0b_OSjR2M7ZuG2M");'>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-transparent to-background-dark/30"></div>
+</div>
+<div class="absolute top-6 left-6 flex items-center gap-2 bg-primary/90 backdrop-blur-sm px-4 py-1.5 rounded-full shadow-lg border border-white/10">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+</span>
+<span class="text-white text-xs font-bold uppercase tracking-widest font-sans">LIVE NOW</span>
+</div>
+<div class="absolute top-6 right-6 flex items-center gap-2 bg-black/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+<span class="material-symbols-outlined text-white text-[18px]">group</span>
+<span class="text-white text-xs font-semibold">12.5k watching</span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+<button class="bg-white/10 backdrop-blur-md p-6 rounded-full text-white pointer-events-auto hover:scale-105 hover:bg-white/20 transition-all border border-white/20">
+<span class="material-symbols-outlined text-[56px] fill-1">play_arrow</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-background-dark via-background-dark/70 to-transparent">
+<div class="max-w-3xl">
+<h1 class="text-white font-serif text-3xl lg:text-4xl font-medium leading-tight mb-3 drop-shadow-md">Secrets of Vietnamese Egg Coffee</h1>
+<p class="text-stone-200 text-sm font-light mb-6 font-sans tracking-wide">Learn the traditional Hanoi recipe with Master Barista Minh in an exclusive masterclass.</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4 group/vol">
+<button class="text-white hover:text-accent-gold transition-colors"><span class="material-symbols-outlined">volume_up</span></button>
+<div class="h-1 w-24 bg-white/20 rounded-full overflow-hidden">
+<div class="h-full w-2/3 bg-accent-gold"></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-white hover:text-accent-gold transition-colors"><span class="material-symbols-outlined">settings</span></button>
+<button class="text-white hover:text-accent-gold transition-colors"><span class="material-symbols-outlined">fullscreen</span></button>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full bg-white rounded-xl p-0 flex flex-col md:flex-row shadow-xl border border-stone-100 relative overflow-hidden group shrink-0">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary h-full z-10"></div>
+<div class="relative w-full md:w-64 aspect-square md:aspect-[4/3] overflow-hidden shrink-0">
+<img alt="Robusta coffee beans bag" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDez2zKCGQfuH1IqaxwmfbiYAdnQ_FzEVEv9OQ4JI-I5hmxjEutEbif9JO93DizvslV4xQ_09xU3FDXpqy0YW9TypwGJzMwoP3ScmadTLFTh4ODrrNrGzzHBiVaH_sJpskCeuhTS8Xt-gAOliI3tco6I93KNh9ET8sM-gmME6PFk7U3lrQ1TG3WnuKFl5nQlWZCZ9f_n2-5PebnZNuFuqkGGVY7JBurymRPl3oDSQ_mAvbalb5ncFL51sA-HCu-p2_eBWBpO904d0d2"/>
+<div class="absolute top-4 left-4 bg-accent-gold text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-sm shadow-sm">
+                    Featured Item
+                </div>
+</div>
+<div class="flex flex-col flex-1 justify-center p-6 lg:p-8 bg-white">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-2xl font-serif font-bold text-text-main mb-2">Trung Nguyen Legend - Premium Robusta</h3>
+<div class="flex items-baseline gap-3">
+<span class="text-primary font-bold text-2xl font-serif">$19.99</span>
+<span class="text-stone-400 text-base line-through decoration-stone-300 font-serif">$24.99</span>
+<span class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">20% Savings</span>
+</div>
+</div>
+<div class="hidden sm:flex items-center gap-1 bg-stone-50 px-3 py-2 rounded-lg border border-stone-200">
+<div class="text-center w-8">
+<span class="font-serif font-bold text-lg text-text-main block leading-none">00</span>
+<span class="text-[9px] text-stone-500 uppercase tracking-wider">Hrs</span>
+</div>
+<span class="text-stone-300 font-serif text-lg">:</span>
+<div class="text-center w-8">
+<span class="font-serif font-bold text-lg text-text-main block leading-none">14</span>
+<span class="text-[9px] text-stone-500 uppercase tracking-wider">Min</span>
+</div>
+<span class="text-stone-300 font-serif text-lg">:</span>
+<div class="text-center w-8">
+<span class="font-serif font-bold text-lg text-primary block leading-none">59</span>
+<span class="text-[9px] text-stone-500 uppercase tracking-wider">Sec</span>
+</div>
+</div>
+</div>
+<div class="w-full bg-stone-100 rounded-full h-1.5 mb-2">
+<div class="bg-gradient-to-r from-primary to-accent-gold h-1.5 rounded-full w-[85%]"></div>
+</div>
+<div class="flex justify-between items-center text-xs text-stone-500 mb-6 font-medium">
+<span>852 claimed</span>
+<span class="text-primary">Limited stock remaining</span>
+</div>
+<button class="w-full bg-primary hover:bg-primary-dark text-white font-medium py-3.5 px-6 rounded-lg shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-3 group/btn hover:-translate-y-0.5">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+<span class="uppercase tracking-widest text-sm font-bold">Chốt Đơn Ngay</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4 pb-8">
+<div class="flex items-center justify-between px-1 border-b border-stone-200 pb-2">
+<h3 class="text-text-main font-serif font-bold text-xl flex items-center gap-2">
+                    Products in this Live
+                </h3>
+<button class="text-stone-500 text-sm hover:text-primary font-medium flex items-center gap-1 transition-colors group">
+                    View Full Collection <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="flex overflow-x-auto gap-5 pb-4 pt-2 scrollbar-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0">
+<div class="snap-start shrink-0 w-52 md:w-60 bg-white border-2 border-primary rounded-xl overflow-hidden relative group shadow-md flex flex-col">
+<div class="absolute top-0 left-0 right-0 bg-primary text-white text-[10px] font-bold text-center py-1 uppercase tracking-widest z-10">
+                        Currently Featured
+                    </div>
+<div class="h-40 bg-stone-50 overflow-hidden relative mt-6">
+<img alt="Trung Nguyen Coffee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDez2zKCGQfuH1IqaxwmfbiYAdnQ_FzEVEv9OQ4JI-I5hmxjEutEbif9JO93DizvslV4xQ_09xU3FDXpqy0YW9TypwGJzMwoP3ScmadTLFTh4ODrrNrGzzHBiVaH_sJpskCeuhTS8Xt-gAOliI3tco6I93KNh9ET8sM-gmME6PFk7U3lrQ1TG3WnuKFl5nQlWZCZ9f_n2-5PebnZNuFuqkGGVY7JBurymRPl3oDSQ_mAvbalb5ncFL51sA-HCu-p2_eBWBpO904d0d2"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h4 class="text-text-main font-serif font-bold text-base leading-tight mb-1 line-clamp-2">Trung Nguyen Legend - Premium Robusta</h4>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="text-primary font-bold text-lg font-serif">$19.99</span>
+<span class="text-stone-400 text-xs line-through font-serif">$24.99</span>
+</div>
+<div class="mt-auto">
+<div class="w-full bg-stone-100 rounded-full h-1 mb-1.5">
+<div class="bg-primary h-1 rounded-full w-[85%]"></div>
+</div>
+<p class="text-[10px] text-stone-500 mb-3 font-medium text-right">85% Claimed</p>
+<button class="w-full bg-primary text-white hover:bg-primary-dark text-xs font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-1 uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">add</span> Add to Cart
+                            </button>
+</div>
+</div>
+</div>
+<div class="snap-start shrink-0 w-52 md:w-60 bg-white border border-stone-200 hover:border-accent-gold/50 rounded-xl overflow-hidden relative group shadow-sm hover:shadow-md transition-all flex flex-col">
+<div class="h-40 bg-stone-50 overflow-hidden relative">
+<img alt="Dried Jackfruit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDQq1vZcuxcqQonCbiGP7sKmRl1mwKhU8eUbcMoAB1QvydHWu3ml1-_acVFZt3T_xrbJ7gN-t0BFCC2tAMY02vHkcnq2mcGK2yTxF-MoqbLPDLPKTk42ROPbZR5yADbeNW4bD5Qa_w-McOg_6YhhLhsa35yr6gyrkpiqPhrMnwJRXHZsrV8jBzAyHh5zXzXUpgBNm-3dP5afBKR1ONfvgZBLB6U409AclM8i8_tKysG0X-EoXUdRVSAtyxLueELAhnNKVA-DxZBtZQ"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h4 class="text-text-main font-serif font-bold text-base leading-tight mb-1 line-clamp-2">Vinamit Dried Jackfruit (Mit Say) - 250g</h4>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="text-text-main font-bold text-lg font-serif">$12.50</span>
+<span class="text-stone-400 text-xs line-through font-serif">$15.00</span>
+</div>
+<div class="mt-auto">
+<div class="w-full bg-stone-100 rounded-full h-1 mb-1.5">
+<div class="bg-accent-gold h-1 rounded-full w-[45%]"></div>
+</div>
+<p class="text-[10px] text-stone-500 mb-3 font-medium text-right">Fast Selling</p>
+<button class="w-full bg-stone-50 hover:bg-stone-100 text-text-main border border-stone-200 text-xs font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-1 uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">add</span> Add to Cart
+                            </button>
+</div>
+</div>
+</div>
+<div class="snap-start shrink-0 w-52 md:w-60 bg-white border border-stone-200 hover:border-accent-gold/50 rounded-xl overflow-hidden relative group shadow-sm hover:shadow-md transition-all flex flex-col">
+<div class="h-40 bg-stone-50 overflow-hidden relative">
+<img alt="Fish Sauce" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBILbaVzUb5PD3oTuDmM5IQlNUkPg5F2yBD-XY5geBJirYrOMRFDGS9m-MJirQlv_evJICato-xY3wZHLXxr5YGHNLU767-abHPwh2psQoFQ24EyDBtFLMvirz9ibnenINbZ665yaoe5leE-vQ_j25tSYHmyUaxhW9dVQTUBp0jrB-5YJGpPE0Clqgy27PsF-tJeFsj6HvFHRx2K6sFktdBaY-KqrX4FoWJ1ImQafi5xSW8UXXT6tsriv2HhJqBToLOQhaHzDNw80f"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h4 class="text-text-main font-serif font-bold text-base leading-tight mb-1 line-clamp-2">Red Boat Fish Sauce 40°N - 500ml</h4>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="text-text-main font-bold text-lg font-serif">$9.99</span>
+<span class="text-stone-400 text-xs line-through font-serif">$11.50</span>
+</div>
+<div class="mt-auto">
+<div class="w-full bg-stone-100 rounded-full h-1 mb-1.5">
+<div class="bg-accent-gold h-1 rounded-full w-[20%]"></div>
+</div>
+<p class="text-[10px] text-stone-500 mb-3 font-medium text-right">Only 12 left</p>
+<button class="w-full bg-stone-50 hover:bg-stone-100 text-text-main border border-stone-200 text-xs font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-1 uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">add</span> Add to Cart
+                            </button>
+</div>
+</div>
+</div>
+<div class="snap-start shrink-0 w-52 md:w-60 bg-white border border-stone-200 hover:border-accent-gold/50 rounded-xl overflow-hidden relative group shadow-sm hover:shadow-md transition-all flex flex-col">
+<div class="h-40 bg-stone-50 overflow-hidden relative">
+<img alt="Rice Paper" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEybXzqCvGhhkWpYvfr7ywF_AX0Qdv63BwDRApieHbaSXEX5O5g7V9ShIcVWf3CuBs5qHENvP4zWqi9zKWTdMTY5isWVbx8CW73cgMDScES8dtM5vaLEguXdTJeTMwL1LQ27s1zqvqzG0cIszdeKMKC0jBuyFP_ysYnTHaxkXaaliYqbcrwzUP-KzMtuKTvSqgxVtwMGiPR6Fj27xCHndl9n_3eZTDqIiM0ZP79D3uUKuJvZmheBJfzgpTh1w8_gdy-UhWbD40H2kZ"/>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h4 class="text-text-main font-serif font-bold text-base leading-tight mb-1 line-clamp-2">Three Ladies Brand Rice Paper (22cm)</h4>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="text-text-main font-bold text-lg font-serif">$3.49</span>
+<span class="text-stone-400 text-xs line-through font-serif">$4.99</span>
+</div>
+<div class="mt-auto">
+<div class="w-full bg-stone-100 rounded-full h-1 mb-1.5">
+<div class="bg-accent-gold h-1 rounded-full w-[60%]"></div>
+</div>
+<p class="text-[10px] text-stone-500 mb-3 font-medium text-right">Popular</p>
+<button class="w-full bg-stone-50 hover:bg-stone-100 text-text-main border border-stone-200 text-xs font-bold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-1 uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">add</span> Add to Cart
+                            </button>
+</div>
+</div>
+</div>
+<div class="snap-start shrink-0 w-52 md:w-60 bg-white border border-stone-100 rounded-xl overflow-hidden relative group opacity-60">
+<div class="absolute inset-0 bg-white/40 z-10 flex items-center justify-center backdrop-blur-[1px]">
+<span class="bg-stone-800 text-white text-xs font-bold px-4 py-1.5 rounded-sm transform -rotate-6 uppercase tracking-widest border border-white">SOLD OUT</span>
+</div>
+<div class="h-40 bg-stone-50 overflow-hidden relative">
+<img alt="Coconut Candy" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-C376UDrFaw6XVRgV6wVGpuJRUkxU8oYfivnMuHwC1npEWFzAMyVZJ7kuYzw54DXTOKmwbqrnhx9OFgAO3-9qPgq_g_b09yWfLOqrs_2lDN2YLyw8tFGZ5XY3a1Q6y1NO7xkBRIIkuMruJNQPlq6eOFUjCsbmhE1HS-C7MemTS_qfjV17sFZKSz2F1I12YakuIH1nJz8sjxM7QamFCQQcjwAte5v1T9P_CugRCGH8E75952EyBqEwdYFrnjXTr36zEt6xteANqKvz"/>
+</div>
+<div class="p-4 flex flex-col h-[calc(100%-10rem)]">
+<h4 class="text-text-main font-serif font-bold text-base leading-tight mb-1 line-clamp-2">Ben Tre Coconut Candy (Original)</h4>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="text-stone-500 font-bold text-lg font-serif">$5.99</span>
+</div>
+<div class="mt-auto">
+<div class="w-full bg-stone-200 rounded-full h-1 mb-1.5">
+<div class="bg-stone-400 h-1 rounded-full w-[100%]"></div>
+</div>
+<p class="text-[10px] text-stone-500 mb-3 font-medium text-right">Waitlist Available</p>
+<button class="w-full bg-stone-100 text-stone-400 cursor-not-allowed text-xs font-bold py-2.5 rounded-lg flex items-center justify-center gap-1 uppercase tracking-wider" disabled="">
+                                Unavailable
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<aside class="w-full lg:w-96 bg-white border-l border-stone-200 flex flex-col h-[50vh] lg:h-auto shrink-0 relative z-10 shadow-[-5px_0_30px_-15px_rgba(0,0,0,0.1)]">
+<div class="p-4 border-b border-stone-100 flex justify-between items-center bg-white">
+<h3 class="text-text-main font-serif font-bold text-lg flex items-center gap-2">
+                Live Conversation
+                <span class="bg-stone-100 text-stone-500 text-[10px] font-bold px-2 py-0.5 rounded-full">12.5k</span>
+</h3>
+<button class="text-stone-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-5 scrollbar-hide flex flex-col-reverse bg-background-light/30">
+<div class="flex items-start gap-3 animate-in slide-in-from-bottom-2 fade-in duration-300">
+<img alt="User Avatar" class="w-8 h-8 rounded-full border border-stone-100 object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWhB2jh_uW8maht479kX_1HIZTL086d2KRTGR3HxReP4a6dmxhzb7cNsih6LpMOn6PXb_IdPbB1myzKwOhjLp9dOhjUYXTY4W3KmxRqeeNPYgA8hdFWREA4XlP3csNtaPJHVaRDqBQWx16ykx6-yPCM-79wsNk0Hm9kKp-zXpTuMskGaSytdTpvYG5HuOaccKOTEVk7amKvfyneTsOrXCFUbkd56FMtdUGPEV5MJQXFZG71pJytavk8aY5lBvu3smmwukLglPREpmt"/>
+<div>
+<div class="flex items-baseline gap-2 mb-1">
+<span class="text-text-main text-xs font-bold">Sarah Nguyen</span>
+</div>
+<div class="bg-white border border-stone-100 text-text-main text-sm px-4 py-2.5 rounded-2xl rounded-tl-none inline-block shadow-sm">
+                        Do you ship to Texas?
+                    </div>
+</div>
+</div>
+<div class="flex items-start gap-3 animate-in slide-in-from-bottom-2 fade-in duration-300">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-serif font-bold text-xs shrink-0 shadow-sm">
+                    LF
+                </div>
+<div>
+<div class="flex items-baseline gap-2 mb-1">
+<span class="text-primary text-xs font-bold flex items-center gap-1">
+                            LIKEFOOD Admin <span class="material-symbols-outlined text-[12px] fill-1">verified</span>
+</span>
+</div>
+<div class="bg-primary/5 border border-primary/10 text-primary-dark text-sm px-4 py-2.5 rounded-2xl rounded-tl-none inline-block shadow-sm">
+                        Yes Sarah! We ship nationwide within 2-3 business days. 🇺🇸
+                    </div>
+</div>
+</div>
+<div class="flex items-start gap-3 animate-in slide-in-from-bottom-2 fade-in duration-300">
+<div class="w-8 h-8 rounded-full bg-stone-700 flex items-center justify-center text-white font-bold text-xs shrink-0 shadow-sm">
+                    D
+                </div>
+<div>
+<div class="flex items-baseline gap-2 mb-1">
+<span class="text-text-main text-xs font-bold">David Tran</span>
+</div>
+<div class="bg-white border border-stone-100 text-text-main text-sm px-4 py-2.5 rounded-2xl rounded-tl-none inline-block shadow-sm">
+                        Does the coffee come with the filter?
+                    </div>
+</div>
+</div>
+<div class="flex justify-center my-2">
+<div class="bg-accent-gold/10 border border-accent-gold/20 text-stone-700 text-xs font-medium px-4 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px] text-accent-gold">shopping_cart</span>
+<span class="font-bold">Jennifer</span> just purchased 2 packs!
+                </div>
+</div>
+<div class="flex items-start gap-3 animate-in slide-in-from-bottom-2 fade-in duration-300 opacity-60">
+<img alt="User Avatar" class="w-8 h-8 rounded-full border border-stone-100 object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1Zc-stBdve_1rwsE-_zkbUswr9DGm_gsMl8Yu-TaQOzpmdxQNg6NKpzZ3aChF1z2nS_fcaYnxml8LhYEtdrNwvHxEV6u36gmohvjDnpKEKAMTOlMEjww5BKzIM1k8KF3-wg1SZIZbxbmkH7eeeNAkFU8IZJ390Z5Wd_hs1px3amTkrF-UhOmGlRxLFKXQm1DBdnJIEWdoxZIqOl4oUeLmMYdw5gu_BvhF-bvmoQfER93112PPeJZSoh8kgWaieCWlMNbZ79cKKOG5"/>
+<div>
+<div class="flex items-baseline gap-2 mb-1">
+<span class="text-text-main text-xs font-bold">Mikey</span>
+</div>
+<div class="bg-white border border-stone-100 text-text-main text-sm px-4 py-2.5 rounded-2xl rounded-tl-none inline-block shadow-sm">
+                        Looking good!
+                    </div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-stone-200 bg-white pb-6 lg:pb-4">
+<div class="relative flex items-center gap-2">
+<button class="text-stone-400 hover:text-accent-gold transition-colors p-2 rounded-full hover:bg-stone-50">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+<input class="flex-1 bg-stone-50 border border-stone-200 rounded-full px-4 py-2.5 text-text-main placeholder:text-stone-400 focus:ring-1 focus:ring-primary focus:border-primary text-sm transition-all" placeholder="Ask a question..." type="text"/>
+<button class="bg-primary hover:bg-primary-dark text-white p-2.5 rounded-full flex items-center justify-center shadow-lg shadow-primary/20 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+<div class="flex gap-4 mt-4 justify-center">
+<button class="hover:-translate-y-1 transition-transform p-1.5 rounded-full hover:bg-red-50">❤️</button>
+<button class="hover:-translate-y-1 transition-transform p-1.5 rounded-full hover:bg-orange-50">🔥</button>
+<button class="hover:-translate-y-1 transition-transform p-1.5 rounded-full hover:bg-amber-50">☕</button>
+<button class="hover:-translate-y-1 transition-transform p-1.5 rounded-full hover:bg-blue-50">👏</button>
+</div>
+</div>
+</aside>
+<div class="absolute top-4 right-4 z-50 w-80 bg-white border border-stone-200 rounded-xl shadow-2xl transform translate-x-full lg:translate-x-0 transition-transform duration-500 lg:right-96 lg:mr-4 lg:top-24 hidden lg:block">
+<div class="p-4 border-b border-stone-100 flex justify-between items-center bg-stone-50/50 rounded-t-xl">
+<h4 class="text-text-main font-serif font-bold text-sm">Shopping Bag (2)</h4>
+<button class="text-stone-400 hover:text-primary transition-colors"><span class="material-symbols-outlined text-sm">close</span></button>
+</div>
+<div class="p-4 space-y-4 max-h-64 overflow-y-auto">
+<div class="flex gap-3 items-center group">
+<img class="w-14 h-14 rounded-lg bg-stone-100 object-cover border border-stone-100" data-alt="Coffee beans thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfd7exqAsZRoeVE9rsLME1wAaSbU1KaORCcDCgMedKQfgNQEGRMVZUPdPK-0J5oZdfncyJdQYnM3-eGnupxAJPy6dMKEsY8YfdrbVxUg0grZUo1cesjvHiv_k3ZThWx57pg4aXs4fjitrM_LfNKutNZL-nLLXVcIYFapzR8EcHRPKFmrNW4KKprcpe24QCayB22pe3E_r09I1lhif-3HJr2vfQNSE-cXfsW9t3fzCZlA6p9s7m7ql8Rhl0St77SDQI--QpGkN1cE4z"/>
+<div class="flex-1">
+<p class="text-text-main text-sm font-serif font-bold line-clamp-1 group-hover:text-primary transition-colors">Trung Nguyen Legend</p>
+<p class="text-stone-500 text-xs">$19.99</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-stone-400 text-xs bg-stone-100 px-2 py-0.5 rounded">x1</span>
+</div>
+</div>
+<div class="flex gap-3 items-center group">
+<img class="w-14 h-14 rounded-lg bg-stone-100 object-cover border border-stone-100" data-alt="Dried fruits thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDQq1vZcuxcqQonCbiGP7sKmRl1mwKhU8eUbcMoAB1QvydHWu3ml1-_acVFZt3T_xrbJ7gN-t0BFCC2tAMY02vHkcnq2mcGK2yTxF-MoqbLPDLPKTk42ROPbZR5yADbeNW4bD5Qa_w-McOg_6YhhLhsa35yr6gyrkpiqPhrMnwJRXHZsrV8jBzAyHh5zXzXUpgBNm-3dP5afBKR1ONfvgZBLB6U409AclM8i8_tKysG0X-EoXUdRVSAtyxLueELAhnNKVA-DxZBtZQ"/>
+<div class="flex-1">
+<p class="text-text-main text-sm font-serif font-bold line-clamp-1 group-hover:text-primary transition-colors">Dried Jackfruit (Mit Say)</p>
+<p class="text-stone-500 text-xs">$12.50</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-stone-400 text-xs bg-stone-100 px-2 py-0.5 rounded">x1</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-stone-50 rounded-b-xl border-t border-stone-100">
+<div class="flex justify-between items-center mb-4">
+<span class="text-stone-500 text-xs uppercase tracking-wider font-medium">Subtotal</span>
+<span class="text-text-main font-serif font-bold text-lg">$32.49</span>
+</div>
+<button class="w-full bg-text-main text-white font-bold py-3 rounded-lg text-sm hover:bg-stone-800 transition-colors uppercase tracking-widest shadow-md">Checkout</button>
+</div>
+</div>
+</main>
+
+</body></html>

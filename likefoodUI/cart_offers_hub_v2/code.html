@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cart &amp; Offers Hub v2 - Việt Local</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#bc3629",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#201412",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2a1b18",
+                        "neutral-900": "#1a100f",
+                        "neutral-700": "#4a2d2a",
+                        "neutral-500": "#915a55",
+                        "neutral-200": "#e6d5d3",
+                        "neutral-100": "#f2e9e9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-neutral-900 dark:text-neutral-100 font-display min-h-screen antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-neutral-200 dark:border-neutral-700 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur px-10 py-4">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-primary dark:text-primary" href="#">
+<span class="material-symbols-outlined text-3xl">local_mall</span>
+<h1 class="text-xl font-black leading-tight tracking-tight uppercase">Việt Local</h1>
+</a>
+<label class="flex flex-col min-w-40 h-10 w-80 hidden md:flex">
+<div class="flex w-full flex-1 items-stretch rounded-full bg-neutral-100 dark:bg-surface-dark overflow-hidden ring-1 ring-inset ring-transparent focus-within:ring-primary transition-shadow">
+<div class="text-neutral-500 dark:text-neutral-400 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="w-full bg-transparent border-none text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-500 dark:placeholder:text-neutral-400 focus:outline-none focus:ring-0 px-3 text-sm" placeholder="Search premium specialties..." type="text"/>
+</div>
+</label>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-neutral-700 dark:text-neutral-200 hover:text-primary dark:hover:text-primary transition-colors text-sm font-semibold uppercase tracking-wider" href="#">Discover</a>
+<a class="text-primary flex items-center gap-1 text-sm font-semibold uppercase tracking-wider relative" href="#">
+<span class="relative flex h-2 w-2 mr-1">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                    Live Shopping
+                </a>
+<a class="text-neutral-900 dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-1 border-b-2 border-primary pb-1" href="#">Cart (3)</a>
+<a class="text-neutral-700 dark:text-neutral-200 hover:text-primary dark:hover:text-primary transition-colors text-sm font-semibold uppercase tracking-wider" href="#">The Club</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center h-10 w-10 rounded-full bg-neutral-100 dark:bg-surface-dark text-neutral-700 dark:text-neutral-200 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 h-2 w-2 rounded-full bg-primary border-2 border-background-light dark:border-background-dark"></span>
+</button>
+<button class="h-10 w-10 rounded-full overflow-hidden border border-neutral-200 dark:border-neutral-700 hover:border-primary dark:hover:border-primary transition-colors">
+<img alt="User Profile" class="h-full w-full object-cover" data-alt="User profile avatar image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeMYJQeZvmC2T-arycljgv-8AvMu5_y3mIr_BNF_NuMZ6ML9D8qHrflxYrUdyNXOBB4x1ObGZOzdgDpBk0tOS7em33CyY44WzDVFyQf695sFreFC6guZiHl2lSerHs7BsRc9n_qoaAcSJVraFJnzqtmZeiDLX3zqI70UpAwbpSNQktXaUJuxH6-dGASQkpW4Un96UsUvS0Sf1an_yemK_jaNCHeWbpb9m5IiODrJEa0aZoTBwg3Y9g0p-PQmhF-sadSz47HqAZlhP7"/>
+</button>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+<div class="mb-10 flex flex-col gap-2">
+<h2 class="text-4xl lg:text-5xl font-black text-neutral-900 dark:text-white tracking-tight uppercase">Your Cart</h2>
+<p class="text-neutral-500 dark:text-neutral-400 text-lg">Review your premium selections and exclusive offers.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+<!-- Left Column: Cart Items -->
+<div class="w-full lg:w-2/3 flex flex-col gap-6">
+<!-- Free Shipping Progress -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl p-5 shadow-sm border border-neutral-100 dark:border-neutral-700">
+<div class="flex justify-between text-sm mb-3">
+<span class="font-medium text-neutral-700 dark:text-neutral-200">You are <strong>150,000 VND</strong> away from Free Shipping!</span>
+<span class="text-neutral-500 dark:text-neutral-400">85%</span>
+</div>
+<div class="w-full bg-neutral-200 dark:bg-neutral-700 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<!-- Cart List -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-neutral-100 dark:border-neutral-700 overflow-hidden divide-y divide-neutral-100 dark:divide-neutral-700">
+<!-- Item 1 (Live Deal) -->
+<div class="flex gap-4 sm:gap-6 p-5 sm:p-6 relative">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="shrink-0">
+<img alt="Cashews" class="h-24 w-24 sm:h-32 sm:w-32 rounded-lg object-cover border border-neutral-100 dark:border-neutral-700" data-alt="Premium organic cashews packaging" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT6SFXVezrmCcwUeYwZqY-lF5ZxX4oSK8OnUX6rcJbLw-BAxAz56Yhrof_Yu9N6y6wOe_6zGAP-3lSL-NJhxV1cJzTFn0ungavdlfFyYLwK7QLdi5ub7s2RzcInjlag70uOnaNLX9RAGcCeguwE-rJvzenPLrRwrM0FfKIwjfjIRE2vC9X1WN05lrrWM_8LXjvziQwBV1x_TBnbgOK5KML3FacgaaIzQRSY0yMuCfV3_6PxXHmyMedJeBfXbl4aK4TcYzOk3BpRACb"/>
+</div>
+<div class="flex-1 flex flex-col min-w-0">
+<div class="flex justify-between items-start gap-4 mb-1">
+<h3 class="text-lg font-bold text-neutral-900 dark:text-white truncate">Organic Premium Cashews</h3>
+<button class="text-neutral-400 hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-primary/10 text-primary dark:bg-primary/20">
+<span class="relative flex h-1.5 w-1.5 mr-1.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
+</span>
+                                        Live Deal Applied
+                                    </span>
+</div>
+<p class="text-sm text-neutral-500 dark:text-neutral-400 line-clamp-1 mb-4">Bình Phước Region • Lightly Salted • 500g</p>
+<div class="mt-auto flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center border border-neutral-200 dark:border-neutral-600 rounded-md bg-background-light dark:bg-background-dark">
+<button class="w-8 h-8 flex items-center justify-center text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors rounded-l-md">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="w-10 text-center text-sm font-semibold">2</span>
+<button class="w-8 h-8 flex items-center justify-center text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors rounded-r-md">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<div class="text-right">
+<div class="text-xs text-neutral-500 dark:text-neutral-400 line-through">650,000 ₫</div>
+<div class="text-lg font-black text-neutral-900 dark:text-white">550,000 ₫</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4 sm:gap-6 p-5 sm:p-6">
+<div class="shrink-0">
+<img alt="Coffee" class="h-24 w-24 sm:h-32 sm:w-32 rounded-lg object-cover border border-neutral-100 dark:border-neutral-700" data-alt="Artisanal Robusta coffee bag" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU55m7Crcg69nGu1RLTQUgyE1LGGYz3eCHNvrbU0j4IITvFc7bOHJcLStjZ4uG1wjfRZlgv3UvmqmFWGjXD3PKUtHo-EBgjh4XrexRiOBAl1bbU-IEJwwMDCv3lYcuxJBRBgxeVf2pH7I5x0jFBo5pI3JjwgSjAJoyswZaW2JIrglUkx9eDec9Wkyem_eA5h0winqRmXILP2JqR8jnqG1d5S7gFE3O8UY0b97Jdwa6vXHboRg5KBSFB2Fvp1rIuk7oflsuyJlfVKn_"/>
+</div>
+<div class="flex-1 flex flex-col min-w-0">
+<div class="flex justify-between items-start gap-4 mb-1">
+<h3 class="text-lg font-bold text-neutral-900 dark:text-white truncate">Artisanal Robusta Coffee Beans</h3>
+<button class="text-neutral-400 hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<p class="text-sm text-neutral-500 dark:text-neutral-400 line-clamp-1 mb-4 mt-2">Đắk Lắk Province • Dark Roast • 250g</p>
+<div class="mt-auto flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center border border-neutral-200 dark:border-neutral-600 rounded-md bg-background-light dark:bg-background-dark">
+<button class="w-8 h-8 flex items-center justify-center text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors rounded-l-md">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="w-10 text-center text-sm font-semibold">1</span>
+<button class="w-8 h-8 flex items-center justify-center text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors rounded-r-md">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<div class="text-right">
+<div class="text-lg font-black text-neutral-900 dark:text-white">250,000 ₫</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex gap-4 sm:gap-6 p-5 sm:p-6 opacity-75">
+<div class="shrink-0">
+<img alt="Tea" class="h-24 w-24 sm:h-32 sm:w-32 rounded-lg object-cover border border-neutral-100 dark:border-neutral-700 grayscale" data-alt="Premium lotus tea box" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb1OUB4rNrpb3IPqiBMczESKOho9CpGgrODFgy4agaEkrwLwfbWeNDtP0sA0vqBG_PRjywrZrijuSfCgF164-PN8Yj3PCZ4jgNvSu2BYDnZRzRyvBUeyicGBL1Cub18j7YmRTPo3DqRjrPTrU3J9mEEMeltijF8YkIEqL8rQOKVQgiM2MwW0gvVJeMVkpA2qBkNVuVcC7lrQ3NRwkjPFnVJorCPJLPY1YHIGSd_mmkSae2zQnqGjvy7MMdizEi6huwjuMCcIRSEGEv"/>
+</div>
+<div class="flex-1 flex flex-col min-w-0">
+<div class="flex justify-between items-start gap-4 mb-1">
+<h3 class="text-lg font-bold text-neutral-900 dark:text-white truncate">Premium Lotus Green Tea</h3>
+<button class="text-neutral-400 hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-neutral-200 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300">
+                                        Out of Stock
+                                    </span>
+</div>
+<p class="text-sm text-neutral-500 dark:text-neutral-400 line-clamp-1 mb-4 mt-1">Hà Nội • Artisanal Scented • 100g</p>
+<div class="mt-auto">
+<button class="text-sm font-semibold text-primary hover:underline underline-offset-4">Notify me when available</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Coupon Code -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-neutral-100 dark:border-neutral-700">
+<span class="material-symbols-outlined text-neutral-400">local_offer</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-sm p-0 placeholder:text-neutral-400 dark:text-white" placeholder="Promo code or gift card" type="text"/>
+<button class="bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 px-4 py-2 rounded-lg text-sm font-bold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors uppercase tracking-wider">Apply</button>
+</div>
+</div>
+<!-- Right Column: Summary & Recommendations -->
+<div class="w-full lg:w-1/3 flex flex-col gap-6 sticky top-24">
+<!-- Order Summary -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-sm border border-neutral-100 dark:border-neutral-700 flex flex-col gap-4">
+<h3 class="text-xl font-black uppercase tracking-tight border-b border-neutral-100 dark:border-neutral-700 pb-4">Summary</h3>
+<div class="flex flex-col gap-3 text-sm">
+<div class="flex justify-between">
+<span class="text-neutral-500 dark:text-neutral-400">Subtotal (2 items)</span>
+<span class="font-medium">800,000 ₫</span>
+</div>
+<div class="flex justify-between text-primary">
+<span>Live Deals Discount</span>
+<span class="font-medium">-100,000 ₫</span>
+</div>
+<div class="flex justify-between">
+<span class="text-neutral-500 dark:text-neutral-400">Shipping</span>
+<span class="font-medium">35,000 ₫</span>
+</div>
+<div class="flex justify-between">
+<span class="text-neutral-500 dark:text-neutral-400">Taxes</span>
+<span class="font-medium">Calculated at checkout</span>
+</div>
+</div>
+<div class="border-t border-neutral-100 dark:border-neutral-700 pt-4 mt-2">
+<div class="flex justify-between items-end mb-6">
+<span class="text-lg font-bold">Total</span>
+<div class="text-right">
+<span class="text-2xl font-black text-neutral-900 dark:text-white">735,000 ₫</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white h-14 rounded-xl font-black text-lg uppercase tracking-wider transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                                Secure Checkout
+                                <span class="material-symbols-outlined">lock</span>
+</button>
+</div>
+<div class="flex items-center justify-center gap-4 mt-2 text-neutral-400">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="material-symbols-outlined">account_balance</span>
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+<!-- The Club Loyalty -->
+<div class="bg-gradient-to-br from-neutral-900 to-neutral-800 dark:from-neutral-800 dark:to-neutral-900 rounded-xl p-6 shadow-lg text-white border border-neutral-800">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-black uppercase tracking-widest text-sm text-neutral-300">The Club</h4>
+<span class="material-symbols-outlined text-primary">stars</span>
+</div>
+<p class="text-sm text-neutral-300 mb-2">You will earn <strong class="text-white">73 points</strong> with this order.</p>
+<p class="text-xs text-neutral-400">Members get exclusive early access to harvests and free shipping on orders over 1M VND.</p>
+<a class="inline-block mt-4 text-sm font-semibold text-primary hover:text-white transition-colors" href="#">View Member Benefits →</a>
+</div>
+<!-- Smart Recommendations -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-sm border border-neutral-100 dark:border-neutral-700">
+<h3 class="text-sm font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">magic_button</span>
+                            Complete Your Experience
+                        </h3>
+<div class="flex flex-col gap-4">
+<!-- Rec Item 1 -->
+<div class="flex gap-3 group cursor-pointer">
+<img alt="Phin" class="h-16 w-16 rounded bg-neutral-100 dark:bg-neutral-800 object-cover group-hover:opacity-80 transition-opacity" data-alt="Vietnamese coffee phin filter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDSfSSpHYE-HnFXzKLNGnso5OwAriN7kYq0jXS2OCWRFp5aYcb8LX41P2AKbCOegvg8_kLkSXNAU6DxUO9aeqJyV42eiHZVqdmu0bx6E4NHmvOE6plmQJL-yOHtImT5OYPt1mCEspj3FFxPExesrwx1D3aiGcM1lC3Ts8vHhRM5EZR851zAzkaMF61SjVHDBOhYRMdRaFWCEJsbJnyr_N9VzqjkmvUSBXWrRGSGvedEeyv9pf6pSRn1OEXduEOWcXxX_kjG2mq4zhC"/>
+<div class="flex-1">
+<h4 class="text-sm font-semibold group-hover:text-primary transition-colors line-clamp-1">Traditional Aluminum Phin</h4>
+<p class="text-xs text-neutral-500 dark:text-neutral-400 mb-1">Pairs perfectly with Robusta</p>
+<div class="flex justify-between items-center">
+<span class="text-sm font-bold">50,000 ₫</span>
+<button class="h-6 w-6 rounded-full bg-neutral-100 dark:bg-neutral-700 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Rec Item 2 -->
+<div class="flex gap-3 group cursor-pointer">
+<img alt="Honey" class="h-16 w-16 rounded bg-neutral-100 dark:bg-neutral-800 object-cover group-hover:opacity-80 transition-opacity" data-alt="Wildflower honey jar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfsTLNrKRQExWF-dOnxsh2Oqw7BST6YaXOLe8M5x-w9Ty-uuXoQ2uSwTx-r2G1HqqMLjcPHgKNHbkqUVa3Cwp6pZfFasYEz9QnBimNE3YEXUzmLkujBfhwlcJ4FgDYjgKtDEC_OQlZkisVcjI46PAZJ10LpChWZ8c_GUsrK5u9Ei6oMP-ISyVNzMkH0KkmIOG9cZKhcMEvrmQSiuXYkKjZIC1EwfYFD0L2qsmkvLzclHudgG1zQmqc0llT--j7DoGoI_d3ugUx3HUy"/>
+<div class="flex-1">
+<h4 class="text-sm font-semibold group-hover:text-primary transition-colors line-clamp-1">Wildflower Forest Honey</h4>
+<p class="text-xs text-neutral-500 dark:text-neutral-400 mb-1">Gia Lai Province, 200ml</p>
+<div class="flex justify-between items-center">
+<span class="text-sm font-bold">180,000 ₫</span>
+<button class="h-6 w-6 rounded-full bg-neutral-100 dark:bg-neutral-700 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer snippet -->
+<footer class="mt-auto border-t border-neutral-200 dark:border-neutral-800 py-8 px-4 text-center">
+<p class="text-sm text-neutral-500 dark:text-neutral-400">© 2024 Việt Local. Premium Authentic Specialties.</p>
+</footer>
+</div>
+</body></html>
