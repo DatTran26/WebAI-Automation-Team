@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Secure Checkout - LIKEFOOD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8B1E2D",
+                        "primary-dark": "#6b1723",
+                        "background-light": "#FCFAFA",
+                        "background-dark": "#221310",
+                        "stone-850": "#2a1a17",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-stone-800 dark:text-stone-100 font-sans min-h-screen flex flex-col antialiased">
+<header class="w-full border-b border-[#E8DCCB] dark:border-stone-800 bg-background-light dark:bg-stone-850 sticky top-0 z-10">
+<div class="max-w-[1280px] mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<span class="material-symbols-outlined text-4xl font-light">local_mall</span>
+</div>
+<h2 class="text-2xl font-serif font-bold tracking-tight text-stone-900 dark:text-white">LIKEFOOD</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium tracking-wide uppercase hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-sm font-medium tracking-wide uppercase hover:text-primary transition-colors" href="#">Live</a>
+<a class="text-sm font-medium tracking-wide uppercase hover:text-primary transition-colors" href="#">About</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 text-sm text-stone-600 dark:text-stone-400 font-medium">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="hidden sm:inline tracking-wide">SECURE CHECKOUT</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1280px] mx-auto px-6 py-10 md:py-16">
+<div class="mb-12">
+<div class="flex items-center gap-2 text-xs font-medium mb-6 text-stone-500 dark:text-stone-400 uppercase tracking-wider">
+<a class="hover:text-primary transition-colors" href="#">Cart</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-bold">Checkout</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Confirmation</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-serif font-bold text-stone-900 dark:text-white mb-3">Checkout</h1>
+<p class="text-stone-600 dark:text-stone-300 text-lg font-light">Complete your purchase of authentic Vietnamese specialties.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-12 xl:gap-24">
+<div class="flex-1 flex flex-col gap-12">
+<section>
+<div class="flex items-center justify-between mb-6 pb-2 border-b border-[#E8DCCB] dark:border-stone-800">
+<h3 class="text-2xl font-serif font-semibold text-stone-900 dark:text-white">Contact Information</h3>
+<a class="text-sm text-primary font-medium hover:underline hover:text-primary-dark transition-colors" href="#">Log in</a>
+</div>
+<div class="space-y-5">
+<label class="block">
+<span class="text-sm font-medium mb-2 block text-stone-700 dark:text-stone-300">Email Address</span>
+<input class="w-full h-12 px-4 rounded border-stone-300 dark:border-stone-700 bg-white/80 dark:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 transition-all" placeholder="you@example.com" type="email"/>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="w-5 h-5 text-primary rounded border-stone-300 focus:ring-primary focus:ring-offset-0" type="checkbox"/>
+<span class="text-sm text-stone-600 dark:text-stone-300">Email me with news and offers</span>
+</label>
+</div>
+</section>
+<section>
+<h3 class="text-2xl font-serif font-semibold text-stone-900 dark:text-white mb-6 pb-2 border-b border-[#E8DCCB] dark:border-stone-800">Shipping Address</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<label class="block">
+<span class="text-sm font-medium mb-2 block text-stone-700 dark:text-stone-300">First Name</span>
+<input class="w-full h-12 px-4 rounded border-stone-300 dark:border-stone-700 bg-white/80 dark:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 transition-all" placeholder="Enter first name" type="text"/>
+</label>
+<label class="block">
+<span class="text-sm font-medium mb-2 block text-stone-700 dark:text-stone-300">Last Name</span>
+<input class="w-full h-12 px-4 rounded border-stone-300 dark:border-stone-700 bg-white/80 dark:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 transition-all" placeholder="Enter last name" type="text"/>
+</label>
+<label class="block md:col-span-2">
+<span class="text-sm font-medium mb-2 block text-stone-700 dark:text-stone-300">Address</span>
+<input class="w-full h-12 px-4 rounded border-stone-300 dark:border-stone-700 bg-white/80 dark:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 transition-all" placeholder="Street address" type="text"/>
+</label>
+<label class="block md:col-span-2">
+<span class="text-sm font-medium mb-2 block text-stone-700 dark:text-stone-300">Apartment, suite, etc. (optional)</span>
+<input class="w-full h-12 px-4 rounded border-stone-300 dark:border-stone-700 bg-white/80 dark:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 transition-all" placeholder="" type="text"/>
+</label>
+<label class="block">
+<span class="text-sm font-medium mb-2 block text-stone-700 dark:text-stone-300">City</span>
+<input class="w-full h-12 px-4 rounded border-stone-300 dark:border-stone-700 bg-white/80 dark:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 transition-all" placeholder="City" type="text"/>
+</label>
+<div class="grid grid-cols-2 gap-5">
+<label class="block">
+<span class="text-sm font-medium mb-2 block text-stone-700 dark:text-stone-300">State</span>
+<select class="w-full h-12 px-4 rounded border-stone-300 dark:border-stone-700 bg-white/80 dark:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 transition-all">
+<option>CA</option>
+<option>TX</option>
+<option>NY</option>
+</select>
+</label>
+<label class="block">
+<span class="text-sm font-medium mb-2 block text-stone-700 dark:text-stone-300">Zip Code</span>
+<input class="w-full h-12 px-4 rounded border-stone-300 dark:border-stone-700 bg-white/80 dark:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 transition-all" placeholder="12345" type="text"/>
+</label>
+</div>
+</div>
+</section>
+<section>
+<h3 class="text-2xl font-serif font-semibold text-stone-900 dark:text-white mb-6 pb-2 border-b border-[#E8DCCB] dark:border-stone-800">Delivery Method</h3>
+<div class="space-y-4">
+<label class="group flex items-center justify-between p-5 border border-primary bg-white dark:bg-stone-800 rounded cursor-pointer transition-all shadow-sm">
+<div class="flex items-center gap-4">
+<input checked="" class="w-5 h-5 text-primary border-stone-300 focus:ring-primary focus:ring-offset-0" name="delivery" type="radio"/>
+<div>
+<p class="font-bold text-stone-900 dark:text-white group-hover:text-primary transition-colors">Standard Shipping</p>
+<p class="text-sm text-stone-500 mt-0.5">4-5 business days via USPS</p>
+</div>
+</div>
+<span class="font-bold text-stone-900 dark:text-white">$5.99</span>
+</label>
+<label class="group flex items-center justify-between p-5 border border-stone-200 dark:border-stone-700 bg-white/50 dark:bg-stone-800/50 rounded hover:border-primary hover:bg-white dark:hover:bg-stone-800 cursor-pointer transition-all">
+<div class="flex items-center gap-4">
+<input class="w-5 h-5 text-primary border-stone-300 focus:ring-primary focus:ring-offset-0" name="delivery" type="radio"/>
+<div>
+<p class="font-bold text-stone-900 dark:text-white group-hover:text-primary transition-colors">Express Shipping</p>
+<p class="text-sm text-stone-500 mt-0.5">1-2 business days via FedEx</p>
+</div>
+</div>
+<span class="font-bold text-stone-900 dark:text-white">$15.00</span>
+</label>
+</div>
+</section>
+<section>
+<h3 class="text-2xl font-serif font-semibold text-stone-900 dark:text-white mb-6 pb-2 border-b border-[#E8DCCB] dark:border-stone-800">Payment</h3>
+<div class="bg-white dark:bg-stone-800 rounded-lg p-8 border border-stone-200 dark:border-stone-700 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<span class="text-sm font-semibold tracking-wide uppercase text-stone-500">Credit Card</span>
+<div class="flex gap-2 opacity-80">
+<div class="h-6 px-2 bg-stone-100 dark:bg-stone-700 border border-stone-200 dark:border-stone-600 rounded flex items-center justify-center text-[10px] font-bold text-stone-600 dark:text-stone-300 tracking-tighter">VISA</div>
+<div class="h-6 px-2 bg-stone-100 dark:bg-stone-700 border border-stone-200 dark:border-stone-600 rounded flex items-center justify-center text-[10px] font-bold text-stone-600 dark:text-stone-300 tracking-tighter">MC</div>
+<div class="h-6 px-2 bg-stone-100 dark:bg-stone-700 border border-stone-200 dark:border-stone-600 rounded flex items-center justify-center text-[10px] font-bold text-stone-600 dark:text-stone-300 tracking-tighter">AMEX</div>
+</div>
+</div>
+<div class="space-y-5">
+<label class="block relative">
+<input class="w-full h-12 pl-12 pr-4 rounded border-stone-300 dark:border-stone-600 bg-stone-50 dark:bg-stone-900 focus:bg-white dark:focus:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 transition-all" placeholder="Card number" type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-3 text-stone-400">credit_card</span>
+</label>
+<div class="grid grid-cols-2 gap-5">
+<label class="block">
+<input class="w-full h-12 px-4 rounded border-stone-300 dark:border-stone-600 bg-stone-50 dark:bg-stone-900 focus:bg-white dark:focus:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 transition-all" placeholder="Expiration (MM/YY)" type="text"/>
+</label>
+<label class="block">
+<input class="w-full h-12 px-4 rounded border-stone-300 dark:border-stone-600 bg-stone-50 dark:bg-stone-900 focus:bg-white dark:focus:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 transition-all" placeholder="CVC" type="text"/>
+</label>
+</div>
+<label class="block">
+<input class="w-full h-12 px-4 rounded border-stone-300 dark:border-stone-600 bg-stone-50 dark:bg-stone-900 focus:bg-white dark:focus:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 transition-all" placeholder="Cardholder Name" type="text"/>
+</label>
+</div>
+<div class="mt-8 pt-6 border-t border-stone-100 dark:border-stone-700">
+<div class="bg-[#F5EBDD] dark:bg-stone-900/50 rounded-lg p-5 flex items-center gap-4 border-l-4 border-primary">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl font-light">verified</span>
+</div>
+<div>
+<h4 class="font-serif font-semibold text-stone-900 dark:text-white leading-tight">30-Day Money Back Guarantee</h4>
+<p class="text-sm text-stone-600 dark:text-stone-400 mt-0.5 font-sans">Shop with confidence.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<button class="md:hidden w-full h-14 bg-primary hover:bg-primary-dark text-white font-medium tracking-wide uppercase rounded transition-colors flex items-center justify-center gap-2 text-base shadow-lg shadow-primary/20">
+                Complete Purchase <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="w-full lg:w-[420px] shrink-0">
+<div class="sticky top-28 space-y-8">
+<div class="bg-white dark:bg-stone-850 rounded-lg shadow-md border border-[#E8DCCB] dark:border-stone-800 overflow-hidden">
+<div class="p-8 border-b border-[#E8DCCB] dark:border-stone-800 bg-white dark:bg-stone-900/40">
+<h3 class="font-serif font-bold text-2xl mb-6 text-stone-900 dark:text-white">Order Summary</h3>
+<div class="space-y-6 max-h-[360px] overflow-y-auto pr-2 custom-scrollbar">
+<div class="flex gap-4 group">
+<div class="relative w-20 h-20 rounded bg-stone-100 dark:bg-stone-800 shrink-0 overflow-hidden border border-stone-200 dark:border-stone-700">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Vietnamese pho noodle soup bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqtsOym0yHmzEF_jIqtBzCrZ406p2yVba-60Uuxr_L0Ci80zlEzHuBPf6vfk-aPBIy7xsxZL-cVVmi0kmpuHt73YzIdMoYGMFxUZuj1ywycPK-fzHlF4hzKbSV55x1SrzhmLisMXbdbpaAuEoagsRf6uqMVfFvAZj9yUWxtthbKa6ceWgMGcvXxZqa4OLmnQSkGPfwPIM5Pz-zBTrZS0W8qAowLbcbqCrlvYXYn0_ajtkn6GQZ5foimhrlwkkPylkJpp7_U-KUfbVZ"/>
+<span class="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-bl shadow-sm">x2</span>
+</div>
+<div class="flex-1 py-1">
+<h4 class="text-base font-bold text-stone-900 dark:text-white leading-tight font-serif">Premium Pho Kit</h4>
+<p class="text-xs text-stone-500 mt-1 uppercase tracking-wide">Beef Flavor</p>
+</div>
+<p class="text-base font-medium text-stone-900 dark:text-white py-1">$24.00</p>
+</div>
+<div class="flex gap-4 group">
+<div class="relative w-20 h-20 rounded bg-stone-100 dark:bg-stone-800 shrink-0 overflow-hidden border border-stone-200 dark:border-stone-700">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Traditional vietnamese coffee filter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP0tGUdiOiTydZAK9wiCW9C5B9hSRPUzVqpyddv0WqjDFPCEjrYjzMRTSu0SxIcH7dIr07hSEYz6TSL6CyMkYFwcZdjYCjY6PNYoCmDQ2e3nf08yH5dZkYzRa952hsISc1E3_7qwimet2JrimjnSgy8C9m1hBASzu2l7yChrQcf4T6VAVxGorH3LeEywEPfLJV6wSajekpc1BV6Vgr1ubFXV0pgeuSs87CtgJqQhXVHbRRJUHKk2cL_9zSQdCarHayAHaBnoCyNmVQ"/>
+</div>
+<div class="flex-1 py-1">
+<h4 class="text-base font-bold text-stone-900 dark:text-white leading-tight font-serif">Robusta Coffee Beans</h4>
+<p class="text-xs text-stone-500 mt-1 uppercase tracking-wide">500g Bag</p>
+</div>
+<p class="text-base font-medium text-stone-900 dark:text-white py-1">$18.50</p>
+</div>
+<div class="flex gap-4 group">
+<div class="relative w-20 h-20 rounded bg-stone-100 dark:bg-stone-800 shrink-0 overflow-hidden border border-stone-200 dark:border-stone-700">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Dried fruits snacks in packaging" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdWeT4DeYlQoat2kxLIMv_t-XWIIMtMtXEvhVfJu2sUsJ1LfVmNIJiDtJH7RPkrOrdiA9tkPighxZMTteIv-C0T1IYlmgXnkCzL8yF403jRvCkqFYPDs6AauU7TaOBEqm0B30G6S0oN2BHdnWDp6PAujVSD3hn7QUuRw2CX2h2VcOMfoeldWLDBZ3USmM6bs8UMzqy_h10vA8qgWxa2zH_URwXQnKmldr_7ewm8ka4-GHZkLw3E6NJUJa4daeZJq_oP7NI2ljgtY3e"/>
+</div>
+<div class="flex-1 py-1">
+<h4 class="text-base font-bold text-stone-900 dark:text-white leading-tight font-serif">Dried Jackfruit Chips</h4>
+<p class="text-xs text-stone-500 mt-1 uppercase tracking-wide">Organic</p>
+</div>
+<p class="text-base font-medium text-stone-900 dark:text-white py-1">$8.00</p>
+</div>
+</div>
+</div>
+<div class="p-8 bg-white dark:bg-stone-850 space-y-4">
+<div class="flex justify-between text-sm text-stone-600 dark:text-stone-300">
+<span>Subtotal</span>
+<span class="font-medium">$50.50</span>
+</div>
+<div class="flex justify-between text-sm text-stone-600 dark:text-stone-300">
+<span>Shipping</span>
+<span class="font-medium">$5.99</span>
+</div>
+<div class="flex justify-between text-sm text-stone-600 dark:text-stone-300">
+<span>Tax</span>
+<span class="font-medium">$4.20</span>
+</div>
+<div class="pt-6 mt-2 border-t border-stone-100 dark:border-stone-800 flex justify-between items-end">
+<span class="text-xl font-serif font-bold text-stone-900 dark:text-white">Total</span>
+<div class="text-right">
+<span class="text-[10px] text-stone-400 font-bold uppercase tracking-wider block mb-1">USD</span>
+<span class="text-3xl font-serif font-bold text-primary">$60.69</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<input class="flex-1 h-12 px-4 rounded border border-stone-300 dark:border-stone-700 bg-white/80 dark:bg-stone-800 focus:border-primary focus:ring-primary focus:ring-1 text-sm transition-all" placeholder="Gift card or discount code" type="text"/>
+<button class="h-12 px-6 rounded bg-stone-800 dark:bg-stone-700 text-white font-medium text-sm tracking-wide uppercase hover:bg-stone-700 dark:hover:bg-stone-600 transition-colors shadow-sm">Apply</button>
+</div>
+<button class="hidden md:flex w-full h-14 bg-primary hover:bg-primary-dark shadow-lg shadow-primary/20 text-white font-medium tracking-wide uppercase rounded transition-all items-center justify-center gap-3 text-lg transform hover:-translate-y-0.5 active:translate-y-0">
+                    Complete Purchase <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<div class="flex flex-col items-center gap-4 pt-6">
+<div class="flex gap-4 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="h-8 px-3 bg-white border border-stone-200 rounded flex items-center text-xs font-bold text-slate-700 font-sans tracking-tighter">STRIPE</div>
+<div class="h-8 px-3 bg-white border border-stone-200 rounded flex items-center text-xs font-bold text-slate-700 font-sans tracking-tighter">VISA</div>
+<div class="h-8 px-3 bg-white border border-stone-200 rounded flex items-center text-xs font-bold text-slate-700 font-sans tracking-tighter">MASTERCARD</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto py-10 border-t border-[#E8DCCB] dark:border-stone-800 bg-background-light dark:bg-stone-850">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-xs text-stone-500 font-medium">© 2024 LIKEFOOD Inc. All rights reserved.</p>
+<div class="flex gap-8 text-xs font-medium text-stone-500 uppercase tracking-wider">
+<a class="hover:text-primary transition-colors" href="#">Refund Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Shipping Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+</div>
+</div>
+</footer>
+</body></html>

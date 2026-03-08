@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LIKEFOOD - Heritage Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#8B1E2D", 
+                        "primary-hover": "#6a1622",
+                        "primary-light": "#f2e6e6",
+                        "background-light": "#FCFAFA", 
+                        "text-main": "#333333",
+                        "text-secondary": "#666666",
+                        "brand-red": "#C83E28", 
+                        "cream-accent": "#EBE5DE"
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-[#FCFAFA] text-text-main font-sans antialiased min-h-screen flex flex-col overflow-x-hidden selection:bg-primary/20 selection:text-primary">
+<header class="absolute inset-x-0 top-0 z-50 flex h-20 items-center px-6 lg:px-20 bg-transparent">
+<div class="flex items-center gap-2 group cursor-pointer">
+<div class="text-primary size-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl font-light">ramen_dining</span>
+</div>
+<h2 class="text-text-main text-xl font-serif font-bold tracking-tight group-hover:text-primary transition-colors">LIKEFOOD</h2>
+</div>
+</header>
+<div class="flex min-h-screen">
+<div class="flex flex-col justify-center flex-1 px-4 py-20 sm:px-6 lg:flex-none lg:px-20 xl:px-24 z-10 relative bg-[#FCFAFA] border-r border-text-secondary/10 shadow-2xl">
+<div class="mx-auto w-full max-w-sm lg:w-96 mt-8">
+<div class="mb-10">
+<h1 class="text-5xl font-serif text-primary mb-4 leading-tight">Welcome <br/><i class="italic font-light">Back</i></h1>
+<p class="text-text-main font-light leading-relaxed">Your culinary journey continues.</p>
+</div>
+<div class="mt-8">
+<div class="mt-6">
+<form action="#" class="space-y-8" method="POST">
+<div class="space-y-8">
+<div>
+<label class="block text-xs font-medium text-text-main uppercase tracking-widest mb-2" for="email">Email Address</label>
+<div class="relative">
+<input autocomplete="email" class="block w-full appearance-none rounded-none border-0 border-b border-text-secondary/30 bg-transparent px-0 py-2 text-text-main placeholder-text-secondary/50 focus:border-primary focus:outline-none focus:ring-0 sm:text-sm font-light transition-colors" id="email" name="email" placeholder="mai@example.com" required="" type="email"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-medium text-text-main uppercase tracking-widest mb-2" for="password">Password</label>
+<div class="relative">
+<input autocomplete="current-password" class="block w-full appearance-none rounded-none border-0 border-b border-text-secondary/30 bg-transparent px-0 py-2 text-text-main placeholder-text-secondary/50 focus:border-primary focus:outline-none focus:ring-0 sm:text-sm font-light transition-colors" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-0 top-1/2 -translate-y-1/2 text-text-secondary/50 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-sm font-light">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary bg-transparent" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-2 block text-sm font-light text-text-secondary" for="remember-me">Remember me</label>
+</div>
+<div class="text-sm">
+<a class="font-serif italic text-primary hover:text-primary-hover transition-colors" href="#">Forgot Password?</a>
+</div>
+</div>
+<div class="pt-6">
+<button class="flex w-full justify-center items-center gap-3 rounded-full bg-primary px-3 py-4 text-sm font-medium uppercase tracking-widest text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all group" type="submit">
+                                Sign In
+                                <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform font-light">arrow_forward</span>
+</button>
+</div>
+</form>
+<div class="mt-8">
+<div class="relative">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-text-secondary/20"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="bg-[#FCFAFA] px-2 text-text-secondary font-light">Or continue with</span>
+</div>
+</div>
+<div class="mt-6 grid grid-cols-2 gap-4">
+<a class="flex w-full items-center justify-center gap-3 border border-gray-300 rounded-full bg-transparent px-4 py-3 text-sm font-medium text-text-main shadow-sm hover:bg-black/5 transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+<path d="M1 1h22v22H1z" fill="none"></path>
+</svg>
+<span class="font-light">Google</span>
+</a>
+<a class="flex w-full items-center justify-center gap-3 border border-gray-300 rounded-full bg-transparent px-4 py-3 text-sm font-medium text-text-main shadow-sm hover:bg-black/5 transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"></path>
+</svg>
+<span class="font-light">Apple</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-10 flex flex-col items-center justify-center gap-4 border-t border-text-secondary/10 pt-8">
+<p class="text-sm font-light text-text-secondary">
+                    New to LIKEFOOD?
+                    <a class="font-serif italic text-primary hover:text-primary-hover font-medium border-b border-primary/30 pb-0.5 transition-colors ml-1" href="#">Create Account</a>
+</p>
+</div>
+</div>
+</div>
+<div class="relative hidden w-0 flex-1 lg:block">
+<img alt="High-quality cinematic image of a steaming bowl of Phở" class="absolute inset-0 h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKBgC6UrMmU0okkb7HynEQ4uGPsU9zippsa9NsO51ayL_wNw1WpgCmSbowJbXaRwCeGm8VUEGEdoUg3cKWMubpheh0tYnh29RlmwGoKDoLhPhlG03-NP5zJlEN3ZdjytXJwPsPMJRwQoDILJLJFYL3BDtuW3Vb6FtsP_4NHNOcziDjTQRsWXknnHmAthCMebFSoRoAxM5oXnbaxdCcYtFwxT4arLb8ObHcRU11_SkI2MFssXg3vODb2GLY2erEZHYr_FNk4sq3gRwz"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-20 flex flex-col justify-end p-20">
+<div class="max-w-xl">
+<span class="inline-block px-3 py-1 bg-primary text-white text-[10px] uppercase tracking-widest font-medium mb-6">Editorial Spotlight</span>
+<h2 class="text-5xl font-serif text-white mb-6 leading-tight">Heritage <i class="text-cream-accent font-light">in Every Sip</i></h2>
+<p class="text-white/90 font-light text-lg leading-relaxed mb-8 max-w-md">Experience the authentic taste of Vietnam, delivered right to your table.</p>
+</div>
+</div>
+</div>
+</div>
+</body></html>

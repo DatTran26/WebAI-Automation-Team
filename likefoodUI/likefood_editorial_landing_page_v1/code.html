@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LIKEFOOD - Premium Vietnamese Specialties</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #8B1E2D;
+            --primary-hover: #6d1723;
+            --cream: #F5EBDD;
+            --cream-light: #FCFAFA;
+            --text-dark: #2d2a2a;
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #d1d5db; 
+            border-radius: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af; 
+        }
+        .accordion-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-checkbox:checked ~ .accordion-content {
+            max-height: 500px;
+            opacity: 1;
+        }
+        .accordion-checkbox:checked ~ .accordion-header .chevron {
+            transform: rotate(180deg);
+        }
+        .slider-thumb::-webkit-slider-thumb {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #8B1E2D;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            z-index: 30;
+            border: 2px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .slider-thumb::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #8B1E2D;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            z-index: 30;
+            border: 2px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="bg-[#FCFAFA] text-slate-800 min-h-screen font-body flex flex-col">
+<header class="bg-white border-b border-[#8B1E2D]/10 sticky top-0 z-50 shadow-sm">
+<div class="max-w-[1440px] mx-auto px-4 md:px-8 h-[90px] flex items-center justify-between relative">
+<div class="flex items-center shrink-0 mr-8">
+<a class="flex items-center gap-2.5 group" href="#">
+<span class="material-symbols-outlined text-[36px] text-[#8B1E2D] group-hover:-rotate-12 transition-transform duration-300">local_florist</span>
+<div class="flex flex-col -space-y-1">
+<span class="font-display font-bold text-2xl tracking-wide text-[#8B1E2D]">LIKEFOOD</span>
+<span class="font-body text-[10px] uppercase tracking-[0.2em] text-[#8B1E2D]/70 font-medium">Artisanal Choice</span>
+</div>
+</a>
+</div>
+<nav class="hidden lg:flex items-center h-full flex-grow">
+<ul class="flex items-center space-x-2 h-full font-body text-[15px] font-medium text-slate-700">
+<li class="h-full flex items-center group/mega relative">
+<button class="h-10 px-5 rounded-full flex items-center gap-2 text-[#8B1E2D] bg-[#F5EBDD]/50 hover:bg-[#F5EBDD] transition-all duration-300 font-semibold group-hover/mega:bg-[#8B1E2D] group-hover/mega:text-white">
+<span class="material-symbols-outlined text-[22px]">grid_view</span>
+                            Categories
+                            <span class="material-symbols-outlined text-[20px] ml-1 group-hover/mega:rotate-180 transition-transform duration-300">expand_more</span>
+</button>
+<div class="absolute top-[90px] left-0 w-[calc(100vw-2rem)] max-w-[1400px] -translate-x-0 bg-white shadow-2xl border-t border-[#8B1E2D]/10 opacity-0 invisible group-hover/mega:opacity-100 group-hover/mega:visible transition-all duration-300 transform origin-top group-hover/mega:translate-y-0 translate-y-2 z-50 rounded-b-xl overflow-hidden mt-0">
+<div class="flex h-[550px]">
+<div class="w-[280px] bg-[#FDFBF7] py-6 border-r border-[#8B1E2D]/10 overflow-y-auto custom-scroll flex-shrink-0">
+<h3 class="px-6 mb-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Departments</h3>
+<ul class="space-y-1">
+<li>
+<a class="flex items-center justify-between px-6 py-4 hover:bg-white text-slate-600 hover:text-[#8B1E2D] transition-colors group/item" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[22px] text-[#8B1E2D]/70 group-hover/item:text-[#8B1E2D]">coffee</span>
+<span class="font-display font-medium text-lg">Specialty Coffee</span>
+</div>
+<span class="material-symbols-outlined text-[18px] opacity-0 group-hover/item:opacity-100 -translate-x-2 group-hover/item:translate-x-0 transition-all text-[#8B1E2D]">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="relative flex items-center justify-between px-6 py-4 bg-white shadow-sm text-[#8B1E2D] group/item" href="#">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-[#8B1E2D]"></div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[22px]">emoji_food_beverage</span>
+<span class="font-display font-bold text-lg">Artisanal Tea</span>
+</div>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between px-6 py-4 hover:bg-white text-slate-600 hover:text-[#8B1E2D] transition-colors group/item" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[22px] text-[#8B1E2D]/70 group-hover/item:text-[#8B1E2D]">water_drop</span>
+<span class="font-display font-medium text-lg">Traditional Sauces</span>
+</div>
+<span class="material-symbols-outlined text-[18px] opacity-0 group-hover/item:opacity-100 -translate-x-2 group-hover/item:translate-x-0 transition-all text-[#8B1E2D]">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between px-6 py-4 hover:bg-white text-slate-600 hover:text-[#8B1E2D] transition-colors group/item" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[22px] text-[#8B1E2D]/70 group-hover/item:text-[#8B1E2D]">bakery_dining</span>
+<span class="font-display font-medium text-lg">Dried Delicacies</span>
+</div>
+<span class="material-symbols-outlined text-[18px] opacity-0 group-hover/item:opacity-100 -translate-x-2 group-hover/item:translate-x-0 transition-all text-[#8B1E2D]">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between px-6 py-4 hover:bg-white text-slate-600 hover:text-[#8B1E2D] transition-colors group/item" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[22px] text-[#8B1E2D]/70 group-hover/item:text-[#8B1E2D]">spa</span>
+<span class="font-display font-medium text-lg">Herbs &amp; Spices</span>
+</div>
+<span class="material-symbols-outlined text-[18px] opacity-0 group-hover/item:opacity-100 -translate-x-2 group-hover/item:translate-x-0 transition-all text-[#8B1E2D]">chevron_right</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="flex-1 p-10 bg-white overflow-y-auto custom-scroll relative">
+<div class="flex items-end justify-between mb-10 pb-6 border-b border-[#8B1E2D]/10">
+<div>
+<h2 class="text-4xl font-display font-medium text-[#8B1E2D] mb-1">Artisanal Tea</h2>
+<p class="text-slate-500 font-body text-sm">Premium hand-picked tea leaves from ancient Shan Tuyet trees.</p>
+</div>
+<div class="flex items-center bg-[#F5EBDD]/40 rounded-full px-5 py-2.5 w-[320px] group focus-within:bg-[#F5EBDD] transition-colors">
+<span class="material-symbols-outlined text-[#8B1E2D]/60 text-[20px]">search</span>
+<input class="bg-transparent border-none text-sm w-full focus:ring-0 placeholder:text-[#8B1E2D]/40 text-[#8B1E2D] font-body ml-2 py-0" placeholder="Search within Artisanal Tea..." type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-12">
+<div class="col-span-4">
+<h3 class="text-[18px] font-display font-medium text-[#2d2a2a] mb-6">Tea Types</h3>
+<div class="flex flex-wrap gap-3">
+<a class="px-4 py-3 bg-[#F9F9F9] hover:bg-[#F5EBDD] text-slate-600 hover:text-[#8B1E2D] rounded-md text-[14px] font-medium transition-all shadow-sm border border-transparent hover:border-[#8B1E2D]/10" href="#">Green Tea</a>
+<a class="px-4 py-3 bg-[#F9F9F9] hover:bg-[#F5EBDD] text-slate-600 hover:text-[#8B1E2D] rounded-md text-[14px] font-medium transition-all shadow-sm border border-transparent hover:border-[#8B1E2D]/10" href="#">Black Tea</a>
+<a class="px-4 py-3 bg-[#F9F9F9] hover:bg-[#F5EBDD] text-slate-600 hover:text-[#8B1E2D] rounded-md text-[14px] font-medium transition-all shadow-sm border border-transparent hover:border-[#8B1E2D]/10" href="#">Oolong</a>
+<a class="px-4 py-3 bg-[#F9F9F9] hover:bg-[#F5EBDD] text-slate-600 hover:text-[#8B1E2D] rounded-md text-[14px] font-medium transition-all shadow-sm border border-transparent hover:border-[#8B1E2D]/10" href="#">Herbal Blends</a>
+<a class="px-4 py-3 bg-[#F9F9F9] hover:bg-[#F5EBDD] text-slate-600 hover:text-[#8B1E2D] rounded-md text-[14px] font-medium transition-all shadow-sm border border-transparent hover:border-[#8B1E2D]/10" href="#">Lotus Tea</a>
+<a class="px-4 py-3 bg-[#F9F9F9] hover:bg-[#F5EBDD] text-slate-600 hover:text-[#8B1E2D] rounded-md text-[14px] font-medium transition-all shadow-sm border border-transparent hover:border-[#8B1E2D]/10" href="#">Jasmine Tea</a>
+<a class="px-4 py-3 bg-[#F9F9F9] hover:bg-[#F5EBDD] text-slate-600 hover:text-[#8B1E2D] rounded-md text-[14px] font-medium transition-all shadow-sm border border-transparent hover:border-[#8B1E2D]/10" href="#">Artichoke Tea</a>
+</div>
+<div class="mt-10">
+<a class="inline-flex items-center text-[#8B1E2D] font-medium text-sm hover:underline underline-offset-4" href="#">
+                                                    View All Tea Products
+                                                    <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="col-span-4">
+<h3 class="text-[18px] font-display font-medium text-[#2d2a2a] mb-6">Usage Needs</h3>
+<div class="flex flex-col gap-3">
+<a class="flex items-center gap-4 px-5 py-4 bg-[#FDFBF7] hover:bg-[#F5EBDD] border border-[#8B1E2D]/5 hover:border-[#8B1E2D]/20 rounded-lg text-slate-700 hover:text-[#8B1E2D] transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#8B1E2D]/60 group-hover:text-[#8B1E2D] text-[24px]">redeem</span>
+<span class="font-display font-medium text-[16px]">Gifting &amp; Souvenirs</span>
+</a>
+<a class="flex items-center gap-4 px-5 py-4 bg-[#FDFBF7] hover:bg-[#F5EBDD] border border-[#8B1E2D]/5 hover:border-[#8B1E2D]/20 rounded-lg text-slate-700 hover:text-[#8B1E2D] transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#8B1E2D]/60 group-hover:text-[#8B1E2D] text-[24px]">home</span>
+<span class="font-display font-medium text-[16px]">Daily Home Brewing</span>
+</a>
+<a class="flex items-center gap-4 px-5 py-4 bg-[#FDFBF7] hover:bg-[#F5EBDD] border border-[#8B1E2D]/5 hover:border-[#8B1E2D]/20 rounded-lg text-slate-700 hover:text-[#8B1E2D] transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#8B1E2D]/60 group-hover:text-[#8B1E2D] text-[24px]">restaurant</span>
+<span class="font-display font-medium text-[16px]">Professional Tearoom</span>
+</a>
+</div>
+</div>
+<div class="col-span-4">
+<h3 class="text-[18px] font-display font-medium text-[#2d2a2a] mb-6">Regional Brands</h3>
+<div class="grid grid-cols-2 gap-4">
+<a class="h-16 border border-slate-100 rounded-lg flex items-center justify-center bg-white hover:border-[#8B1E2D]/20 hover:shadow-md transition-all group" href="#">
+<span class="font-display font-bold text-slate-300 text-lg group-hover:text-[#8B1E2D]">Brand A</span>
+</a>
+<a class="h-16 border border-slate-100 rounded-lg flex items-center justify-center bg-white hover:border-[#8B1E2D]/20 hover:shadow-md transition-all group" href="#">
+<span class="font-display font-bold text-slate-300 text-lg group-hover:text-[#8B1E2D]">Brand B</span>
+</a>
+<a class="h-16 border border-slate-100 rounded-lg flex items-center justify-center bg-white hover:border-[#8B1E2D]/20 hover:shadow-md transition-all group" href="#">
+<span class="font-display font-bold text-slate-300 text-lg group-hover:text-[#8B1E2D]">Brand C</span>
+</a>
+<a class="h-16 border border-slate-100 rounded-lg flex items-center justify-center bg-white hover:border-[#8B1E2D]/20 hover:shadow-md transition-all group" href="#">
+<span class="font-display font-bold text-slate-300 text-lg group-hover:text-[#8B1E2D]">Brand D</span>
+</a>
+</div>
+<div class="mt-6 p-4 bg-[#8B1E2D]/5 rounded-lg border border-[#8B1E2D]/10">
+<p class="text-[13px] text-slate-600 italic font-serif leading-relaxed">
+                                                    "The art of tea is the art of life." - Explore our curated selection of premium teas.
+                                                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li class="h-full flex items-center">
+<a class="h-full flex items-center px-4 hover:text-[#8B1E2D] transition-colors relative group" href="#">
+                            Shop
+                            <span class="absolute bottom-[30px] left-1/2 -translate-x-1/2 w-1 h-1 bg-[#8B1E2D] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+</a>
+</li>
+<li class="h-full flex items-center">
+<a class="h-full flex items-center px-4 hover:text-[#8B1E2D] transition-colors relative group" href="#">
+                            Stories
+                            <span class="absolute bottom-[30px] left-1/2 -translate-x-1/2 w-1 h-1 bg-[#8B1E2D] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+</a>
+</li>
+<li class="h-full flex items-center">
+<a class="h-full flex items-center px-4 hover:text-[#8B1E2D] transition-colors text-[#8B1E2D] font-semibold relative flex gap-1.5 items-center" href="#">
+<span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                            Live Commerce
+                        </a>
+</li>
+<li class="h-full flex items-center">
+<a class="h-full flex items-center px-4 hover:text-[#8B1E2D] transition-colors relative group" href="#">
+                            About Us
+                            <span class="absolute bottom-[30px] left-1/2 -translate-x-1/2 w-1 h-1 bg-[#8B1E2D] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="flex items-center gap-6">
+<div class="hidden xl:flex items-center bg-white border-b border-slate-300 hover:border-[#8B1E2D] transition-colors w-[220px] pb-1">
+<input class="bg-transparent border-none text-[14px] w-full focus:ring-0 placeholder:text-slate-400 text-slate-800 font-body p-0" placeholder="Search delicacies..." type="text"/>
+<span class="material-symbols-outlined text-slate-400 text-[20px]">search</span>
+</div>
+<div class="flex items-center gap-4 text-slate-700">
+<button class="xl:hidden p-2 hover:text-[#8B1E2D] transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 hover:text-[#8B1E2D] transition-colors flex flex-col items-center gap-0.5 group">
+<span class="material-symbols-outlined text-[24px]">account_circle</span>
+</button>
+<button class="p-2 hover:text-[#8B1E2D] transition-colors relative group">
+<span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+<span class="absolute top-0 right-0 bg-[#8B1E2D] text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-body font-bold border-2 border-white">2</span>
+</button>
+<button class="lg:hidden p-2 hover:text-[#8B1E2D] transition-colors ml-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-4 md:px-8 py-10 md:py-16">
+<div class="mb-12 border-b border-[#8B1E2D]/10 pb-10">
+<nav class="flex items-center gap-2 text-[12px] font-body text-slate-500 mb-6 uppercase tracking-wider font-medium">
+<a class="hover:text-[#8B1E2D] transition-colors" href="#">Home</a>
+<span class="text-slate-300">/</span>
+<span class="text-[#8B1E2D] font-bold">Shop Collection</span>
+</nav>
+<div class="flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="max-w-3xl">
+<h1 class="text-5xl md:text-7xl font-medium text-slate-900 mb-6 font-display tracking-tight">
+                        Shop the <i class="font-display text-[#8B1E2D] italic font-light">Collection</i>
+</h1>
+<p class="text-[17px] text-slate-600 font-body leading-relaxed">
+                        Discover premium Vietnamese specialties, hand-picked from local artisans. From the highlands of Da Lat to the rivers of the Mekong Delta.
+                    </p>
+</div>
+<div class="hidden md:flex items-center gap-3 mb-2">
+<span class="text-[14px] text-slate-500 font-body">Sort by:</span>
+<div class="relative group cursor-pointer">
+<div class="flex items-center gap-1 text-[14px] font-semibold text-[#8B1E2D] border-b border-[#8B1E2D]/20 pb-0.5 hover:border-[#8B1E2D] transition-colors font-body">
+                            Most Popular
+                            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<aside class="hidden lg:block lg:col-span-3 space-y-6 pr-6">
+<div class="relative bg-white border border-[#8B1E2D]/10 rounded-lg p-2 flex items-center shadow-sm">
+<span class="material-symbols-outlined text-slate-400 pl-2">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm font-body text-slate-800 placeholder:text-slate-400" placeholder="Search within Collection..." type="text"/>
+</div>
+<div class="space-y-4">
+<div class="border-b border-[#8B1E2D]/10 pb-4">
+<label class="flex justify-between items-center cursor-pointer accordion-header group">
+<input checked="" class="accordion-checkbox hidden" type="checkbox"/>
+<h3 class="text-[17px] font-display font-medium text-slate-900 group-hover:text-[#8B1E2D] transition-colors italic">Regional Specialties</h3>
+<span class="material-symbols-outlined text-slate-400 chevron transition-transform duration-300">expand_more</span>
+</label>
+<div class="accordion-content mt-4">
+<div class="space-y-3 font-body text-[14px]">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">Northern Highlands</span>
+<span class="ml-auto text-slate-400 text-xs bg-slate-100 px-2 py-0.5 rounded-full">42</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">Central Coast</span>
+<span class="ml-auto text-slate-400 text-xs bg-slate-100 px-2 py-0.5 rounded-full">28</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">Mekong Delta</span>
+<span class="ml-auto text-slate-400 text-xs bg-slate-100 px-2 py-0.5 rounded-full">56</span>
+</label>
+</div>
+</div>
+</div>
+<div class="border-b border-[#8B1E2D]/10 pb-4">
+<label class="flex justify-between items-center cursor-pointer accordion-header group">
+<input class="accordion-checkbox hidden" type="checkbox"/>
+<h3 class="text-[17px] font-display font-medium text-slate-900 group-hover:text-[#8B1E2D] transition-colors italic">Flavor Profile</h3>
+<span class="material-symbols-outlined text-slate-400 chevron transition-transform duration-300">expand_more</span>
+</label>
+<div class="accordion-content mt-4">
+<div class="grid grid-cols-2 gap-2 font-body text-[13px]">
+<label class="flex flex-col items-center gap-2 p-3 border border-slate-200 rounded hover:border-[#8B1E2D]/50 cursor-pointer group text-center">
+<input class="hidden" type="checkbox"/>
+<span class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-[#8B1E2D]">local_fire_department</span>
+<span class="text-slate-600 group-hover:text-[#8B1E2D]">Spicy &amp; Bold</span>
+</label>
+<label class="flex flex-col items-center gap-2 p-3 border border-slate-200 rounded hover:border-[#8B1E2D]/50 cursor-pointer group text-center">
+<input class="hidden" type="checkbox"/>
+<span class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-[#8B1E2D]">eco</span>
+<span class="text-slate-600 group-hover:text-[#8B1E2D]">Herbal &amp; Earthy</span>
+</label>
+<label class="flex flex-col items-center gap-2 p-3 border border-slate-200 rounded hover:border-[#8B1E2D]/50 cursor-pointer group text-center bg-[#8B1E2D]/5 border-[#8B1E2D]/30">
+<input checked="" class="hidden" type="checkbox"/>
+<span class="material-symbols-outlined text-[20px] text-[#8B1E2D]">water_drop</span>
+<span class="text-[#8B1E2D] font-medium">Umami Rich</span>
+</label>
+<label class="flex flex-col items-center gap-2 p-3 border border-slate-200 rounded hover:border-[#8B1E2D]/50 cursor-pointer group text-center">
+<input class="hidden" type="checkbox"/>
+<span class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-[#8B1E2D]">wb_sunny</span>
+<span class="text-slate-600 group-hover:text-[#8B1E2D]">Sweet &amp; Floral</span>
+</label>
+</div>
+</div>
+</div>
+<div class="border-b border-[#8B1E2D]/10 pb-4">
+<label class="flex justify-between items-center cursor-pointer accordion-header group">
+<input checked="" class="accordion-checkbox hidden" type="checkbox"/>
+<h3 class="text-[17px] font-display font-medium text-slate-900 group-hover:text-[#8B1E2D] transition-colors italic">Artisans &amp; Brands</h3>
+<span class="material-symbols-outlined text-slate-400 chevron transition-transform duration-300">expand_more</span>
+</label>
+<div class="accordion-content mt-4">
+<div class="space-y-3 font-body text-[14px] max-h-[150px] overflow-y-auto custom-scroll pr-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-900 font-medium group-hover:text-[#8B1E2D] transition-colors">Son Tinh Original</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">Dalat Highlands Farm</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">Mekong Delta Co.</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">Phu Quoc Heritage</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">Hanoi Artisan Collective</span>
+</label>
+</div>
+</div>
+</div>
+<div class="border-b border-[#8B1E2D]/10 pb-4">
+<label class="flex justify-between items-center cursor-pointer accordion-header group">
+<input class="accordion-checkbox hidden" type="checkbox"/>
+<h3 class="text-[17px] font-display font-medium text-slate-900 group-hover:text-[#8B1E2D] transition-colors italic">Dietary Needs</h3>
+<span class="material-symbols-outlined text-slate-400 chevron transition-transform duration-300">expand_more</span>
+</label>
+<div class="accordion-content mt-4">
+<div class="space-y-3 font-body text-[14px]">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">Organic Certified</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">Gluten-Free</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">Vegan Friendly</span>
+</label>
+</div>
+</div>
+</div>
+<div class="border-b border-[#8B1E2D]/10 pb-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-[17px] font-display font-medium text-slate-900 italic">Discount Level</h3>
+</div>
+<div class="space-y-5 font-body">
+<div class="space-y-3 font-body text-[14px] mb-4">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">10% Off or More</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">25% Off or More</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">50% Off or More</span>
+</label>
+</div>
+<div class="flex items-center justify-between text-slate-500 text-[13px] font-medium">
+<span>0%</span>
+<span>100%</span>
+</div>
+<div class="relative w-full h-6 flex items-center pt-2">
+<input class="slider-thumb absolute pointer-events-none w-full h-1 bg-transparent appearance-none z-20 [&amp;::-webkit-slider-thumb]:pointer-events-auto" max="100" min="0" type="range" value="45"/>
+<input class="slider-thumb absolute pointer-events-none w-full h-1 bg-transparent appearance-none z-20 [&amp;::-webkit-slider-thumb]:pointer-events-auto" max="100" min="0" type="range" value="100"/>
+<div class="absolute w-full h-1 bg-slate-200 rounded z-10"></div>
+<div class="absolute h-1 bg-[#8B1E2D] rounded z-10 left-[45%] right-[0%]"></div>
+<div class="absolute top-[-25px] left-[45%] -translate-x-1/2 bg-[#8B1E2D] text-white text-[11px] font-bold px-2 py-0.5 rounded shadow-sm after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[#8B1E2D] z-30">45%</div>
+</div>
+</div>
+</div>
+<div class="border-b border-[#8B1E2D]/10 pb-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-[17px] font-display font-medium text-slate-900 italic">Customer Ratings</h3>
+</div>
+<div class="space-y-3 font-body text-[14px]">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<div class="flex items-center text-[#8B1E2D]">
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+</div>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors ml-1">5 Stars</span>
+<span class="ml-auto text-slate-400 text-xs bg-slate-100 px-2 py-0.5 rounded-full">86</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<div class="flex items-center text-[#8B1E2D]">
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] text-slate-300">star</span>
+</div>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors ml-1">&amp; Up</span>
+<span class="ml-auto text-slate-400 text-xs bg-slate-100 px-2 py-0.5 rounded-full">112</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<div class="flex items-center text-[#8B1E2D]">
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] text-slate-300">star</span>
+<span class="material-symbols-outlined text-[18px] text-slate-300">star</span>
+</div>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors ml-1">&amp; Up</span>
+<span class="ml-auto text-slate-400 text-xs bg-slate-100 px-2 py-0.5 rounded-full">120</span>
+</label>
+</div>
+</div>
+<div class="pb-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-[17px] font-display font-medium text-slate-900 italic">Stock Status</h3>
+</div>
+<div class="space-y-3 font-body text-[14px]">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex h-3.5 w-3.5 justify-center items-center ml-0.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+</div>
+<span class="text-red-600 font-semibold group-hover:text-red-700 transition-colors ml-0.5">Live Now</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">In Stock</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 text-[#8B1E2D] focus:ring-[#8B1E2D] w-[16px] h-[16px] checked:bg-[#8B1E2D] cursor-pointer transition-all" type="checkbox"/>
+<span class="text-slate-600 group-hover:text-[#8B1E2D] transition-colors">Pre-order</span>
+</label>
+</div>
+</div>
+</div>
+<div class="mt-8 bg-[#8B1E2D] text-white rounded-xl p-6 relative overflow-hidden group cursor-pointer">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[100px]">diamond</span>
+</div>
+<h4 class="font-display font-medium text-xl mb-2 relative z-10">The Club</h4>
+<p class="font-body text-sm text-white/80 mb-4 relative z-10 leading-relaxed">Join for exclusive access to limited-batch artisans, early drops, and free shipping.</p>
+<button class="bg-white text-[#8B1E2D] px-4 py-2 text-sm font-semibold rounded font-body hover:bg-[#F5EBDD] transition-colors relative z-10 w-full">Join the Waitlist</button>
+</div>
+</aside>
+<div class="col-span-1 lg:col-span-9">
+<div class="flex flex-col gap-4 mb-8 pb-4 border-b border-[#8B1E2D]/10">
+<div class="flex items-center justify-between">
+<div class="lg:hidden flex items-center gap-2 text-slate-700 font-body font-medium text-[15px]">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+                            Filter &amp; Sort
+                        </div>
+<span class="text-[14px] text-slate-500 font-body">124 Products</span>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<span class="text-[13px] text-slate-500 mr-2">Applied Filters:</span>
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#8B1E2D]/10 text-[#8B1E2D] border border-[#8B1E2D]/20 rounded-full text-[12px] font-medium transition-colors hover:bg-[#8B1E2D]/20">
+                            Son Tinh Original
+                            <button class="flex items-center justify-center hover:text-red-700"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#8B1E2D]/10 text-[#8B1E2D] border border-[#8B1E2D]/20 rounded-full text-[12px] font-medium transition-colors hover:bg-[#8B1E2D]/20">
+                            Umami Rich
+                            <button class="flex items-center justify-center hover:text-red-700"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#8B1E2D]/10 text-[#8B1E2D] border border-[#8B1E2D]/20 rounded-full text-[12px] font-medium transition-colors hover:bg-[#8B1E2D]/20">
+                            Discount: 45%+
+                            <button class="flex items-center justify-center hover:text-red-700"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#8B1E2D]/10 text-[#8B1E2D] border border-[#8B1E2D]/20 rounded-full text-[12px] font-medium transition-colors hover:bg-[#8B1E2D]/20">
+                            Rating: 5 Stars
+                            <button class="flex items-center justify-center hover:text-red-700"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</div>
+<button class="text-[12px] font-medium text-slate-500 hover:text-[#8B1E2D] underline underline-offset-4 ml-2 transition-colors">Clear All</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+<div class="group flex flex-col relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-100 p-4">
+<div class="relative aspect-square overflow-hidden rounded-xl bg-[#f0eee9] mb-4">
+<div class="absolute top-3 left-3 z-20 flex items-center bg-black/80 text-white px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px] text-yellow-400 mr-1">star</span>
+<span class="text-[12px] font-bold">4.9</span>
+</div>
+<div class="absolute top-3 right-3 z-20">
+<button class="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-slate-400 hover:text-[#8B1E2D] transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<img alt="Robusta Premium Roast" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHUQc-AOrYh9SEg0XGFL8nWZ7EGn06qvswBS0oMECfoUdO4L8Sxv4pigW6FtXp8P1KIIt30sND37QYcQJxs4CrqOsdlDs9CvJux3PKqGCOKeGta6f8VbM_TPadgIJay4bxV1Ecid01pZFsbYIJjBf9KaKbnjEhK4tp_tD6Xi1r_3xes57lPwFOnhJe9oVqrsURMwFVMIi5o63Taws6ipmFo-W2DAp2_eec3cPU5uucCJyQ-uILzEfySsHXLdtwkHfR3aYma2euRWAN"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="mb-3 flex justify-between items-start gap-2">
+<h3 class="text-[18px] font-display font-bold text-[#0B1A28] group-hover:text-[#8B1E2D] transition-colors leading-tight">Authentic Robusta Roast</h3>
+<p class="font-body font-bold text-[#831A2D] text-[16px] shrink-0">$24.00</p>
+</div>
+<p class="text-[14px] text-slate-500 font-body mb-4 line-clamp-2 leading-relaxed">Rich, full-bodied coffee beans sourced directly from sustainable farms in the central highlands.</p>
+<div class="flex items-center justify-between pt-4 border-t border-slate-100">
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="text-[13px] font-medium font-body">Da Lat Highlands</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-[#f4e8e9] text-[#831A2D] flex items-center justify-center hover:bg-[#831A2D] hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-100 p-4">
+<div class="relative aspect-square overflow-hidden rounded-xl bg-[#f0eee9] mb-4">
+<div class="absolute top-3 left-3 z-20 flex items-center bg-black/80 text-white px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px] text-yellow-400 mr-1">star</span>
+<span class="text-[12px] font-bold">4.8</span>
+</div>
+<div class="absolute top-3 right-3 z-20">
+<button class="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-slate-400 hover:text-[#8B1E2D] transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<img alt="Lotus Seed Mooncake Set" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS9likrEQF4S2ewaqHTbGN1VtuWxsbPbKH2Np_aF9VopRWc-Q5Efkuin1CGicPnrgQqb53U3n7n64CCdonFIPCTuMUKNut6EAwgSR5cmslATHgU75ucKAk9WjpWXEH4twJWsvCYCbN1VtW5DCxjuqRA_t13anHjLewtp6f4cdV_96Z98FU9K8ZhFm_bnT6ax-A1xHOSK3PoGAj0jOfR9GPxubKK-ClCD-InHgnH5bdpoqABw4RIMC0EzCzQBp6gFEr8aBSNiN0_x6c"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="mb-3 flex justify-between items-start gap-2">
+<h3 class="text-[18px] font-display font-bold text-[#0B1A28] group-hover:text-[#8B1E2D] transition-colors leading-tight">Lotus Seed Mooncake Set</h3>
+<div class="flex flex-col items-end shrink-0">
+<p class="font-body font-bold text-[#831A2D] text-[16px]">$12.00</p>
+<p class="text-[12px] text-slate-400 line-through font-body">$24.00</p>
+</div>
+</div>
+<p class="text-[14px] text-slate-500 font-body mb-4 line-clamp-2 leading-relaxed">Traditional delicacy crafted with premium lotus paste and salted egg yolk for the autumn festival.</p>
+<div class="flex items-center justify-between pt-4 border-t border-slate-100">
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="text-[13px] font-medium font-body">Hanoi City</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-[#f4e8e9] text-[#831A2D] flex items-center justify-center hover:bg-[#831A2D] hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-100 p-4">
+<div class="relative aspect-square overflow-hidden rounded-xl bg-[#f0eee9] mb-4">
+<div class="absolute top-3 left-3 z-20 flex items-center bg-black/80 text-white px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px] text-yellow-400 mr-1">star</span>
+<span class="text-[12px] font-bold">5.0</span>
+</div>
+<div class="absolute top-3 right-3 z-20">
+<button class="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-slate-400 hover:text-[#8B1E2D] transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<img alt="Highland Robusta Beans" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZEgDdtSN2ZG2FuRK_qsSHAXOcKFMA30JoGDBZGrs1R3uDQyjIewEVArtBo-4OYIoh6UpH1kRCjcfk6wfWX1nMmWcl27M7nsRmkXvJu-9zm6waK6jWhMk3ckeqlm9nvPETRzgsukW5HkChApTEXc2Nt4QGyEA3q49i4vQcon_4VwA-OhtxYWrM8q24wwrIhmcy3AYT_JZk-PnAIO5RJzK0bWujYAcMGvGqQK1W_yLcEYmv6Ry1jUH48Goz5KTuH-F75YyJEdkPuNBj"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="mb-3 flex justify-between items-start gap-2">
+<h3 class="text-[18px] font-display font-bold text-[#0B1A28] group-hover:text-[#8B1E2D] transition-colors leading-tight">Highland Robusta Beans</h3>
+<p class="font-body font-bold text-[#831A2D] text-[16px] shrink-0">$18.00</p>
+</div>
+<p class="text-[14px] text-slate-500 font-body mb-4 line-clamp-2 leading-relaxed">Bold and chocolatey profile, perfect for crafting the traditional Vietnamese iced coffee.</p>
+<div class="flex items-center justify-between pt-4 border-t border-slate-100">
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="text-[13px] font-medium font-body">Buon Ma Thuot</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-[#f4e8e9] text-[#831A2D] flex items-center justify-center hover:bg-[#831A2D] hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-100 p-4">
+<div class="relative aspect-square overflow-hidden rounded-xl bg-[#f0eee9] mb-4">
+<div class="absolute top-3 left-3 z-20 flex items-center bg-black/80 text-white px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px] text-yellow-400 mr-1">star</span>
+<span class="text-[12px] font-bold">4.7</span>
+</div>
+<div class="absolute top-3 right-3 z-20">
+<button class="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-slate-400 hover:text-[#8B1E2D] transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<img alt="Barrel-Aged Fish Sauce" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHb-u2eFAtwVgJt8bnOrY5vTBuVrZDGEHKxZl_cLt31vnngna8DtWVkNn2UjusyDPuX0cKJaW7lyhc6HlfEU3ueHB1JrZT96ZQNQ2yfkgsMeVhcsoxyoZM_EdMX4fsQiSWy2uNYtovH6iJQ89vRmV_ZAenJR7rvyhNjZAW4x3IA99HXGcZWv36-D_s6tvVn5CdcRqsF5NDkNs5OGoex6xPI532A636P2mr1d6mL7zBKn7CmS8aetP4fzhNAs0Kg8XXIih-UjdNctRt"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="mb-3 flex justify-between items-start gap-2">
+<h3 class="text-[18px] font-display font-bold text-[#0B1A28] group-hover:text-[#8B1E2D] transition-colors leading-tight">Barrel-Aged Fish Sauce</h3>
+<p class="font-body font-bold text-[#831A2D] text-[16px] shrink-0">$12.50</p>
+</div>
+<p class="text-[14px] text-slate-500 font-body mb-4 line-clamp-2 leading-relaxed">Premium 40°N fish sauce aged in wooden barrels for a rich, deep umami flavor.</p>
+<div class="flex items-center justify-between pt-4 border-t border-slate-100">
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="text-[13px] font-medium font-body">Phu Quoc Island</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-[#f4e8e9] text-[#831A2D] flex items-center justify-center hover:bg-[#831A2D] hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-100 p-4">
+<div class="relative aspect-square overflow-hidden rounded-xl bg-[#f0eee9] mb-4">
+<div class="absolute top-3 left-3 z-20 flex items-center bg-black/80 text-white px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px] text-yellow-400 mr-1">star</span>
+<span class="text-[12px] font-bold">4.9</span>
+</div>
+<div class="absolute top-3 right-3 z-20">
+<button class="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-slate-400 hover:text-[#8B1E2D] transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<img alt="Royal Jade Mooncakes" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVVnKz2M503fl8_qaiSK2j8SnzZxvWlsu3Ojp6VnC8r-dSGqVhAI5tFAgp6RNYS-TNn75lpwYmEPPoEGtaT2BhKCtAYdhvBdBqNsGJF9d4SLxW1GmZaxdX0Qtwny_Hj6qiJU3nrTtgEz5RFYHSaSRSOah304w5y6fRQlqqaFfnaszppL69kmoM6iHF_KpiWqP0D7C1lDkLXTzal8PdGYmhPO0-gR8hYZi2VJxQjbTyvQs1FsCbX2_DElf5gvrdkZHA_fXHi30fh9pw"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="mb-3 flex justify-between items-start gap-2">
+<h3 class="text-[18px] font-display font-bold text-[#0B1A28] group-hover:text-[#8B1E2D] transition-colors leading-tight">Royal Jade Mooncakes</h3>
+<div class="flex flex-col items-end shrink-0">
+<p class="font-body font-bold text-[#831A2D] text-[16px]">$29.00</p>
+<p class="text-[12px] text-slate-400 line-through font-body">$58.00</p>
+</div>
+</div>
+<p class="text-[14px] text-slate-500 font-body mb-4 line-clamp-2 leading-relaxed">Exquisite gift box featuring four artisanal flavors with double salted egg yolks.</p>
+<div class="flex items-center justify-between pt-4 border-t border-slate-100">
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="text-[13px] font-medium font-body">Hue City</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-[#f4e8e9] text-[#831A2D] flex items-center justify-center hover:bg-[#831A2D] hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-100 p-4">
+<div class="relative aspect-square overflow-hidden rounded-xl bg-[#f0eee9] mb-4">
+<div class="absolute top-3 left-3 z-20 flex items-center bg-black/80 text-white px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px] text-yellow-400 mr-1">star</span>
+<span class="text-[12px] font-bold">5.0</span>
+</div>
+<div class="absolute top-3 right-3 z-20">
+<button class="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-slate-400 hover:text-[#8B1E2D] transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<img alt="Ancient Jasmine Tea" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD0cdlm14eyr3zXEsL8_neqi6SGOX9y5cvn9jV8ilWnKGT86sGxn-wIstGzzZ9OgP2bOtmDoyQgluARuMTivYe1scKLAd9SpO2P6k-FgLDQs9h0mlIOThBLEGM5CykJIi59uE3y4KpoSJwp-YJL797Wgyw9xlVL0cBFiyPNBxDz--slue-KTXL_h4-lDVIfw0z0X9yW26j90KtYjglh-Y7SeAhuyfL6s4plJUe_dkZCgexGX3ZY8nvVOOtd2-mOopP_ZdOOBVUuZtu"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="mb-3 flex justify-between items-start gap-2">
+<h3 class="text-[18px] font-display font-bold text-[#0B1A28] group-hover:text-[#8B1E2D] transition-colors leading-tight">Ancient Jasmine Tea</h3>
+<div class="flex flex-col items-end shrink-0">
+<p class="font-body font-bold text-[#831A2D] text-[16px]">$17.50</p>
+<p class="text-[12px] text-slate-400 line-through font-body">$35.00</p>
+</div>
+</div>
+<p class="text-[14px] text-slate-500 font-body mb-4 line-clamp-2 leading-relaxed">Hand-picked green tea naturally scented with fresh jasmine blossoms.</p>
+<div class="flex items-center justify-between pt-4 border-t border-slate-100">
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="text-[13px] font-medium font-body">Thai Nguyen</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-[#f4e8e9] text-[#831A2D] flex items-center justify-center hover:bg-[#831A2D] hover:text-white transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-24 flex justify-center border-t border-[#8B1E2D]/10 pt-12">
+<nav class="flex items-center gap-2">
+<a class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-[#8B1E2D] transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</a>
+<a class="w-10 h-10 flex items-center justify-center rounded-full bg-[#8B1E2D] text-white font-body text-[14px] font-medium shadow-md shadow-[#8B1E2D]/20" href="#">1</a>
+<a class="w-10 h-10 flex items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 font-body text-[14px] font-medium transition-colors" href="#">2</a>
+<a class="w-10 h-10 flex items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 font-body text-[14px] font-medium transition-colors" href="#">3</a>
+<span class="w-10 h-10 flex items-center justify-center text-slate-400 font-display italic">...</span>
+<a class="w-10 h-10 flex items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 font-body text-[14px] font-medium transition-colors" href="#">8</a>
+<a class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-[#8B1E2D] transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</nav>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-[#FCFAFA] border-t border-[#8B1E2D]/10 py-10 mt-auto">
+<div class="max-w-[1440px] mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2 text-[#8B1E2D]">
+<span class="material-symbols-outlined text-[24px]">local_florist</span>
+<span class="font-display font-semibold text-xl tracking-wide">LIKEFOOD</span>
+</div>
+<div class="flex gap-8 text-[14px] font-body text-slate-500">
+<a class="hover:text-[#8B1E2D] transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-[#8B1E2D] transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-[#8B1E2D] transition-colors" href="#">Shipping Info</a>
+</div>
+<div class="text-slate-400 text-[13px] font-body">
+                © 2023 LIKEFOOD Inc.
+            </div>
+</div>
+</footer>
+</body></html>

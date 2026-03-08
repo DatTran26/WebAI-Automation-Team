@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Order Management - LIKEFOOD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#831A2D",
+                        "background-light": "#faf9f8",
+                        "surface": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+<header class="flex items-center justify-between border-b border-slate-200 px-10 py-6 bg-surface sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined text-3xl">restaurant</span>
+<h2 class="text-2xl font-display font-bold tracking-widest uppercase text-slate-900">LIKEFOOD</h2>
+</div>
+<label class="hidden lg:flex flex-col min-w-40 max-w-64">
+<div class="flex w-full items-stretch h-10 border-b border-slate-300 overflow-hidden bg-transparent focus-within:border-primary transition-all">
+<div class="text-slate-400 flex items-center justify-center pr-3">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="w-full flex-1 bg-transparent border-none focus:outline-none focus:ring-0 text-slate-800 placeholder:text-slate-400 font-display italic text-lg px-0" placeholder="Search culinary delights..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-8">
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 hover:text-primary transition-colors text-xs font-semibold uppercase tracking-widest" href="#">Shop</a>
+<a class="text-slate-600 hover:text-primary transition-colors text-xs font-semibold uppercase tracking-widest" href="#">Categories</a>
+<a class="text-slate-600 hover:text-primary transition-colors text-xs font-semibold uppercase tracking-widest" href="#">Our Story</a>
+</nav>
+<div class="flex items-center gap-6 border-l border-slate-200 pl-8">
+<button class="text-slate-600 hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined text-2xl">shopping_bag</span>
+<span class="absolute -top-1 -right-2 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
+</button>
+<div class="bg-cover bg-center rounded-full w-10 h-10 border border-slate-200 cursor-pointer shadow-sm" data-alt="User profile avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAcrjhTyqSdfjgTL3ea31In05vg4DVQgr1cN8AaE4SoUsz0Me_j5MZWOoeCj0oBsoon57UMZoQjj_i1ID8eFDtVn7rY1ZATyoYQSH1a2MfTQJIfdcWZJzwhMSEuB1l0i54IUsYM9AMxZZglOOOaPoLENA-CKzkvP0b2z0uF9e8VQ3UhmgqSbninczzMLOl36DR1p_tD-4UTG61Wf_RJwgBZP4JkHUdvEI14Ht0q0tB1WS4WkXN7AJfZmDWVfGaC6OFIDlsT3QtUr83r");'></div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-[90rem] w-full mx-auto flex flex-col lg:flex-row gap-12 py-12 px-6 lg:px-12">
+<aside class="w-full lg:w-64 flex-shrink-0">
+<div class="sticky top-32 bg-surface p-6 rounded-2xl shadow-sm border border-slate-100">
+<div class="flex items-center gap-5 mb-8 pb-8 border-b border-slate-100">
+<div class="bg-cover bg-center rounded-full w-14 h-14 border border-slate-200 shadow-sm" data-alt="User profile avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAyeioPTHm4D-wvDmclpszpUaoC6Tcw4wXepL0OqDYKGZeTH3cqNAqqMpMt8c9Fma_jSmrpYcTHMruWj4wgVU4xj7qMu6ifPrJ-NK8M35tLKHH4I4vcftuEMEipQi5yq0ejiqpdUa9KHacgZPfP8Gv2kGsKFs68tqhw7cEYLClhmkn3PYqV-x7tR8kq0lIb3iG6VWXs8vXH1Ubhkcx4e_5miDirRvid1gtf6EJV2IlcfQKc0-dVW_qbCz40kfp91JRPTUK9Am7_wU1");'></div>
+<div>
+<h1 class="font-display font-semibold text-xl text-slate-900">John Doe</h1>
+<p class="text-primary text-[10px] font-bold uppercase tracking-widest mt-1">Epicurean Member</p>
+</div>
+</div>
+<nav class="space-y-2">
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">person</span>
+<span class="text-xs font-bold uppercase tracking-widest">Profile</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-primary bg-primary/5 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+<span class="text-xs font-bold uppercase tracking-widest">The Archives</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">location_on</span>
+<span class="text-xs font-bold uppercase tracking-widest">Addresses</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">stars</span>
+<span class="text-xs font-bold uppercase tracking-widest">Loyalty Points</span>
+</a>
+</nav>
+</div>
+</aside>
+<section class="flex-1 lg:pl-4">
+<header class="mb-12 pb-6 border-b border-slate-200">
+<h2 class="font-display text-4xl md:text-5xl text-slate-900 mb-3">The Archives</h2>
+<p class="font-display italic text-xl text-slate-500">A curated history of your Vietnamese culinary journeys.</p>
+</header>
+<div class="space-y-16">
+<div>
+<h3 class="font-display italic text-3xl text-slate-800 mb-6 flex items-center gap-4">
+                            October Indulgences
+                            <span class="h-px bg-slate-200 flex-1"></span>
+</h3>
+<div class="flex flex-col gap-6">
+<article class="bg-surface rounded-2xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-8 hover:shadow-md transition-shadow">
+<div class="md:w-1/4 border-b md:border-b-0 md:border-r border-slate-100 pb-6 md:pb-0 md:pr-6">
+<p class="font-display italic text-2xl text-slate-900">Oct 24</p>
+<p class="text-xs font-bold tracking-widest uppercase text-slate-400 mt-2 mb-4">LF-10293</p>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase bg-emerald-50 text-emerald-700 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                        Shipped
+                                    </span>
+</div>
+<div class="md:w-2/4 flex flex-col justify-between">
+<div class="flex flex-wrap gap-5 mb-8">
+<div class="relative group cursor-pointer">
+<div class="w-20 h-28 bg-cover bg-center rounded-lg shadow-sm" data-alt="Premium Vietnamese coffee beans" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD90gT2ic2HbFNooxOsBc_3VCVPObkLdz_dRPWb9AMqnGlRgtCdcl8rQzsnk9csUl-OZ7xzuLE2GW-1lUMnIqF2TqMSZded2oTr4eiJNTbAa_NTJQK4zojTrCZBng6zw7oDw8_GcpT8kUFSB7pUDYrT18nhPtcKd4CMoMu5YVe4c8IBU19BsQO07MeyZPbJyeg2DBUzA-QFIx5fNKnF2d8TM026SkM57vF6I6er63bGixywsdo9qs0yGN8i_FVJ7MkCHB-LXIZFCUt3");'></div>
+<div class="absolute -top-2 -right-2 bg-slate-900 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface shadow-sm">1</div>
+</div>
+<div class="relative group cursor-pointer">
+<div class="w-20 h-28 bg-cover bg-center rounded-lg shadow-sm" data-alt="Artisanal fish sauce bottle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAPacdxONGY3UOLeU2R4lPhhLvQshTvu1KOE1a-Rm1fsp9X4PU6F2kzZ_4jNXz29FmYjaSE04CLSV5l4IbyxSGBxn00lIvenpMFebpX6FLJbbxsZpxGaEfG7ZQ6eHCx7-KTP8BGeMvVRxr-woLDbQiZOSTUcTvTwSbSHaTct5ktaHPRGoCoviV4h_8q9Dxa-EORM2eK-rp2eVRClvvnaZjXNc-wpdtKkTuchyddMc1Ex90ja-obAF5lUq9QUjoxFM6zyTAjo0jS0GoI");'></div>
+<div class="absolute -top-2 -right-2 bg-slate-900 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface shadow-sm">2</div>
+</div>
+<div class="relative group cursor-pointer">
+<div class="w-20 h-28 bg-cover bg-center rounded-lg shadow-sm" data-alt="Dried exotic fruits assortment" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBRUEsnuBbya6TXSE0jI3fwN737kM7oOqha0BbqsfSa3a3LfLB-C1TNEHUkcfu7F9k09RHXsWQAW4STyhWvUvSDcTKyBU9y5RPeavdoK9VpNQaXQ5QD1wXkuzMD-3n02_Ds2pOZlkk-iKL8ccm1Bp3sGLhkoSyCu2y3oqM0Bpfw2mWR1PA_fCmwYO1yC47cGY9G_qMgFFbQePzX5FtB2iRyC7XZ2mqUGGwoy3RhFeZ-NEY47-fqyOAASemVSD96f7HKK6mUuih8NFY0");'></div>
+<div class="absolute -top-2 -right-2 bg-slate-900 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface shadow-sm">1</div>
+</div>
+</div>
+<div>
+<a class="inline-flex items-center gap-2 text-primary hover:text-slate-900 transition-colors text-base font-display italic" href="#">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span class="border-b border-primary/30 hover:border-slate-900/30 pb-0.5">Download Digital Recipe: Artisanal Fish Sauce Glaze</span>
+</a>
+</div>
+</div>
+<div class="md:w-1/4 text-right flex flex-col justify-between items-end border-t md:border-t-0 border-slate-100 pt-6 md:pt-0">
+<div>
+<p class="font-display text-3xl text-slate-900">$145.00</p>
+<p class="text-[11px] text-primary font-bold tracking-widest uppercase mt-3 flex items-center justify-end gap-1.5 bg-primary/5 px-3 py-1.5 rounded-full inline-flex">
+<span class="material-symbols-outlined text-base">stars</span>
+                                        290 Pts Earned
+                                    </p>
+</div>
+<div class="flex flex-col items-end gap-3 mt-8 w-full">
+<button class="bg-primary hover:bg-slate-900 text-white text-[11px] font-bold tracking-widest uppercase py-3 px-6 rounded-full transition-all w-full md:w-auto text-center shadow-sm">Track Order</button>
+<a class="text-[11px] font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors mt-2" href="#">View Full Details</a>
+</div>
+</div>
+</article>
+<article class="bg-surface rounded-2xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-8 hover:shadow-md transition-shadow">
+<div class="md:w-1/4 border-b md:border-b-0 md:border-r border-slate-100 pb-6 md:pb-0 md:pr-6">
+<p class="font-display italic text-2xl text-slate-900">Oct 10</p>
+<p class="text-xs font-bold tracking-widest uppercase text-slate-400 mt-2 mb-4">LF-10255</p>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase bg-amber-50 text-amber-700 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                        Processing
+                                    </span>
+</div>
+<div class="md:w-2/4 flex flex-col justify-between">
+<div class="flex flex-wrap gap-5 mb-8">
+<div class="relative group cursor-pointer">
+<div class="w-20 h-28 bg-cover bg-center rounded-lg shadow-sm" data-alt="Premium loose leaf tea" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCMCilIcq-kTGnRINUPgtp9HYCHSvGLuLoLMjk88ty5M8puxGpCFMQUyKYJjS3VHzVQbHkdfz2vXPxg4RDSePt4kC5w1zOki1VWyZmipjlLs9nncaoeKCKrhuRYMW4JQFEEHTll8FNigZqQKrkGaARcvBRNcnpj9p7nhTZ2adK9lTMfbFU2ohfmt5WpA1AyOxSadxDZXIeBth29AIT35XabulWeV8F4w2D6k8u5lysupOJ5e1jr99PSl_jyUDWsahOWowc97m-w0YMJ");'></div>
+<div class="absolute -top-2 -right-2 bg-slate-900 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-surface shadow-sm">3</div>
+</div>
+</div>
+<div>
+<a class="inline-flex items-center gap-2 text-primary hover:text-slate-900 transition-colors text-base font-display italic" href="#">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span class="border-b border-primary/30 hover:border-slate-900/30 pb-0.5">Download Digital Guide: The Art of Tea Brewing</span>
+</a>
+</div>
+</div>
+<div class="md:w-1/4 text-right flex flex-col justify-between items-end border-t md:border-t-0 border-slate-100 pt-6 md:pt-0">
+<div>
+<p class="font-display text-3xl text-slate-900">$85.50</p>
+<p class="text-[11px] text-slate-500 font-bold tracking-widest uppercase mt-3 flex items-center justify-end gap-1.5 bg-slate-50 px-3 py-1.5 rounded-full inline-flex">
+<span class="material-symbols-outlined text-base">pending</span>
+                                        171 Pts Pending
+                                    </p>
+</div>
+<div class="flex flex-col items-end gap-3 mt-8 w-full">
+<button class="bg-transparent hover:bg-primary/5 border border-primary text-primary text-[11px] font-bold tracking-widest uppercase py-3 px-6 rounded-full transition-all w-full md:w-auto text-center shadow-sm">Invoice</button>
+<a class="text-[11px] font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors mt-2" href="#">View Full Details</a>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>
