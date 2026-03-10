@@ -7,6 +7,7 @@ import Link from "next/link"
 import { createClient } from "@/utils/supabase/client"
 import { User } from "@supabase/supabase-js"
 import { ProfileSidebar } from "@/components/layout/ProfileSidebar"
+import { Breadcrumb } from "@/components/ui/breadcrumb"
 
 type OrderItem = {
     id: string
@@ -89,6 +90,7 @@ export default function OrdersPage() {
             <ProfileSidebar user={user} />
 
             <section className="flex-1">
+                <Breadcrumb items={[{ label: "Account", href: "/account" }, { label: "Orders" }]} />
                 <header className="mb-8 pb-5 border-b border-stone-beige/50">
                     <h2 className="font-serif text-3xl md:text-4xl text-soft-black dark:text-white mb-2">My Orders</h2>
                     <p className="text-taupe">A history of your purchases.</p>

@@ -1,60 +1,343 @@
 # Deployment Guide
 
-The LIKEFOOD frontend and backend are housed within a Next.js 15 Monolithic repository, relying on external services for database and authentication.
+## Overview
 
-## 1. Infrastructure Requirements
+LIKEFOOD is deployed as a Next.js 16 full-stack application with external services for database, authentication, and payments. This guide covers setup for development, staging, and production environments.
 
-- **Server:** Node.js environment (VPS or Serverless provider like Vercel).
-- **Database:** PostgreSQL instance.
-- **Authentication Base:** Supabase project.
-- **Payment Gateway:** Stripe Account.
+## Architecture Overview
 
-## 2. Environment Variables
+```
+Domain (vercel.app or custom)
+    └─ Vercel/VPS (Node.js runtime)
+       ├─ Next.js Application
+       ├─ API Routes (business logic)
+       └─ Server Components (data fetching)
+           └─ PostgreSQL (Supabase)
+               └─ User, Product, Order data
+```
 
-To deploy, ensure the target environment contains the following keys (`.env`):
+## Development Environment
+
+### Prerequisites
+- Node.js 18+ and npm 9+
+- PostgreSQL 14+ (local or Supabase)
+- Git
+
+### Initial Setup
+
+```bash
+# Clone repository
+git clone <repo-url>
+cd WebAI/frontend
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.local.example .env.local
+# Edit .env.local with your credentials
+```
+
+### Environment Variables (Development)
 
 ```env
 # Database
-DATABASE_URL="postgres://user:password@host:port/database"
+DATABASE_URL=postgresql://user:password@localhost:5432/likefood_dev
+DIRECT_URL=postgresql://user:password@localhost:5432/likefood_dev
 
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL="https://[YOUR_INSTANCE].supabase.co"
-NEXT_PUBLIC_SUPABASE_ANON_KEY="your-anon-key"
+# Supabase (get from https://supabase.com)
+NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=xxxxx
 
-# Stripe
-STRIPE_SECRET_KEY="sk_test_..."
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
-STRIPE_WEBHOOK_SECRET="whsec_..."
+# Stripe (get from https://stripe.com/dashboard)
+STRIPE_SECRET_KEY=sk_test_xxxxx
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_xxxxx
+STRIPE_WEBHOOK_SECRET=whsec_test_xxxxx
 
-# Application URL
-NEXT_PUBLIC_APP_URL="https://yourdomain.com"
+# Admin
+ADMIN_EMAIL=admin@likefood.com
+
+# App URL
+NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
-## 3. Building and Running
+### Database Setup
 
-### Development
-1. `npm install`
-2. `npx prisma generate`
-3. `npx prisma db push`
-4. `npm run build`
-5. `npm run dev`
+```bash
+# Generate Prisma client
+npm run db:generate
 
-### Production (Serverless/Vercel)
-Vercel is the easiest, zero-configuration deployment target for Next.js App Routers.
-1. Connect the GitHub repository to the Vercel dashboard.
-2. Inject the listed Environment Variables above.
-3. Deploy. Prisma commands (`prisma generate`) should be automated in Vercel's build step (commonly setup as `postinstall` script in package.json).
+# Push schema to database
+npm run db:push
 
-### Production (VPS / Docker)
-If choosing a VPS to maintain full infrastructure control (as outlined in the MVP goals):
-1. Setup a standard Ubuntu instance.
-2. Install Docker. Wait for Dockerfile configurations to be finalized in the repo.
-3. Containerize the Next.js process utilizing a lightweight `node:alpine` image.
-4. Establish an Nginx reverse proxy targeting the exposed Node.js port, configuring SSL/TLS via Certbot.
+# Seed sample data
+npm run db:seed
 
-## 4. Managing Stripe Webhooks
+# Open Prisma Studio (GUI for database)
+npm run db:studio
+```
 
-- Crucial for updating Order status. Ensure that Stripe's Webhook configuration points strictly to:
-  `https://[YOUR_PRODUCTION_URL]/api/webhooks/stripe`
-- Select the `checkout.session.completed` event.
-- Take the newly generated Webhook Signing Secret from Stripe and place it in `STRIPE_WEBHOOK_SECRET` on the production server.
+### Running Development Server
+
+```bash
+# Start Next.js dev server
+npm run dev
+
+# Access at http://localhost:3000
+```
+
+## Staging/Testing Environment
+
+### On Supabase
+
+1. Create a new Supabase project for staging
+2. Copy connection string to .env.staging
+3. Configure Stripe test keys
+4. Deploy via Vercel staging branch
+
+```bash
+# Create staging branch
+git checkout -b staging
+
+# Push to trigger Vercel deployment
+git push origin staging
+```
+
+## Production Environment
+
+### Option 1: Vercel (Recommended)
+
+#### Step 1: Prepare Repository
+```bash
+# Ensure main branch is clean
+git checkout main
+git pull origin main
+
+# Verify build
+npm run build
+```
+
+#### Step 2: Connect to Vercel
+1. Visit vercel.com and sign in
+2. Click "Add New" → "Project"
+3. Import the WebAI repository
+4. Select "Next.js" framework
+5. Configure build settings (auto-detected)
+
+#### Step 3: Environment Variables
+In Vercel dashboard → Settings → Environment Variables:
+
+```
+DATABASE_URL = (Supabase production string)
+DIRECT_URL = (Supabase production direct URL)
+NEXT_PUBLIC_SUPABASE_URL = (Supabase project URL)
+NEXT_PUBLIC_SUPABASE_ANON_KEY = (Supabase anon key)
+STRIPE_SECRET_KEY = sk_live_xxxxx (PRODUCTION KEY)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY = pk_live_xxxxx
+STRIPE_WEBHOOK_SECRET = whsec_live_xxxxx
+ADMIN_EMAIL = your-admin@email.com
+NEXT_PUBLIC_APP_URL = https://yourdomain.com
+```
+
+#### Step 4: Deploy
+```bash
+# Trigger deployment via git
+git push origin main
+
+# Or manually deploy via Vercel dashboard
+# Vercel will automatically:
+# - Build the Next.js app
+# - Run npm run build
+# - Deploy to CDN edge network
+# - Set up SSL/TLS
+```
+
+#### Step 5: Configure Domain
+In Vercel dashboard → Settings → Domains:
+- Add your custom domain (e.g., likefood.com)
+- Point DNS records to Vercel
+
+### Option 2: VPS/Docker
+
+#### Prerequisites
+- Ubuntu 20.04+ VPS (Linode, DigitalOcean, AWS)
+- Docker & Docker Compose
+- Nginx or Caddy (reverse proxy)
+- SSL certificate (Certbot + Let's Encrypt)
+
+#### Dockerfile (Create if not exists)
+
+```dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY frontend/package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy application
+COPY frontend/ ./
+
+# Generate Prisma client
+RUN npx prisma generate
+
+# Build Next.js
+RUN npm run build
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
+  CMD node healthcheck.js
+
+# Start application
+CMD ["npm", "run", "start"]
+```
+
+#### Docker Compose Setup
+
+```yaml
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - DIRECT_URL=${DIRECT_URL}
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    depends_on:
+      - app
+    restart: unless-stopped
+```
+
+#### Deployment Steps
+
+```bash
+# 1. Build and push Docker image
+docker build -t likefood:latest -f Dockerfile .
+docker push your-registry/likefood:latest
+
+# 2. On VPS, pull and run
+docker pull your-registry/likefood:latest
+docker-compose up -d
+
+# 3. Set up SSL with Certbot
+sudo certbot certonly --standalone -d yourdomain.com
+
+# 4. Configure Nginx for HTTPS
+# Update nginx.conf with SSL certificates
+```
+
+## Stripe Webhook Configuration
+
+### For Vercel/Production:
+
+1. Go to Stripe Dashboard → Webhooks
+2. Add endpoint: `https://yourdomain.com/api/webhooks/stripe`
+3. Select events: `checkout.session.completed`
+4. Copy signing secret to `STRIPE_WEBHOOK_SECRET`
+
+### Testing Locally:
+
+```bash
+# Install Stripe CLI
+brew install stripe/stripe-cli/stripe
+
+# Login to Stripe account
+stripe login
+
+# Forward webhooks to local server
+stripe listen --forward-to localhost:3000/api/webhooks/stripe
+
+# Get signing secret from output
+# Add to .env.local as STRIPE_WEBHOOK_SECRET
+```
+
+## Database Backups
+
+### Supabase Backups
+- Automatic daily backups (retention: 30 days)
+- Manual backups via dashboard
+- Point-in-time recovery available
+
+### Manual Backup
+
+```bash
+# Export database dump
+pg_dump $DATABASE_URL > backup.sql
+
+# Restore from dump
+psql $DATABASE_URL < backup.sql
+```
+
+## Monitoring & Logging
+
+### Vercel
+- Real-time logs: vercel.com → Project → Settings → Logs
+- Performance metrics in Vercel Analytics
+- Error tracking via Sentry (optional)
+
+### Manual Setup
+```bash
+# View application logs
+docker logs likefood-app
+
+# Monitor system resources
+docker stats likefood-app
+
+# Check Nginx errors
+tail -f /var/log/nginx/error.log
+```
+
+## Post-Deployment Checklist
+
+- [ ] Database backup configured
+- [ ] SSL certificate valid
+- [ ] Admin user created in database
+- [ ] Stripe webhooks configured and tested
+- [ ] Email notifications working
+- [ ] Error tracking (Sentry) configured
+- [ ] Monitoring and alerting set up
+- [ ] DNS propagated
+- [ ] Performance tested (PageSpeed Insights)
+- [ ] Security audit passed (OWASP)
+
+## Scaling Considerations
+
+### When to Scale
+- Response time > 1s (p95)
+- Error rate > 0.1%
+- CPU usage > 80% consistently
+- Database connection pool exhaustion
+
+### Scaling Strategies
+- **Caching:** Use Redis for session/cart data
+- **Database:** Read replicas, connection pooling
+- **CDN:** CloudFlare for static assets
+- **Load balancing:** Multiple app instances behind load balancer
+- **Microservices:** Extract API routes to separate services

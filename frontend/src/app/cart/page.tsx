@@ -4,6 +4,7 @@ import { useCartStore } from "@/store/cartStore"
 import Link from "next/link"
 import Image from "next/image"
 import { ShoppingBag, Trash2, Minus, Plus, Tag, Lock, CreditCard, Landmark, Banknote, Star, Truck } from "lucide-react"
+import { Breadcrumb } from "@/components/ui/breadcrumb"
 
 export default function CartPage() {
     const { items, removeItem, updateQuantity, totalPrice } = useCartStore()
@@ -50,6 +51,7 @@ export default function CartPage() {
             </div>
 
             <main className="flex-1 max-w-[1320px] mx-auto w-full px-4 md:px-8 py-8 md:py-12 flex flex-col gap-8">
+                <Breadcrumb items={[{ label: "Cart" }]} />
                 <div>
                     <h1 className="text-3xl md:text-4xl font-serif font-medium text-soft-black dark:text-white mb-2">Your Cart</h1>
                     <p className="text-taupe">{items.length} {items.length === 1 ? "item" : "items"}</p>

@@ -75,3 +75,34 @@ A fully working system capable of:
 - Acting as an AI product assistant (chatbot).
 - A basic admin control panel for live stream and product control.
 - Designed with strong foundations to continue scaling post-competition.
+
+## 9. Functional Requirements
+
+### User Features
+- **Product Browsing:** Search, filter by category, view product details with images
+- **User Accounts:** Registration, email/password login, OAuth (Google), profile management
+- **Shopping Cart:** Add/remove items, update quantities (client-side via Zustand)
+- **Checkout:** Multi-step form, address entry, order summary
+- **Payments:** Stripe checkout integration with webhooks for order status updates
+- **Order History:** View past orders and current status (PENDING, PAID, SHIPPED, DELIVERED)
+- **Live Commerce:** Watch livestreams, see pinned products, add to cart during stream
+- **AI Chatbot:** Ask product questions on product detail pages
+- **Product Comparison:** Compare multiple products side-by-side
+
+### Admin Features
+- **Dashboard:** View orders, revenue, top products, recent activity
+- **Product Management:** CRUD products (name, price, description, images, category)
+- **Category Management:** CRUD categories
+- **Order Management:** View all orders, update status, track payments
+- **Livestream Management:** Create/edit livestreams, pin products, schedule broadcasts
+- **Analytics:** Basic stats and reporting
+
+## 10. Non-Functional Requirements
+
+- **Performance:** Page load < 3s, API response < 500ms
+- **Security:** HTTPS, secure auth via Supabase, PCI compliance via Stripe
+- **Scalability:** Support 1000+ concurrent users on livestream
+- **Availability:** 99.5% uptime target
+- **Browser Support:** Modern browsers (Chrome, Firefox, Safari, Edge)
+- **Mobile:** Fully responsive design (mobile-first)
+- **Accessibility:** WCAG 2.1 Level AA compliance

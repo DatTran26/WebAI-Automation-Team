@@ -3,6 +3,7 @@ import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CartDrawer } from "@/components/layout/cart-drawer";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -33,6 +34,7 @@ export default function RootLayout({
         className={`${geistMono.variable} bg-ivory dark:bg-background-dark text-soft-black dark:text-accent antialiased min-h-screen flex flex-col font-sans`}
       >
         <Header />
+        <CartDrawer />
         <main className="flex-1 flex flex-col">
           {children}
         </main>
