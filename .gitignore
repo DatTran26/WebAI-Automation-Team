@@ -102,3 +102,4 @@ external/
 worktrees/
 
 .opencode
+.workflow
