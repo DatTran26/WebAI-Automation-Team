@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { stripe } from "@/lib/stripe";
 import { getCurrentUser } from "@/lib/auth-helpers";
 import { errorResponse, jsonResponse } from "@/lib/api-helpers";
+import { findOrCreateDbUser } from "@/lib/user-sync";
 
 export async function POST(request: NextRequest) {
     try {
@@ -18,20 +19,8 @@ export async function POST(request: NextRequest) {
             return errorResponse("Cart is empty", 400);
         }
 
-        // Find or create DB user
-        let dbUser = await prisma.user.findUnique({
-            where: { supabaseId: user.id },
-        });
-
-        if (!dbUser) {
-            dbUser = await prisma.user.create({
-                data: {
-                    email: user.email!,
-                    name: user.user_metadata?.full_name || null,
-                    supabaseId: user.id,
-                },
-            });
-        }
+        // Find or create DB user via shared helper
+        const dbUser = await findOrCreateDbUser(user);
 
         // Fetch products and build line items
         const productIds = items.map((i) => i.productId);

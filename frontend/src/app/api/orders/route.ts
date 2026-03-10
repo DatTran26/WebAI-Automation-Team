@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { prisma } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth-helpers";
 import { jsonResponse, errorResponse } from "@/lib/api-helpers";
+import { findOrCreateDbUser } from "@/lib/user-sync";
 
 export async function GET() {
     try {
@@ -39,20 +40,8 @@ export async function POST(request: NextRequest) {
             return errorResponse("Cart is empty", 400);
         }
 
-        // Find or create DB user
-        let dbUser = await prisma.user.findUnique({
-            where: { supabaseId: user.id },
-        });
-
-        if (!dbUser) {
-            dbUser = await prisma.user.create({
-                data: {
-                    email: user.email!,
-                    name: user.user_metadata?.full_name || null,
-                    supabaseId: user.id,
-                },
-            });
-        }
+        // Find or create DB user via shared helper
+        const dbUser = await findOrCreateDbUser(user);
 
         // Fetch product prices from DB (never trust client prices)
         const productIds = items.map((i) => i.productId);
