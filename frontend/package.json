@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
-    "vercel-build": "cd ../backend && npm run db:push && cd ../frontend && npm run build",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
