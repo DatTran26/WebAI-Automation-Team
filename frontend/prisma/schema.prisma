@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  directUrl  = env("DIRECT_URL")
 }
 
 model User {
@@ -28,6 +29,7 @@ model Category {
   slug     String    @unique
   imageUrl String?   @map("image_url")
   createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   products Product[]
 
@@ -40,8 +42,12 @@ model Product {
   slug        String   @unique
   description String?
   price       Decimal  @db.Decimal(10, 2)
+  salePrice   Decimal? @map("sale_price") @db.Decimal(10, 2)
   imageUrl    String?  @map("image_url")
   inStock     Boolean  @default(true) @map("in_stock")
+  rating      Float?   @default(0)
+  origin      String?
+  tags        String[] @default([])
   categoryId  String   @map("category_id")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")

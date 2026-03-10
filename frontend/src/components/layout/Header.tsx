@@ -5,7 +5,8 @@ import { useCartStore } from "@/store/cartStore"
 import { useEffect, useState } from "react"
 import { createClient } from "@/utils/supabase/client"
 import type { User as SupabaseUser } from "@supabase/supabase-js"
-import { Search, ShoppingBag, LogOut, User, LayoutDashboard, Menu, X, Heart, Radio } from "lucide-react"
+import { Search, ShoppingBag, LogOut, User, LayoutDashboard, Menu, X, Heart, Radio, MessageCircle } from "lucide-react"
+import { useCartDrawerStore } from "@/store/cart-drawer-store"
 
 function isAdminUser(user: SupabaseUser | null): boolean {
     if (!user) return false
@@ -22,6 +23,7 @@ const NAV_LINKS = [
 
 export function Header() {
     const totalItems = useCartStore((state) => state.totalItems())
+    const toggleCartDrawer = useCartDrawerStore((s) => s.toggle)
     const [user, setUser] = useState<SupabaseUser | null>(null)
     const [mobileOpen, setMobileOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
@@ -105,14 +107,18 @@ export function Header() {
                         <Search className="w-[18px] h-[18px]" />
                     </Link>
 
-                    <Link href="/cart" className="flex items-center justify-center rounded-xl h-10 w-10 hover:bg-warm-white dark:hover:bg-white/10 text-soft-black/70 dark:text-accent/70 hover:text-brand transition-all relative" title="Cart">
+                    <Link href="/messages" className="flex items-center justify-center rounded-xl h-10 w-10 hover:bg-warm-white dark:hover:bg-white/10 text-soft-black/70 dark:text-accent/70 hover:text-brand transition-all" title="Messages">
+                        <MessageCircle className="w-[18px] h-[18px]" />
+                    </Link>
+
+                    <button onClick={toggleCartDrawer} className="flex items-center justify-center rounded-xl h-10 w-10 hover:bg-warm-white dark:hover:bg-white/10 text-soft-black/70 dark:text-accent/70 hover:text-brand transition-all relative" title="Cart">
                         <ShoppingBag className="w-[18px] h-[18px]" />
                         {totalItems > 0 && (
                             <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 flex items-center justify-center rounded-full bg-brand text-white text-[10px] font-bold ring-2 ring-ivory dark:ring-background-dark">
                                 {totalItems > 99 ? "99+" : totalItems}
                             </span>
                         )}
-                    </Link>
+                    </button>
 
                     {user ? (
                         <div className="hidden md:flex items-center gap-1">
@@ -157,6 +163,10 @@ export function Header() {
                     <Link href="/live" onClick={() => setMobileOpen(false)}
                         className="flex items-center gap-2 px-4 py-3 text-brand font-semibold rounded-xl text-sm uppercase tracking-wide">
                         <Radio className="w-4 h-4" /> Live Now
+                    </Link>
+                    <Link href="/messages" onClick={() => setMobileOpen(false)}
+                        className="block px-4 py-3 text-soft-black hover:text-brand hover:bg-warm-white rounded-xl text-sm font-semibold uppercase tracking-wide transition-colors">
+                        Messages
                     </Link>
                     <div className="border-t border-stone-beige/50 mt-3 pt-3">
                         {user ? (

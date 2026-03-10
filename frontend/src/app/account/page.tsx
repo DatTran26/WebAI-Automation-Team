@@ -7,6 +7,7 @@ import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import { LogOut, Mail } from "lucide-react"
 import { ProfileSidebar } from "@/components/layout/ProfileSidebar"
+import { Breadcrumb } from "@/components/ui/breadcrumb"
 
 export default function AccountPage() {
     return (
@@ -102,6 +103,7 @@ function AccountContent() {
                 <ProfileSidebar user={user} />
 
                 <section className="flex-1">
+                    <Breadcrumb items={[{ label: "Account" }]} />
                     <header className="mb-8 pb-5 border-b border-stone-beige/50">
                         <h2 className="font-serif text-3xl md:text-4xl text-soft-black dark:text-white mb-2">Profile</h2>
                         <p className="text-taupe">Manage your account settings.</p>

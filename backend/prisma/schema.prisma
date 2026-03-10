@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  directUrl  = env("DIRECT_URL")
 }
 
 model User {
@@ -28,6 +29,7 @@ model Category {
   slug     String    @unique
   imageUrl String?   @map("image_url")
   createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   products Product[]
 
@@ -40,14 +42,19 @@ model Product {
   slug        String   @unique
   description String?
   price       Decimal  @db.Decimal(10, 2)
+  salePrice   Decimal? @map("sale_price") @db.Decimal(10, 2)
   imageUrl    String?  @map("image_url")
   inStock     Boolean  @default(true) @map("in_stock")
+  rating      Float?   @default(0)
+  origin      String?
+  tags        String[] @default([])
   categoryId  String   @map("category_id")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
-  category   Category    @relation(fields: [categoryId], references: [id])
-  orderItems OrderItem[]
+  category     Category           @relation(fields: [categoryId], references: [id])
+  orderItems   OrderItem[]
+  liveStreams   LiveStreamProduct[]
 
   @@map("products")
 }
@@ -102,6 +109,38 @@ model OrderItem {
   @@map("order_items")
 }
 
+model LiveStream {
+  id           String     @id @default(cuid())
+  title        String
+  description  String?
+  thumbnailUrl String?    @map("thumbnail_url")
+  status       LiveStatus @default(SCHEDULED)
+  viewerCount  Int        @default(0) @map("viewer_count")
+  startedAt    DateTime?  @map("started_at")
+  endedAt      DateTime?  @map("ended_at")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  products LiveStreamProduct[]
+
+  @@map("live_streams")
+}
+
+model LiveStreamProduct {
+  id           String     @id @default(cuid())
+  liveStreamId String     @map("live_stream_id")
+  productId    String     @map("product_id")
+  isPinned     Boolean    @default(false) @map("is_pinned")
+  displayOrder Int        @default(0) @map("display_order")
+  addedAt      DateTime   @default(now()) @map("added_at")
+
+  liveStream LiveStream @relation(fields: [liveStreamId], references: [id], onDelete: Cascade)
+  product    Product    @relation(fields: [productId], references: [id])
+
+  @@unique([liveStreamId, productId])
+  @@map("live_stream_products")
+}
+
 enum OrderStatus {
   PENDING
   PAID
@@ -109,4 +148,10 @@ enum OrderStatus {
   SHIPPED
   DELIVERED
   CANCELLED
+}
+
+enum LiveStatus {
+  SCHEDULED
+  LIVE
+  ENDED
 }
