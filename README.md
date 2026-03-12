@@ -18,7 +18,7 @@ npm install
 
 # Set up environment variables
 cp backend/.env.example backend/.env
-cp frontend/.env.local.example frontend/.env.local
+cp frontend/.env.example frontend/.env
 
 # Configure your database
 cd backend
@@ -169,7 +169,7 @@ See [Project Roadmap](./docs/project-roadmap.md) for detailed progress tracking.
 
 ## License
 
-Private project - All rights reserved.
+Licensed under the [Apache License 2.0](./LICENSE).
 
 ## Support
 
