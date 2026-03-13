@@ -7,7 +7,10 @@ type Product = {
     name: string
     slug: string
     price: number
+    salePrice?: number | null
     imageUrl: string | null
+    rating?: number | null
+    origin?: string | null
     category?: { name: string; slug: string }
 }
 
