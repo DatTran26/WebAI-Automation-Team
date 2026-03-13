@@ -3,9 +3,10 @@
 import { useCartStore } from "@/store/cartStore"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Loader2, ChevronRight, ShieldCheck, ArrowRight } from "lucide-react"
+import { Loader2, ChevronRight, ShieldCheck, ArrowRight, Lock, CreditCard } from "lucide-react"
 import { CheckoutSummary } from "./checkout-summary"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
+import Link from "next/link"
 
 export default function CheckoutPage() {
     const { items, totalPrice, clearCart } = useCartStore()
@@ -16,11 +17,11 @@ export default function CheckoutPage() {
     if (items.length === 0) {
         return (
             <div className="flex-grow w-full max-w-[1320px] mx-auto px-4 md:px-8 py-16 text-center min-h-[60vh] flex flex-col justify-center items-center">
-                <h1 className="text-3xl font-serif font-medium mb-4 text-soft-black dark:text-white">
-                    Your cart is empty
+                <h1 className="text-4xl font-serif font-medium mb-4 text-soft-black dark:text-white leading-tight">
+                    Your cart is <span className="italic text-brand">empty.</span>
                 </h1>
-                <p className="text-taupe mb-8">Add some items before checking out.</p>
-                <button onClick={() => router.push('/collection')} className="bg-brand hover:bg-brand-hover text-white px-8 py-3.5 rounded-xl font-semibold text-sm uppercase tracking-wider transition-colors">
+                <p className="text-taupe mb-10 font-serif italic text-lg">Seeking something special? Let&apos;s revisit the collection.</p>
+                <button onClick={() => router.push('/collection')} className="bg-soft-black text-white px-10 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-brand transition-all shadow-xl">
                     Return to Shop
                 </button>
             </div>
@@ -68,69 +69,71 @@ export default function CheckoutPage() {
     const total = subtotal + tax + shipping
 
     return (
-        <main className="flex-grow w-full max-w-[1320px] mx-auto px-4 md:px-8 py-8 md:py-12">
-            <div className="mb-10">
-                <Breadcrumb items={[{ label: "Cart", href: "/cart" }, { label: "Checkout" }]} />
-                <h1 className="text-3xl md:text-4xl font-serif font-medium text-soft-black dark:text-white mb-2">Checkout</h1>
-                <p className="text-taupe">Complete your purchase of authentic Vietnamese specialties.</p>
+        <main className="flex-grow w-full max-w-[1320px] mx-auto px-4 md:px-8 py-10 md:py-16">
+            <div className="mb-12 border-b border-stone-beige/30 pb-10">
+                <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-8 text-taupe/60">
+                    <Link href="/cart" className="hover:text-brand transition-colors">Cart</Link>
+                    <ChevronRight className="w-3 h-3 text-stone-beige" />
+                    <span className="text-brand">Checkout</span>
+                    <ChevronRight className="w-3 h-3 text-stone-beige" />
+                    <span className="opacity-40">Confirmation</span>
+                </nav>
+                <h1 className="text-5xl md:text-6xl font-serif font-medium text-soft-black dark:text-white mb-4 tracking-tight">Checkout</h1>
+                <p className="text-xl text-taupe font-light italic">Complete your purchase of authentic Vietnamese specialties.</p>
             </div>
 
-            <div className="flex flex-col lg:flex-row gap-10 xl:gap-16">
-                <div className="flex-1 flex flex-col gap-10">
+            <div className="flex flex-col lg:flex-row gap-12 xl:gap-24">
+                <div className="flex-1 flex flex-col gap-16">
                     {/* Contact */}
                     <section>
-                        <div className="flex items-center justify-between mb-5 pb-3 border-b border-stone-beige/50">
-                            <h3 className="text-xl font-serif font-medium text-soft-black dark:text-white">Contact Information</h3>
-                            <a className="text-sm text-brand font-medium hover:underline transition-colors" href="/account">Log in</a>
+                        <div className="flex items-center justify-between mb-8 pb-3 border-b border-brand/10">
+                            <h3 className="text-2xl font-serif font-medium text-soft-black dark:text-white italic">Contact Information</h3>
+                            <Link className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand hover:text-brand-hover transition-colors border-b-2 border-brand/10 hover:border-brand pb-1" href="/login?redirect=/checkout">Sign In</Link>
                         </div>
-                        <div className="space-y-4">
+                        <div className="space-y-6">
                             <label className="block">
-                                <span className="text-xs font-medium mb-2 block text-taupe uppercase tracking-wider">Email Address</span>
-                                <input className="w-full h-12 px-4 rounded-xl border border-stone-beige/50 bg-warm-white dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent" placeholder="you@example.com" type="email" />
+                                <span className="text-[10px] font-bold mb-3 block text-soft-black dark:text-white uppercase tracking-[0.2em]">Email Address</span>
+                                <input className="w-full h-14 px-6 rounded-2xl border border-stone-beige/50 bg-white/80 dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent placeholder:text-taupe/40 font-medium" placeholder="you@example.com" type="email" />
                             </label>
-                            <label className="flex items-center gap-3 cursor-pointer">
-                                <input className="w-4 h-4 text-brand rounded border-stone-beige focus:ring-brand" type="checkbox" />
-                                <span className="text-sm text-taupe">Email me with news and offers</span>
+                            <label className="flex items-center gap-4 cursor-pointer group">
+                                <input className="w-5 h-5 text-brand rounded-lg border-stone-beige focus:ring-brand cursor-pointer" type="checkbox" />
+                                <span className="text-sm font-light text-taupe group-hover:text-brand transition-colors">Notify me of new seasonal harvests and artisanal stories.</span>
                             </label>
                         </div>
                     </section>
 
                     {/* Shipping */}
                     <section>
-                        <h3 className="text-xl font-serif font-medium text-soft-black dark:text-white mb-5 pb-3 border-b border-stone-beige/50">Shipping Address</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <h3 className="text-2xl font-serif font-medium text-soft-black dark:text-white italic mb-8 pb-3 border-b border-brand/10">Shipping Details</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <label className="block">
-                                <span className="text-xs font-medium mb-2 block text-taupe uppercase tracking-wider">First Name</span>
-                                <input className="w-full h-12 px-4 rounded-xl border border-stone-beige/50 bg-warm-white dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent" placeholder="Enter first name" type="text" />
+                                <span className="text-[10px] font-bold mb-3 block text-soft-black dark:text-white uppercase tracking-[0.2em]">First Name</span>
+                                <input className="w-full h-14 px-6 rounded-2xl border border-stone-beige/50 bg-white/80 dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent font-medium" placeholder="Enter first name" type="text" />
                             </label>
                             <label className="block">
-                                <span className="text-xs font-medium mb-2 block text-taupe uppercase tracking-wider">Last Name</span>
-                                <input className="w-full h-12 px-4 rounded-xl border border-stone-beige/50 bg-warm-white dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent" placeholder="Enter last name" type="text" />
+                                <span className="text-[10px] font-bold mb-3 block text-soft-black dark:text-white uppercase tracking-[0.2em]">Last Name</span>
+                                <input className="w-full h-14 px-6 rounded-2xl border border-stone-beige/50 bg-white/80 dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent font-medium" placeholder="Enter last name" type="text" />
                             </label>
                             <label className="block md:col-span-2">
-                                <span className="text-xs font-medium mb-2 block text-taupe uppercase tracking-wider">Address</span>
-                                <input className="w-full h-12 px-4 rounded-xl border border-stone-beige/50 bg-warm-white dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent" placeholder="Street address" type="text" />
-                            </label>
-                            <label className="block md:col-span-2">
-                                <span className="text-xs font-medium mb-2 block text-taupe uppercase tracking-wider">Apartment, suite, etc. (optional)</span>
-                                <input className="w-full h-12 px-4 rounded-xl border border-stone-beige/50 bg-warm-white dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent" type="text" />
+                                <span className="text-[10px] font-bold mb-3 block text-soft-black dark:text-white uppercase tracking-[0.2em]">Address</span>
+                                <input className="w-full h-14 px-6 rounded-2xl border border-stone-beige/50 bg-white/80 dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent font-medium" placeholder="Street address" type="text" />
                             </label>
                             <label className="block">
-                                <span className="text-xs font-medium mb-2 block text-taupe uppercase tracking-wider">City</span>
-                                <input className="w-full h-12 px-4 rounded-xl border border-stone-beige/50 bg-warm-white dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent" placeholder="City" type="text" />
+                                <span className="text-[10px] font-bold mb-3 block text-soft-black dark:text-white uppercase tracking-[0.2em]">City</span>
+                                <input className="w-full h-14 px-6 rounded-2xl border border-stone-beige/50 bg-white/80 dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent font-medium" placeholder="City" type="text" />
                             </label>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-2 gap-6">
                                 <label className="block">
-                                    <span className="text-xs font-medium mb-2 block text-taupe uppercase tracking-wider">State</span>
-                                    <select className="w-full h-12 px-4 rounded-xl border border-stone-beige/50 bg-warm-white dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent">
+                                    <span className="text-[10px] font-bold mb-3 block text-soft-black dark:text-white uppercase tracking-[0.2em]">State</span>
+                                    <select className="w-full h-14 px-6 rounded-2xl border border-stone-beige/50 bg-white/80 dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent font-medium appearance-none">
                                         <option>CA</option>
                                         <option>TX</option>
                                         <option>NY</option>
                                     </select>
                                 </label>
                                 <label className="block">
-                                    <span className="text-xs font-medium mb-2 block text-taupe uppercase tracking-wider">Zip Code</span>
-                                    <input className="w-full h-12 px-4 rounded-xl border border-stone-beige/50 bg-warm-white dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent" placeholder="12345" type="text" />
+                                    <span className="text-[10px] font-bold mb-3 block text-soft-black dark:text-white uppercase tracking-[0.2em]">Zip Code</span>
+                                    <input className="w-full h-14 px-6 rounded-2xl border border-stone-beige/50 bg-white/80 dark:bg-surface-dark focus:border-brand focus:ring-1 focus:ring-brand transition-all text-soft-black dark:text-accent font-medium" placeholder="12345" type="text" />
                                 </label>
                             </div>
                         </div>
@@ -138,36 +141,56 @@ export default function CheckoutPage() {
 
                     {/* Delivery */}
                     <section>
-                        <h3 className="text-xl font-serif font-medium text-soft-black dark:text-white mb-5 pb-3 border-b border-stone-beige/50">Delivery Method</h3>
-                        <label className="flex items-center justify-between p-5 border-2 border-brand bg-brand/5 rounded-2xl cursor-pointer">
-                            <div className="flex items-center gap-4">
-                                <input defaultChecked className="w-4 h-4 text-brand border-stone-beige focus:ring-brand" name="delivery" type="radio" />
-                                <div>
-                                    <p className="font-medium text-soft-black dark:text-white">Standard Shipping</p>
-                                    <p className="text-sm text-taupe mt-0.5">4-5 business days</p>
+                        <h3 className="text-2xl font-serif font-medium text-soft-black dark:text-white italic mb-8 pb-3 border-b border-brand/10">Delivery Method</h3>
+                        <div className="space-y-4">
+                            <label className="flex items-center justify-between p-6 border-2 border-brand bg-brand/5 rounded-3xl cursor-pointer shadow-lg shadow-brand/5 transition-all">
+                                <div className="flex items-center gap-5">
+                                    <input defaultChecked className="w-5 h-5 text-brand border-stone-beige focus:ring-brand cursor-pointer" name="delivery" type="radio" />
+                                    <div>
+                                        <p className="font-serif font-bold text-soft-black dark:text-white text-lg">Standard Delivery</p>
+                                        <p className="text-sm text-taupe mt-0.5">4-5 business days via premium logistics.</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <span className="font-serif font-medium text-soft-black dark:text-white">$5.99</span>
-                        </label>
+                                <span className="font-serif font-bold text-soft-black dark:text-white text-xl">$5.99</span>
+                            </label>
+                            <label className="flex items-center justify-between p-6 border border-stone-beige/30 bg-white/50 dark:bg-surface-dark rounded-3xl cursor-pointer hover:border-brand/50 transition-all group">
+                                <div className="flex items-center gap-5">
+                                    <input className="w-5 h-5 text-brand border-stone-beige focus:ring-brand cursor-pointer" name="delivery" type="radio" />
+                                    <div>
+                                        <p className="font-serif font-bold text-soft-black dark:text-white text-lg group-hover:text-brand transition-colors">Express Curation</p>
+                                        <p className="text-sm text-taupe mt-0.5">1-2 business days for peak freshness.</p>
+                                    </div>
+                                </div>
+                                <span className="font-serif font-bold text-soft-black dark:text-white text-xl">$15.00</span>
+                            </label>
+                        </div>
                     </section>
 
                     {/* Payment */}
                     <section>
-                        <h3 className="text-xl font-serif font-medium text-soft-black dark:text-white mb-5 pb-3 border-b border-stone-beige/50">Payment</h3>
+                        <h3 className="text-2xl font-serif font-medium text-soft-black dark:text-white italic mb-8 pb-3 border-b border-brand/10">Payment</h3>
                         {error && (
-                            <div className="mb-5 p-4 rounded-xl bg-terracotta/10 border border-terracotta/20 text-terracotta text-sm">
+                            <div className="mb-8 p-5 rounded-2xl bg-terracotta/10 border border-terracotta/20 text-terracotta text-sm animate-fade-in font-medium">
                                 {error}
                             </div>
                         )}
-                        <div className="bg-warm-white dark:bg-surface-dark rounded-2xl p-6 border border-stone-beige/30">
-                            <p className="text-taupe text-sm mb-6 text-center">
-                                You will be redirected to Stripe secure checkout.
+                        <div className="bg-white dark:bg-surface-dark rounded-[32px] p-10 border border-stone-beige/30 shadow-2xl shadow-brand/5">
+                            <div className="flex items-center justify-between mb-8">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-taupe">Secure Credit Card</span>
+                                <div className="flex gap-3 opacity-60">
+                                    <CreditCard className="w-5 h-5" />
+                                    <div className="h-6 px-2 bg-stone-beige/20 border border-stone-beige/30 rounded flex items-center justify-center text-[8px] font-bold text-taupe tracking-widest">VISA</div>
+                                    <div className="h-6 px-2 bg-stone-beige/20 border border-stone-beige/30 rounded flex items-center justify-center text-[8px] font-bold text-taupe tracking-widest">MC</div>
+                                </div>
+                            </div>
+                            <p className="text-taupe text-lg font-light italic mb-10 text-center leading-relaxed">
+                                You will be redirected to our secure Stripe gateway to finalize your journey.
                             </p>
-                            <div className="bg-dust-rose/50 rounded-xl p-4 flex items-center gap-4 border-l-4 border-brand">
-                                <ShieldCheck className="w-7 h-7 text-brand" strokeWidth={1.5} />
+                            <div className="bg-moss/5 rounded-2xl p-6 flex items-center gap-5 border-l-4 border-moss">
+                                <ShieldCheck className="w-8 h-8 text-moss" strokeWidth={1.5} />
                                 <div>
-                                    <h4 className="font-serif font-medium text-soft-black dark:text-white text-sm">30-Day Money Back Guarantee</h4>
-                                    <p className="text-xs text-taupe mt-0.5">Shop with confidence.</p>
+                                    <h4 className="font-serif font-bold text-soft-black dark:text-white text-lg">Heritage Authenticity Guarantee</h4>
+                                    <p className="text-xs text-taupe mt-1 font-medium uppercase tracking-wider">Shop with absolute confidence.</p>
                                 </div>
                             </div>
                         </div>
@@ -177,25 +200,29 @@ export default function CheckoutPage() {
                     <button
                         onClick={handlePay}
                         disabled={loading}
-                        className="md:hidden w-full h-[52px] bg-brand hover:bg-brand-hover disabled:bg-brand/50 disabled:cursor-not-allowed text-white font-semibold tracking-wider uppercase rounded-xl transition-colors flex items-center justify-center gap-2 text-sm shadow-lg"
+                        className="md:hidden w-full h-[64px] bg-brand hover:opacity-90 disabled:bg-brand/50 disabled:cursor-not-allowed text-white font-bold tracking-[0.2em] uppercase rounded-2xl transition-all flex items-center justify-center gap-3 text-sm shadow-2xl shadow-brand/30 active:scale-[0.98]"
                     >
                         {loading ? (
-                            <><Loader2 className="w-5 h-5 animate-spin" /> Processing...</>
+                            <><Loader2 className="w-5 h-5 animate-spin" /> Finalizing...</>
                         ) : (
                             <>Complete Purchase <ArrowRight className="w-4 h-4" /></>
                         )}
                     </button>
                 </div>
 
-                <CheckoutSummary
-                    items={items}
-                    subtotal={subtotal}
-                    shipping={shipping}
-                    tax={tax}
-                    total={total}
-                    loading={loading}
-                    handlePay={handlePay}
-                />
+                <div className="w-full lg:w-[420px] shrink-0">
+                    <div className="sticky top-32">
+                        <CheckoutSummary
+                            items={items}
+                            subtotal={subtotal}
+                            shipping={shipping}
+                            tax={tax}
+                            total={total}
+                            loading={loading}
+                            handlePay={handlePay}
+                        />
+                    </div>
+                </div>
             </div>
         </main>
     )

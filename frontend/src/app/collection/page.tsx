@@ -3,47 +3,85 @@
 import { ChevronDown, Search, SlidersHorizontal, X, Heart, ShoppingBag, ArrowLeft, ArrowRight, Filter } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { useState, useEffect, useCallback } from "react"
-import { useCartStore } from "@/store/cartStore"
+import { useState, useEffect, useCallback, Suspense } from "react"
+import { ProductCard } from "@/components/product-card"
+import { CollectionFilterSidebar } from "./components/collection-filter-sidebar"
+import { useSearchParams } from "next/navigation"
 
 type Category = { id: string; name: string; slug: string; _count?: { products: number } }
 type Product = {
-    id: string; name: string; slug: string; price: string | number
-    imageUrl: string | null; description: string | null; inStock: boolean
+    id: string; name: string; slug: string; price: number
+    salePrice?: number | null; imageUrl: string | null; description: string | null; inStock: boolean
+    rating?: number | null; origin?: string | null
     category?: { name: string; slug: string }
 }
 
-export default function CollectionPage() {
+function CollectionContent() {
+    const searchParams = useSearchParams()
     const [products, setProducts] = useState<Product[]>([])
     const [categories, setCategories] = useState<Category[]>([])
     const [loading, setLoading] = useState(true)
-    const [search, setSearch] = useState("")
-    const [selectedCategory, setSelectedCategory] = useState("")
+    const [search, setSearch] = useState(searchParams.get("search") || "")
+    const [selectedCategory, setSelectedCategory] = useState(searchParams.get("category") || "")
+    const [selectedTag, setSelectedTag] = useState(searchParams.get("tag") || "")
+    const [selectedOrigin, setSelectedOrigin] = useState(searchParams.get("origin") || "")
+    const [selectedFlavor, setSelectedFlavor] = useState(searchParams.get("flavor") || "")
+    const [selectedRegion, setSelectedRegion] = useState(searchParams.get("region") || "")
+    const [selectedRating, setSelectedRating] = useState(searchParams.get("rating") || "")
+    const [selectedStock, setSelectedStock] = useState(searchParams.get("stock") || "")
+    const [selectedDiscount, setSelectedDiscount] = useState(searchParams.get("discount") || "")
     const [page, setPage] = useState(1)
     const [total, setTotal] = useState(0)
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
     const limit = 12
-    const addItem = useCartStore((s) => s.addItem)
 
     const fetchProducts = useCallback(async () => {
         setLoading(true)
         const params = new URLSearchParams({ page: String(page), limit: String(limit) })
         if (search) params.set("search", search)
         if (selectedCategory) params.set("category", selectedCategory)
+        if (selectedTag) params.set("tag", selectedTag)
+        if (selectedOrigin) params.set("origin", selectedOrigin)
+        if (selectedFlavor) params.set("flavor", selectedFlavor)
+        if (selectedRegion) params.set("region", selectedRegion)
+        if (selectedRating) params.set("rating", selectedRating)
+        if (selectedStock) params.set("stock", selectedStock)
+        if (selectedDiscount) params.set("discount", selectedDiscount)
+        
         try {
             const res = await fetch(`/api/products?${params}`)
             const data = await res.json()
-            setProducts(data.products || [])
+            const serializedProducts = (data.products || []).map((p: any) => ({
+                ...p,
+                price: Number(p.price),
+                salePrice: p.salePrice ? Number(p.salePrice) : null,
+                rating: p.rating ? Number(p.rating) : null,
+            }))
+            setProducts(serializedProducts)
             setTotal(data.pagination?.total ?? (data.products || []).length)
         } catch { setProducts([]); setTotal(0) }
         setLoading(false)
-    }, [page, search, selectedCategory])
+    }, [page, search, selectedCategory, selectedTag, selectedOrigin, selectedFlavor, selectedRegion, selectedRating, selectedStock, selectedDiscount])
 
     useEffect(() => {
         fetch("/api/categories").then(r => r.json()).then(setCategories).catch(() => {})
     }, [])
 
     useEffect(() => { fetchProducts() }, [fetchProducts])
+
+    // Sync state with URL params when they change
+    useEffect(() => {
+        setSearch(searchParams.get("search") || "")
+        setSelectedCategory(searchParams.get("category") || "")
+        setSelectedTag(searchParams.get("tag") || "")
+        setSelectedOrigin(searchParams.get("origin") || "")
+        setSelectedFlavor(searchParams.get("flavor") || "")
+        setSelectedRegion(searchParams.get("region") || "")
+        setSelectedRating(searchParams.get("rating") || "")
+        setSelectedStock(searchParams.get("stock") || "")
+        setSelectedDiscount(searchParams.get("discount") || "")
+        setPage(1)
+    }, [searchParams])
 
     const totalPages = Math.max(1, Math.ceil(total / limit))
 
@@ -53,81 +91,73 @@ export default function CollectionPage() {
         fetchProducts()
     }
 
-    const handleAddToCart = (product: Product) => {
-        addItem({ id: product.id, name: product.name, price: Number(product.price), quantity: 1, image: product.imageUrl || undefined })
+    const clearFilters = () => {
+        setSearch("")
+        setSelectedCategory("")
+        setSelectedTag("")
+        setSelectedOrigin("")
+        setSelectedFlavor("")
+        setSelectedRegion("")
+        setSelectedRating("")
+        setSelectedStock("")
+        setSelectedDiscount("")
+        setPage(1)
     }
-
-    const FilterSidebar = () => (
-        <div className="space-y-6">
-            <form onSubmit={handleSearch} className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-taupe" />
-                <input
-                    className="w-full bg-white dark:bg-surface-dark border border-stone-beige dark:border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-soft-black placeholder:text-taupe focus:ring-2 focus:ring-brand/30 focus:border-brand transition-all"
-                    placeholder="Search products..."
-                    type="text"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-            </form>
-
-            <div>
-                <h3 className="text-sm font-semibold text-soft-black dark:text-white uppercase tracking-wider mb-4">Categories</h3>
-                <div className="space-y-1">
-                    <button
-                        onClick={() => { setSelectedCategory(""); setPage(1) }}
-                        className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${selectedCategory === ""
-                            ? "bg-brand/10 text-brand border border-brand/20"
-                            : "text-taupe hover:text-soft-black hover:bg-warm-white"
-                            }`}
-                    >
-                        All Products
-                        <span className="float-right text-xs opacity-60">{total}</span>
-                    </button>
-                    {categories.map((cat) => (
-                        <button
-                            key={cat.id}
-                            onClick={() => { setSelectedCategory(cat.id); setPage(1) }}
-                            className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${selectedCategory === cat.id
-                                ? "bg-brand/10 text-brand border border-brand/20"
-                                : "text-taupe hover:text-soft-black hover:bg-warm-white"
-                                }`}
-                        >
-                            {cat.name}
-                            {cat._count && <span className="float-right text-xs opacity-60">{cat._count.products}</span>}
-                        </button>
-                    ))}
-                </div>
-            </div>
-        </div>
-    )
 
     return (
         <main className="flex-grow w-full max-w-[1320px] mx-auto px-4 md:px-8 py-8 md:py-12">
             {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-[11px] text-taupe uppercase tracking-wider mb-6">
+            <nav className="flex items-center gap-2 text-[12px] font-sans text-taupe uppercase tracking-wider mb-8 font-medium">
                 <Link href="/" className="hover:text-brand transition-colors">Home</Link>
                 <span className="text-stone-beige">/</span>
-                <span className="text-brand font-semibold">Shop</span>
+                <span className="text-brand font-bold">Shop Collection</span>
             </nav>
 
             {/* Page header */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8 pb-6 border-b border-stone-beige/50">
-                <div>
-                    <h1 className="text-3xl md:text-4xl font-serif font-medium text-soft-black dark:text-white mb-2">
-                        Shop the <span className="italic text-brand">Collection</span>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 pb-10 border-b border-brand/10">
+                <div className="max-w-3xl">
+                    <h1 className="text-5xl md:text-7xl font-medium text-soft-black dark:text-white mb-6 font-serif tracking-tight">
+                        Shop the <span className="italic text-brand font-light">Collection</span>
                     </h1>
-                    <p className="text-sm text-taupe font-light max-w-lg">
-                        Premium Vietnamese specialties, carefully selected from artisanal producers.
+                    <p className="text-[17px] text-taupe font-sans leading-relaxed">
+                        Premium Vietnamese specialties, carefully selected from artisanal producers. 
+                        From the highlands of Da Lat to the rivers of the Mekong Delta.
                     </p>
                 </div>
-                <span className="text-sm text-taupe">{total} products</span>
+                <div className="flex flex-col items-end gap-2">
+                    <span className="text-sm text-taupe font-medium">{total} Products</span>
+                    <div className="hidden md:flex items-center gap-3">
+                        <span className="text-[14px] text-taupe font-sans">Sort by:</span>
+                        <button className="flex items-center gap-1 text-[14px] font-bold text-brand border-b border-brand/20 pb-0.5 hover:border-brand transition-all">
+                            Most Popular
+                            <ChevronDown className="w-4 h-4" />
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 {/* Desktop Sidebar */}
                 <aside className="hidden lg:block lg:col-span-3">
                     <div className="sticky top-28">
-                        <FilterSidebar />
+                        <CollectionFilterSidebar
+                            search={search}
+                            onSearchChange={setSearch}
+                            onSearchSubmit={handleSearch}
+                            selectedCategory={selectedCategory}
+                            onCategoryChange={(id) => { setSelectedCategory(id); setPage(1) }}
+                            selectedFlavor={selectedFlavor}
+                            onFlavorChange={(v) => { setSelectedFlavor(v); setPage(1) }}
+                            selectedRegion={selectedRegion}
+                            onRegionChange={(v) => { setSelectedRegion(v); setPage(1) }}
+                            selectedRating={selectedRating}
+                            onRatingChange={(v) => { setSelectedRating(v); setPage(1) }}
+                            selectedStock={selectedStock}
+                            onStockChange={(v) => { setSelectedStock(v); setPage(1) }}
+                            selectedDiscount={selectedDiscount}
+                            onDiscountChange={(v) => { setSelectedDiscount(v); setPage(1) }}
+                            categories={categories}
+                        />
                     </div>
                 </aside>
 
@@ -151,31 +181,95 @@ export default function CollectionPage() {
                                 <h3 className="font-semibold text-soft-black">Filters</h3>
                                 <button onClick={() => setMobileFiltersOpen(false)}><X className="w-5 h-5 text-taupe" /></button>
                             </div>
-                            <FilterSidebar />
+                            <CollectionFilterSidebar
+                                search={search}
+                                onSearchChange={setSearch}
+                                onSearchSubmit={handleSearch}
+                                selectedCategory={selectedCategory}
+                                onCategoryChange={(id) => { setSelectedCategory(id); setPage(1) }}
+                                selectedFlavor={selectedFlavor}
+                                onFlavorChange={(v) => { setSelectedFlavor(v); setPage(1) }}
+                                selectedRegion={selectedRegion}
+                                onRegionChange={(v) => { setSelectedRegion(v); setPage(1) }}
+                                selectedRating={selectedRating}
+                                onRatingChange={(v) => { setSelectedRating(v); setPage(1) }}
+                                selectedStock={selectedStock}
+                                onStockChange={(v) => { setSelectedStock(v); setPage(1) }}
+                                selectedDiscount={selectedDiscount}
+                                onDiscountChange={(v) => { setSelectedDiscount(v); setPage(1) }}
+                                categories={categories}
+                            />
                         </div>
                     )}
 
                     {/* Active filters */}
-                    {(search || selectedCategory) && (
-                        <div className="flex flex-wrap items-center gap-2 mb-6">
-                            {search && (
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand/10 text-brand border border-brand/20 rounded-xl text-xs font-medium">
-                                    &quot;{search}&quot;
-                                    <button onClick={() => { setSearch(""); setPage(1) }}><X className="w-3 h-3" /></button>
-                                </span>
-                            )}
-                            {selectedCategory && (
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand/10 text-brand border border-brand/20 rounded-xl text-xs font-medium">
-                                    {categories.find(c => c.id === selectedCategory)?.name || "Category"}
-                                    <button onClick={() => { setSelectedCategory(""); setPage(1) }}><X className="w-3 h-3" /></button>
-                                </span>
-                            )}
-                            <button onClick={() => { setSearch(""); setSelectedCategory(""); setPage(1) }}
-                                className="text-xs font-medium text-taupe hover:text-brand underline underline-offset-4 ml-1 transition-colors">
-                                Clear All
-                            </button>
+                    {(search || selectedCategory || selectedTag || selectedOrigin || selectedFlavor || selectedRegion || selectedRating || selectedStock || selectedDiscount) && (
+                        <div className="flex flex-col gap-4 mb-8 pb-4 border-b border-brand/10">
+                            <div className="flex flex-wrap items-center gap-2">
+                                <span className="text-[13px] text-taupe mr-2 font-medium">Applied Filters:</span>
+                                {search && (
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand/10 text-brand border border-brand/20 rounded-full text-[12px] font-medium">
+                                        &quot;{search}&quot;
+                                        <button onClick={() => { setSearch(""); setPage(1) }} className="flex items-center justify-center hover:text-brand-hover">
+                                            <X className="w-3.5 h-3.5" />
+                                        </button>
+                                    </div>
+                                )}
+                                {selectedCategory && (
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand/10 text-brand border border-brand/20 rounded-full text-[12px] font-medium">
+                                        {categories.find(c => c.id === selectedCategory)?.name || "Category"}
+                                        <button onClick={() => { setSelectedCategory(""); setPage(1) }} className="flex items-center justify-center hover:text-brand-hover">
+                                            <X className="w-3.5 h-3.5" />
+                                        </button>
+                                    </div>
+                                )}
+                                {selectedFlavor && (
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand/10 text-brand border border-brand/20 rounded-full text-[12px] font-medium">
+                                        Flavor: {selectedFlavor}
+                                        <button onClick={() => { setSelectedFlavor(""); setPage(1) }} className="flex items-center justify-center hover:text-brand-hover">
+                                            <X className="w-3.5 h-3.5" />
+                                        </button>
+                                    </div>
+                                )}
+                                {selectedRegion && (
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand/10 text-brand border border-brand/20 rounded-full text-[12px] font-medium">
+                                        Region: {selectedRegion}
+                                        <button onClick={() => { setSelectedRegion(""); setPage(1) }} className="flex items-center justify-center hover:text-brand-hover">
+                                            <X className="w-3.5 h-3.5" />
+                                        </button>
+                                    </div>
+                                )}
+                                {selectedRating && (
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand/10 text-brand border border-brand/20 rounded-full text-[12px] font-medium">
+                                        Rating: {selectedRating}+ Stars
+                                        <button onClick={() => { setSelectedRating(""); setPage(1) }} className="flex items-center justify-center hover:text-brand-hover">
+                                            <X className="w-3.5 h-3.5" />
+                                        </button>
+                                    </div>
+                                )}
+                                {selectedStock && (
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand/10 text-brand border border-brand/20 rounded-full text-[12px] font-medium">
+                                        Status: {selectedStock}
+                                        <button onClick={() => { setSelectedStock(""); setPage(1) }} className="flex items-center justify-center hover:text-brand-hover">
+                                            <X className="w-3.5 h-3.5" />
+                                        </button>
+                                    </div>
+                                )}
+                                {selectedDiscount && (
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand/10 text-brand border border-brand/20 rounded-full text-[12px] font-medium">
+                                        Discount: {selectedDiscount}%+ Off
+                                        <button onClick={() => { setSelectedDiscount(""); setPage(1) }} className="flex items-center justify-center hover:text-brand-hover">
+                                            <X className="w-3.5 h-3.5" />
+                                        </button>
+                                    </div>
+                                )}
+                                <button onClick={clearFilters}
+                                    className="text-[12px] font-medium text-taupe hover:text-brand underline underline-offset-4 ml-2 transition-colors">
+                                    Clear All
+                                </button>
+                            </div>
                         </div>
-                    )}
+                    ) }
 
                     {/* Product grid */}
                     {loading ? (
@@ -187,54 +281,15 @@ export default function CollectionPage() {
                             <Search className="w-10 h-10 text-stone-beige mb-4" />
                             <h3 className="text-xl font-serif text-soft-black mb-2">No products found</h3>
                             <p className="text-taupe text-sm mb-6">Try adjusting your search or filters.</p>
-                            <button onClick={() => { setSearch(""); setSelectedCategory(""); setPage(1) }}
+                            <button onClick={clearFilters}
                                 className="bg-brand hover:bg-brand-hover text-white px-6 py-3 rounded-xl text-sm font-semibold tracking-wide transition-colors">
                                 Clear Filters
                             </button>
                         </div>
                     ) : (
-                        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-6 md:gap-x-8">
                             {products.map((product) => (
-                                <div key={product.id} className="group flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-stone-beige/30 dark:border-white/10 hover:shadow-md transition-all">
-                                    <Link href={`/product/${product.slug}`}>
-                                        <div className="relative aspect-square overflow-hidden bg-warm-white">
-                                            <button
-                                                className="absolute top-3 right-3 z-10 w-8 h-8 rounded-xl bg-white/90 flex items-center justify-center text-taupe hover:text-brand transition-colors opacity-0 group-hover:opacity-100"
-                                                onClick={(e) => { e.preventDefault(); e.stopPropagation() }}
-                                            >
-                                                <Heart className="w-4 h-4" />
-                                            </button>
-                                            {product.imageUrl ? (
-                                                <Image alt={product.name} fill sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                                                    className="object-cover group-hover:scale-105 transition-transform duration-700" src={product.imageUrl} />
-                                            ) : (
-                                                <div className="w-full h-full flex items-center justify-center text-taupe text-sm">No Image</div>
-                                            )}
-                                        </div>
-                                    </Link>
-                                    <div className="p-4 flex flex-col flex-1">
-                                        <div className="flex-1">
-                                            {product.category && (
-                                                <p className="text-[10px] text-taupe uppercase tracking-wider mb-1">{product.category.name}</p>
-                                            )}
-                                            <Link href={`/product/${product.slug}`}>
-                                                <h3 className="font-serif font-semibold text-base text-soft-black dark:text-white group-hover:text-brand transition-colors leading-snug mb-1 line-clamp-2">{product.name}</h3>
-                                            </Link>
-                                            {product.description && (
-                                                <p className="text-xs text-taupe line-clamp-2 leading-relaxed mb-2">{product.description}</p>
-                                            )}
-                                        </div>
-                                        <div className="flex items-center justify-between pt-3 border-t border-stone-beige/30 mt-2">
-                                            <span className="font-semibold text-brand text-sm">${Number(product.price).toFixed(2)}</span>
-                                            <button
-                                                onClick={() => handleAddToCart(product)}
-                                                className="w-9 h-9 rounded-xl bg-brand/10 text-brand flex items-center justify-center hover:bg-brand hover:text-white transition-colors"
-                                            >
-                                                <ShoppingBag className="w-4 h-4" />
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <ProductCard key={product.id} product={product} />
                             ))}
                         </div>
                     )}
@@ -278,5 +333,13 @@ export default function CollectionPage() {
                 </div>
             </div>
         </main>
+    )
+}
+
+export default function CollectionPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center italic text-taupe font-serif">Loading Collection...</div>}>
+            <CollectionContent />
+        </Suspense>
     )
 }

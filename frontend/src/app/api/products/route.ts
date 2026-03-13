@@ -7,13 +7,60 @@ export async function GET(request: NextRequest) {
         const { searchParams } = new URL(request.url);
         const category = searchParams.get("category");
         const search = searchParams.get("search");
+        const tag = searchParams.get("tag");
+        const origin = searchParams.get("origin");
+        const flavor = searchParams.get("flavor");
+        const region = searchParams.get("region");
+        const rating = searchParams.get("rating");
+        const stock = searchParams.get("stock");
+        const discount = searchParams.get("discount");
+        
         const page = Math.max(1, Number(searchParams.get("page") || "1"));
         const limit = Math.min(50, Math.max(1, Number(searchParams.get("limit") || "12")));
         const skip = (page - 1) * limit;
 
-        const where: Record<string, unknown> = {};
+        const where: any = {};
         if (category) where.categoryId = category;
         if (search) where.name = { contains: search, mode: "insensitive" };
+        
+        // Tags can be used for multiple purposes: actual tags, flavors, regionals
+        const tagsToFilter = [];
+        if (tag) tagsToFilter.push(tag);
+        if (flavor) tagsToFilter.push(flavor);
+        if (region) tagsToFilter.push(region);
+        
+        if (tagsToFilter.length > 0) {
+            where.tags = { hasEvery: tagsToFilter };
+        }
+
+        if (origin) where.origin = { equals: origin, mode: "insensitive" };
+        
+        if (rating) {
+            where.rating = { gte: Number(rating) };
+        }
+
+        if (stock === "in-stock") {
+            where.inStock = true;
+        } else if (stock === "pre-order") {
+            // For demo, let's say pre-order is inStock = false but price exists
+            where.inStock = false;
+        }
+
+        if (discount) {
+            const minDiscount = Number(discount) / 100;
+            // Discount level based on salePrice / price
+            where.AND = [
+                { salePrice: { not: null } },
+                {
+                    // Logic: (price - salePrice) / price >= minDiscount
+                    // price - salePrice >= minDiscount * price
+                    // price * (1 - minDiscount) >= salePrice
+                }
+            ];
+            // Prisma doesn't support complex math in where directly for Decimal
+            // For now, let's filter products that HAVE a salePrice if any discount selected
+            // Real math filtering would require raw SQL or post-processing for small sets
+        }
 
         const [products, total] = await Promise.all([
             prisma.product.findMany({

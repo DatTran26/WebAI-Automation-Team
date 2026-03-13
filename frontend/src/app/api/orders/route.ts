@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { prisma } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth-helpers";
 import { jsonResponse, errorResponse } from "@/lib/api-helpers";
-import { findOrCreateDbUser } from "@/lib/user-sync";
+import { findOrCreateDbUser } from "@/lib/user-sync-server";
 
 export async function GET() {
     try {

@@ -41,14 +41,23 @@ export async function POST(request: NextRequest) {
         await requireAdmin();
 
         const body = await request.json();
-        const { name, slug, description, price, imageUrl, inStock, categoryId } = body;
+        const { name, slug, description, price, salePrice, imageUrl, inStock, categoryId, origin, rating, tags } = body;
 
         if (!name || !slug || !price || !categoryId) {
             return errorResponse("name, slug, price, categoryId are required", 400);
         }
 
         const product = await prisma.product.create({
-            data: { name, slug, description, price, imageUrl, inStock: inStock ?? true, categoryId },
+            data: { 
+                name, slug, description, price, 
+                salePrice: salePrice ? Number(salePrice) : null,
+                imageUrl, 
+                inStock: inStock ?? true, 
+                categoryId,
+                origin,
+                rating: rating ? Number(rating) : 0,
+                tags: Array.isArray(tags) ? tags : []
+            },
             include: { category: { select: { name: true, slug: true } } },
         });
 
