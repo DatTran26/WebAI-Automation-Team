@@ -24,7 +24,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
         await requireAdmin();
         const { id } = await params;
         const body = await request.json();
-        const { name, slug, description, price, imageUrl, inStock, categoryId } = body;
+        const { name, slug, description, price, salePrice, imageUrl, inStock, categoryId, origin, rating, tags } = body;
 
         const product = await prisma.product.update({
             where: { id },
@@ -33,9 +33,13 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
                 ...(slug !== undefined && { slug }),
                 ...(description !== undefined && { description }),
                 ...(price !== undefined && { price }),
+                ...(salePrice !== undefined && { salePrice: salePrice ? Number(salePrice) : null }),
                 ...(imageUrl !== undefined && { imageUrl }),
                 ...(inStock !== undefined && { inStock }),
                 ...(categoryId !== undefined && { categoryId }),
+                ...(origin !== undefined && { origin }),
+                ...(rating !== undefined && { rating: rating ? Number(rating) : 0 }),
+                ...(tags !== undefined && { tags: Array.isArray(tags) ? tags : [] }),
             },
             include: { category: { select: { name: true, slug: true } } },
         });
