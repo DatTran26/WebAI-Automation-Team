@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { findOrCreateDbUser } from "@/lib/user-sync";
+import { findOrCreateDbUser } from "@/lib/user-sync-server";
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
@@ -28,15 +28,12 @@ export async function GET(request: Request) {
             }
         );
 
-        const { error } = await supabase.auth.exchangeCodeForSession(code);
+        const { data, error } = await supabase.auth.exchangeCodeForSession(code);
 
-        if (!error) {
+        if (!error && data?.user) {
             // Sync Supabase Auth user → public.users on every login
             try {
-                const { data: { user } } = await supabase.auth.getUser();
-                if (user) {
-                    await findOrCreateDbUser(user);
-                }
+                await findOrCreateDbUser(data.user);
             } catch (syncError) {
                 // Non-blocking: log but don't prevent login
                 console.error("User sync failed:", syncError);

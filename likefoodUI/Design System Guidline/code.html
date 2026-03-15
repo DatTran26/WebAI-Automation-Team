@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LIKEFOOD Design System &amp; Brand Guidelines</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#831A2D", // Overriding primary with brand Deep Burgundy as requested
+                        "brand-red": "#BD3829",
+                        "brand-green": "#1F4D3A",
+                        "brand-gold": "#C8A951",
+                        "brand-charcoal": "#333333",
+                        "background-light": "#FCFAFA",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .serif-modern { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-brand-charcoal dark:text-slate-100 transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 md:px-20 py-4 bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-black leading-tight tracking-tighter uppercase">LIKEFOOD</h2>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#colors">Colors</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#typography">Typography</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#components">Components</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#philosophy">Philosophy</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="bg-slate-100 dark:bg-slate-800 border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Search documentation..." type="text"/>
+</div>
+<button class="bg-primary text-white px-6 py-2 rounded-full text-sm font-bold hover:opacity-90 transition-opacity">
+                        Download Kit
+                    </button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto w-full px-6 md:px-20 py-12">
+<!-- Hero Section & Brand Philosophy -->
+<section class="mb-20 border-b border-slate-200 dark:border-slate-800 pb-12" id="philosophy">
+<h1 class="serif-modern text-6xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6">LIKEFOOD Design System &amp; Brand Guidelines</h1>
+<div class="grid md:grid-cols-2 gap-12 items-end">
+<div class="space-y-4">
+<p class="text-xl text-slate-500 dark:text-slate-400 uppercase tracking-widest font-bold">Brand Philosophy</p>
+<p class="text-3xl font-light text-primary italic serif-modern leading-snug">
+                                "Modern High-Contrast Editorial - Where Heritage meets Professionalism"
+                            </p>
+</div>
+<div class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            The LIKEFOOD identity is built on the intersection of culinary tradition and digital precision. We use bold typography and a rich, heritage-inspired palette to create an experience that feels both authoritative and appetizing.
+                        </div>
+</div>
+</section>
+<!-- 1. Color Palette -->
+<section class="mb-24" id="colors">
+<div class="flex items-center gap-4 mb-10">
+<span class="text-primary font-bold text-2xl">01</span>
+<h2 class="text-4xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">Color Palette</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Swatch 1 -->
+<div class="group">
+<div class="h-40 w-full rounded-xl bg-[#FCFAFA] border border-slate-200 shadow-sm mb-4"></div>
+<h4 class="font-bold text-lg mb-1">Background</h4>
+<p class="text-sm text-slate-500 font-mono mb-2">#FCFAFA</p>
+<p class="text-sm text-slate-600 dark:text-slate-400">Primary page canvas. Provides a clean, slightly warm editorial base.</p>
+</div>
+<!-- Swatch 2 -->
+<div class="group">
+<div class="h-40 w-full rounded-xl bg-primary shadow-sm mb-4"></div>
+<h4 class="font-bold text-lg mb-1">Deep Burgundy</h4>
+<p class="text-sm text-slate-500 font-mono mb-2">#831A2D</p>
+<p class="text-sm text-slate-600 dark:text-slate-400">Primary Action &amp; Brand Identity. Used for buttons, headers, and key accents.</p>
+</div>
+<!-- Swatch 3 -->
+<div class="group">
+<div class="h-40 w-full rounded-xl bg-brand-red shadow-sm mb-4"></div>
+<h4 class="font-bold text-lg mb-1">Vibrant Red</h4>
+<p class="text-sm text-slate-500 font-mono mb-2">#BD3829</p>
+<p class="text-sm text-slate-600 dark:text-slate-400">Urgent notifications, live status indicators, and sale badges.</p>
+</div>
+<!-- Swatch 4 -->
+<div class="group">
+<div class="h-40 w-full rounded-xl bg-brand-green shadow-sm mb-4"></div>
+<h4 class="font-bold text-lg mb-1">Dark Green</h4>
+<p class="text-sm text-slate-500 font-mono mb-2">#1F4D3A</p>
+<p class="text-sm text-slate-600 dark:text-slate-400">Success states, heritage accents, and sustainable category markers.</p>
+</div>
+<!-- Swatch 5 -->
+<div class="group">
+<div class="h-40 w-full rounded-xl bg-brand-gold shadow-sm mb-4"></div>
+<h4 class="font-bold text-lg mb-1">Soft Gold</h4>
+<p class="text-sm text-slate-500 font-mono mb-2">#C8A951</p>
+<p class="text-sm text-slate-600 dark:text-slate-400">Premium accents, borders, and decorative elements.</p>
+</div>
+<!-- Swatch 6 -->
+<div class="group">
+<div class="h-40 w-full rounded-xl bg-brand-charcoal shadow-sm mb-4"></div>
+<h4 class="font-bold text-lg mb-1">Charcoal</h4>
+<p class="text-sm text-slate-500 font-mono mb-2">#333333</p>
+<p class="text-sm text-slate-600 dark:text-slate-400">Primary body text, high-contrast dark backgrounds, and UI depth.</p>
+</div>
+</div>
+</section>
+<!-- 2. Typography -->
+<section class="mb-24 bg-slate-50 dark:bg-slate-900/50 p-10 rounded-3xl" id="typography">
+<div class="flex items-center gap-4 mb-12">
+<span class="text-primary font-bold text-2xl">02</span>
+<h2 class="text-4xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">Typography</h2>
+</div>
+<div class="space-y-16">
+<div class="grid md:grid-cols-3 gap-8 items-start">
+<div class="col-span-1">
+<h3 class="text-sm font-bold uppercase text-slate-400 tracking-widest mb-4">Headings</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm italic serif-modern">Modern Serif Bold/Italic</p>
+</div>
+<div class="col-span-2 space-y-8">
+<div>
+<h1 class="serif-modern text-6xl font-bold">H1 Headline</h1>
+<p class="text-xs text-slate-400 mt-2 font-mono uppercase">Playfair Display Bold / 64px / 1.2LH</p>
+</div>
+<div>
+<h2 class="serif-modern text-4xl italic font-bold text-primary">H2 Sub-headline Italic</h2>
+<p class="text-xs text-slate-400 mt-2 font-mono uppercase">Playfair Display Bold Italic / 36px / 1.2LH</p>
+</div>
+</div>
+</div>
+<div class="grid md:grid-cols-3 gap-8 items-start pt-12 border-t border-slate-200 dark:border-slate-800">
+<div class="col-span-1">
+<h3 class="text-sm font-bold uppercase text-slate-400 tracking-widest mb-4">Body &amp; UI</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Sans-serif Inter / Public Sans</p>
+</div>
+<div class="col-span-2 space-y-8">
+<div>
+<p class="text-lg leading-relaxed">Body Large: The art of dining is not just about the food, but the atmosphere and the stories shared around the table.</p>
+<p class="text-xs text-slate-400 mt-2 font-mono uppercase">Public Sans Regular / 18px / 1.6LH</p>
+</div>
+<div>
+<p class="text-base font-medium">Body Standard: We source our ingredients from local heritage farms that prioritize organic growth and ethical treatment.</p>
+<p class="text-xs text-slate-400 mt-2 font-mono uppercase">Public Sans Medium / 16px / 1.5LH</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. UI Components -->
+<section class="mb-24" id="components">
+<div class="flex items-center gap-4 mb-12">
+<span class="text-primary font-bold text-2xl">03</span>
+<h2 class="text-4xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">UI Components</h2>
+</div>
+<div class="grid lg:grid-cols-2 gap-16">
+<!-- Buttons & Inputs -->
+<div class="space-y-12">
+<div>
+<h3 class="text-lg font-bold mb-6 flex items-center gap-2"><span class="material-symbols-outlined text-primary">smart_button</span> Buttons</h3>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-white px-8 py-3 rounded-full font-bold text-sm tracking-wide shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">PRIMARY BURGUNDY</button>
+<button class="border-2 border-primary text-primary px-8 py-3 rounded-full font-bold text-sm tracking-wide hover:bg-primary/5 transition-colors">OUTLINED PILL</button>
+<button class="bg-brand-gold text-white px-8 py-3 rounded-full font-bold text-sm tracking-wide">PREMIUM GOLD</button>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6 flex items-center gap-2"><span class="material-symbols-outlined text-primary">edit_square</span> Input Fields</h3>
+<div class="space-y-4 max-w-sm">
+<div class="group">
+<label class="block text-xs font-bold uppercase text-slate-500 mb-1 ml-1">Email Address</label>
+<input class="w-full border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark rounded-xl px-4 py-3 focus:border-primary focus:ring-0 transition-colors" placeholder="hello@likefood.com" type="text"/>
+</div>
+<div class="group">
+<label class="block text-xs font-bold uppercase text-slate-500 mb-1 ml-1">Select Region</label>
+<select class="w-full border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark rounded-xl px-4 py-3 focus:border-primary focus:ring-0 transition-colors">
+<option>Mediterranean</option>
+<option>Tuscany</option>
+<option>Provence</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Cards -->
+<div>
+<h3 class="text-lg font-bold mb-6 flex items-center gap-2"><span class="material-symbols-outlined text-primary">grid_view</span> Product Cards</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-xl shadow-slate-200/50 dark:shadow-none border border-brand-gold/20">
+<div class="h-48 bg-slate-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Gourmet salad with fresh vegetables and heritage ingredients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCaPZbaZ7Qb7x22m6WpemsBFu_jyx5jkEnctS449q4b2RQyFHi_7EaDpFT8nnZe8576KMsfQreaTpLfqXaWTF7VmWdHIrlUJd3t_wqcBH7QpqxzFx8h7E1QGpwk9QGH_SqFFF4zWOGYIFyPW8OYyjSyagAm3_M8G-SrS0vu29KcbTk5shDfetDuw665sy4Utryqfwwf2Vy7vVPxabFbo6sOdXwDwWC6FU2DJvFpHTZyMYatXNvAtRk2qulDGrEPk0ttMNh645itQpG"/>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Heritage Line</span>
+<span class="text-sm font-bold text-brand-red">$24.00</span>
+</div>
+<h4 class="serif-modern text-xl font-bold mb-2">Artisan Harvest Bowl</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">Fresh arugula, roasted beets, candied walnuts, and aged balsamic.</p>
+<button class="w-full py-2 bg-primary/10 text-primary rounded-lg font-bold text-xs hover:bg-primary hover:text-white transition-all uppercase tracking-wider">Add to Basket</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-xl shadow-slate-200/50 dark:shadow-none border border-brand-gold/20">
+<div class="h-48 bg-slate-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Traditional sourdough bread with golden crust" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPAq3FHHkKqK9_LNyISzbQtwZ-pFqrPStIQkQ-OK5qGUcWLqVcTG_7GScMEnRx_pYJgcq6wpAbMTe_73RWpoRBFPExDnKrfLhOTh831slKwgHMwRKeS8W4xlmuLwoCXZ34QqegD7IoPdkiG7i8KfvH2Pv5hDac2-6k-fW2bJmpID-ICUi2XjwrWN8xDeO1uAsRnebApHeRItJTrnjdQ7WtO8q59rh-8x6nHSzd7MeZysWApEQ9yx3bqk3WLxXg9a-ZISr6O79k9Ha1"/>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Bakery</span>
+<span class="text-sm font-bold text-brand-red">$9.50</span>
+</div>
+<h4 class="serif-modern text-xl font-bold mb-2">Ancient Grain Sourdough</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">Naturally leavened for 48 hours with local spring water.</p>
+<button class="w-full py-2 bg-primary/10 text-primary rounded-lg font-bold text-xs hover:bg-primary hover:text-white transition-all uppercase tracking-wider">Add to Basket</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Layout & Grid -->
+<section class="mb-24" id="grid">
+<div class="flex items-center gap-4 mb-12">
+<span class="text-primary font-bold text-2xl">04</span>
+<h2 class="text-4xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">Layout &amp; Grid</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800">
+<h3 class="font-bold text-xl mb-6">Desktop Grid (12-Column)</h3>
+<div class="grid grid-cols-12 gap-2 h-32 mb-6">
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">1</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">2</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">3</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">4</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">5</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">6</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">7</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">8</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">9</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">10</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">11</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">12</div>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">Desktop layouts use a flexible 12-column grid with a 24px gutter. Content containers are capped at 1280px width for optimal readability.</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800">
+<h3 class="font-bold text-xl mb-6">Mobile Grid (4-Column)</h3>
+<div class="grid grid-cols-4 gap-4 h-32 mb-6 max-w-[240px] mx-auto">
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">1</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">2</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">3</div>
+<div class="bg-primary/10 border border-primary/20 rounded-md flex items-center justify-center text-[10px] text-primary font-bold">4</div>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">Mobile layouts shift to a 4-column system with 16px margins. Emphasis is placed on vertical stacking and oversized touch targets.</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-brand-charcoal text-white py-12 px-6 md:px-20 mt-12">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-4">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<span class="font-black uppercase tracking-widest text-lg">LIKEFOOD</span>
+</div>
+<div class="text-sm text-slate-400">
+                        © 2024 LIKEFOOD. Internal Design Documentation. Proprietary and Confidential.
+                    </div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">share</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">print</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">download</span>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>
