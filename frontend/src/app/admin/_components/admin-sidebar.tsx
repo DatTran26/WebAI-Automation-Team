@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import {
     LayoutDashboard, Package, Tags, ShoppingCart, Radio,
-    LogOut, ChevronRight, Soup
+    LogOut, ChevronRight, Soup, Users, Settings, Eye
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -14,6 +14,8 @@ const NAV_ITEMS = [
     { href: "/admin/categories", label: "Categories", icon: Tags },
     { href: "/admin/orders", label: "Orders", icon: ShoppingCart },
     { href: "/admin/live", label: "Live Stream", icon: Radio },
+    { href: "/admin/users", label: "Users", icon: Users },
+    { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
 
 export function AdminSidebar() {
@@ -29,55 +31,75 @@ export function AdminSidebar() {
     };
 
     return (
-        <aside className="w-64 flex flex-col bg-[#1a0810] border-r border-white/5 shrink-0">
+        <aside className="w-72 flex flex-col bg-background-dark border-r border-white/5 shrink-0 font-sans relative overflow-hidden">
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-5 pointer-events-none bg-paper-texture" />
+            
             {/* Logo */}
-            <div className="flex items-center gap-3 px-6 py-5 border-b border-white/5">
-                <div className="w-8 h-8 bg-primary rounded flex items-center justify-center">
-                    <Soup className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                    <p className="text-white font-serif font-bold text-lg leading-none">LIKEFOOD</p>
-                    <p className="text-white/40 text-xs mt-0.5">Admin Panel</p>
+            <div className="flex flex-col gap-6 px-8 py-12 relative z-10">
+                <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-brand rounded-[1rem] flex items-center justify-center shadow-2xl shadow-brand/40 group cursor-pointer hover:scale-105 transition-transform duration-500">
+                        <Soup className="w-7 h-7 text-white" />
+                    </div>
+                    <div>
+                        <p className="text-white font-serif font-bold text-2xl leading-none tracking-tight">LIKEFOOD</p>
+                        <p className="text-brand-gold text-[10px] font-black mt-2 uppercase tracking-[0.3em]">Imperial Suite</p>
+                    </div>
                 </div>
             </div>
 
             {/* Navigation */}
-            <nav className="flex-1 px-3 py-4 space-y-0.5">
+            <nav className="flex-1 px-4 py-4 space-y-2 relative z-10">
+                <div className="px-4 mb-4">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/20">Operations</p>
+                </div>
                 {NAV_ITEMS.map(({ href, label, icon: Icon, exact }) => {
                     const active = isActive(href, exact);
                     return (
                         <Link
                             key={href}
                             href={href}
-                            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all group ${
+                            className={`flex items-center gap-4 px-5 py-4 rounded-[1.25rem] text-sm font-bold transition-all duration-500 group relative ${
                                 active
-                                    ? "bg-primary text-white"
-                                    : "text-white/60 hover:text-white hover:bg-white/5"
+                                    ? "bg-white/5 text-white"
+                                    : "text-white/30 hover:text-white hover:bg-white/[0.02]"
                             }`}
                         >
-                            <Icon className="w-4.5 h-4.5 shrink-0" />
-                            <span className="flex-1">{label}</span>
-                            {active && <ChevronRight className="w-3.5 h-3.5 opacity-60" />}
+                            <Icon className={`w-5 h-5 shrink-0 ${active ? "text-brand-gold" : "group-hover:text-brand-gold"} transition-colors duration-500`} />
+                            <span className="flex-1 tracking-tight">{label}</span>
+                            {active && (
+                                <>
+                                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-brand-gold rounded-full shadow-[0_0_15px_rgba(200,169,81,0.5)]" />
+                                    <div className="absolute inset-0 bg-brand-gold/5 rounded-[1.25rem] blur-xl opacity-50" />
+                                </>
+                            )}
                         </Link>
                     );
                 })}
             </nav>
 
             {/* Footer */}
-            <div className="px-3 pb-4 border-t border-white/5 pt-3">
+            <div className="px-6 pb-10 space-y-2 relative z-10">
+                <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-6" />
+                
                 <Link
                     href="/"
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all"
+                    className="flex items-center gap-4 px-4 py-3 rounded-xl text-xs font-black uppercase tracking-widest text-white/20 hover:text-white transition-all group"
                 >
-                    <Soup className="w-4 h-4 shrink-0" />
-                    <span>View Store</span>
+                    <div className="p-2 rounded-lg bg-white/5 group-hover:bg-brand/20 transition-all duration-500">
+                        <Eye className="w-4 h-4 shrink-0 text-brand-gold" />
+                    </div>
+                    <span>View Boutique</span>
                 </Link>
+                
                 <button
                     onClick={handleSignOut}
-                    className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                    className="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-xs font-black uppercase tracking-widest text-white/20 hover:text-brand-red transition-all group"
                 >
-                    <LogOut className="w-4 h-4 shrink-0" />
-                    <span>Sign Out</span>
+                    <div className="p-2 rounded-lg bg-white/5 group-hover:bg-brand-red/20 transition-all duration-500">
+                        <LogOut className="w-4 h-4 shrink-0" />
+                    </div>
+                    <span>End Session</span>
                 </button>
             </div>
         </aside>

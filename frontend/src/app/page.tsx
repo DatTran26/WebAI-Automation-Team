@@ -4,10 +4,17 @@ import { prisma } from "@/lib/db"
 import { PlayCircle, Eye, ArrowRight, Utensils, LayoutGrid, ShieldCheck, Truck, Video, Leaf, Gift, Star } from "lucide-react"
 import Image from "next/image"
 
+// New Section Components
+import { ArtisanSpotlight } from "@/components/home/artisan-spotlight"
+import { GiftBundles } from "@/components/home/gift-bundles"
+import { CustomerReviews } from "@/components/home/customer-reviews"
+import { ProcessHighlights } from "@/components/home/process-highlights"
+import { InteractiveMap } from "@/components/home/interactive-map"
+
 export const dynamic = "force-dynamic"
 
 export default async function Home() {
-  const [categories, products] = await Promise.all([
+  const [categories, products, giftProducts] = await Promise.all([
     prisma.category.findMany({
       include: { _count: { select: { products: true } } },
       orderBy: { name: "asc" },
@@ -17,11 +24,27 @@ export default async function Home() {
       take: 8,
       orderBy: { createdAt: "desc" },
     }),
+    prisma.product.findMany({
+      where: { tags: { has: "gift" } },
+      include: { category: { select: { name: true, slug: true } } },
+      take: 4,
+    })
   ])
 
   const serializedProducts = products.map((p: any) => ({
     ...p,
     price: Number(p.price),
+    salePrice: p.salePrice ? Number(p.salePrice) : null,
+    rating: p.rating ? Number(p.rating) : null,
+    origin: p.origin || "Vietnam",
+  }))
+
+  const serializedGiftProducts = giftProducts.map((p: any) => ({
+    ...p,
+    price: Number(p.price),
+    salePrice: p.salePrice ? Number(p.salePrice) : null,
+    rating: p.rating ? Number(p.rating) : null,
+    origin: p.origin || "Vietnam",
   }))
 
   return (
@@ -85,6 +108,9 @@ export default async function Home() {
 
       <div className="max-w-[1320px] mx-auto px-4 md:px-8 w-full flex flex-col gap-20 md:gap-24 py-16 md:py-20">
 
+        {/* ===== PROCESS HIGHLIGHTS ===== */}
+        <ProcessHighlights />
+
         {/* ===== CATEGORIES ===== */}
         <section>
           <div className="text-center mb-10">
@@ -111,6 +137,9 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* ===== ARTISAN SPOTLIGHT ===== */}
+        <ArtisanSpotlight />
+
         {/* ===== FEATURED PRODUCTS ===== */}
         <section>
           <div className="flex items-end justify-between mb-10">
@@ -135,6 +164,9 @@ export default async function Home() {
             </Link>
           </div>
         </section>
+
+        {/* ===== GIFT BUNDLES ===== */}
+        <GiftBundles products={serializedGiftProducts} />
 
         {/* ===== LIVE SESSIONS ===== */}
         <section>
@@ -233,6 +265,9 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* ===== ORIGIN MAP ===== */}
+        <InteractiveMap />
+
         {/* ===== BRAND STORY / OUR PROMISE ===== */}
         <section id="our-promise" className="scroll-mt-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -300,6 +335,9 @@ export default async function Home() {
             </div>
           </div>
         </section>
+
+        {/* ===== CUSTOMER REVIEWS ===== */}
+        <CustomerReviews />
 
         {/* ===== UPCOMING STREAMS ===== */}
         <section className="bg-warm-white dark:bg-surface-dark border border-stone-beige/50 dark:border-white/10 rounded-2xl p-8 md:p-12">
