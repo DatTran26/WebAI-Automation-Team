@@ -80,7 +80,7 @@ All admin actions call API endpoints:
 - PUT/DELETE /api/admin/products/[id]
 - Similar for categories, orders, livestreams
 
-## 8. Live Commerce (Planned)
+## 8. Live Commerce (Implemented)
 
 1. Admin creates livestream via /admin/live
 2. LiveSession record created
@@ -128,10 +128,34 @@ All admin actions call API endpoints:
 - Payments: Stripe
 - Logging: Vercel Analytics or Sentry
 
-## 13. Monitoring
+## 13. Monitoring & Observability
 
+### Health Check (`GET /api/health`)
+- Tests database connectivity
+- Returns status, latency, uptime
+- Used by load balancers and alerting systems
+
+### Metrics Collection (`GET /api/metrics`)
+- Prometheus text exposition format
+- **Counters:** http_requests_total, http_errors_total
+- **Gauges:** app_uptime_seconds
+- Lightweight in-memory collector, zero external dependencies
+- Singleton pattern for consistency
+
+### Docker & Orchestration
+- **Dockerfile:** Multi-stage build (deps → builder → runner)
+- **Runtime:** Alpine Linux, non-root user, healthcheck every 30s
+- **Docker Compose:** 3 services (app, prometheus, grafana)
+- **Prometheus:** Scrapes `/api/metrics` (10s) and `/api/health` (30s)
+- **Grafana:** Pre-configured dashboard with 4 panels:
+  - App Uptime
+  - HTTP Requests Rate
+  - HTTP Errors Rate
+  - Error Rate Percentage
+
+### Logging & Analytics
 - Server logs (Vercel/Sentry)
 - Database metrics (Prisma)
 - Payment status (Stripe Dashboard)
 - User analytics (Google Analytics)
-- Error tracking
+- Error tracking and visualization (Grafana dashboards)

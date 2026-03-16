@@ -116,14 +116,45 @@ Error: { success: false, message: "Human-readable error message" }
 - Never commit .env, API keys, or sensitive data
 - Branch naming: feature/feature-name, fix/bug-name
 
-## 11. Code Review Checklist
+## 11. Infrastructure & Monitoring Patterns
+
+### Health Check Endpoint
+API routes should validate:
+- Database connectivity (quick Prisma query)
+- System uptime (process.uptime())
+- Response latency (timestamp delta)
+- Return 200 OK with JSON: { status, uptime, dbLatency }
+
+### Metrics Collection
+Use singleton pattern for in-memory metrics:
+- Counters: http_requests_total, http_errors_total
+- Gauges: app_uptime_seconds
+- Format: Prometheus text exposition format
+- Zero external dependencies (no external metrics service)
+
+### Docker Standards
+- Multi-stage builds (deps → builder → runner)
+- Non-root user in container
+- Alpine base image for production
+- Healthcheck every 30s
+- Environment variables from .env
+
+### CI/CD Pipeline
+- ESLint: Lint all TypeScript/JavaScript
+- Type checking: Full TypeScript strict mode
+- Build: Next.js production build
+- Docker build: Only on master branch
+
+## 12. Code Review Checklist
 
 Before submitting PR:
-- Code compiles without errors
-- TypeScript types are correct
+- Code compiles without errors (run `npm run build`)
+- TypeScript strict mode passes (`npm run type-check`)
+- ESLint passes (`npm run lint`)
 - No console.log or debugging code left
 - Comments explain "why", not "what"
 - File size under 200 lines (refactor if needed)
 - Tests pass (if applicable)
 - Follows style guidelines
 - No sensitive data in code
+- No .env, API keys, or credentials committed

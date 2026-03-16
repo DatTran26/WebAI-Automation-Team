@@ -10,7 +10,16 @@ WebAI/
 │   ├── src/
 │   │   ├── app/              # App Router pages + API routes
 │   │   │   ├── api/          # Backend endpoints
+│   │   │   │   ├── health/   # Health check endpoint
+│   │   │   │   ├── metrics/  # Prometheus metrics
+│   │   │   │   ├── products/
+│   │   │   │   ├── webhooks/stripe
+│   │   │   │   └── ...other endpoints
+│   │   │   ├── (auth)/       # Auth routes (login, signup, verify)
 │   │   │   ├── admin/        # Admin dashboard pages
+│   │   │   │   ├── settings/ # Admin settings
+│   │   │   │   ├── users/    # User management
+│   │   │   │   └── ...other pages
 │   │   │   ├── cart/         # Cart & checkout pages
 │   │   │   ├── product/      # Product detail pages
 │   │   │   ├── orders/       # Order history pages
@@ -18,7 +27,7 @@ WebAI/
 │   │   │   ├── live/         # Live commerce streaming
 │   │   │   ├── messages/     # Chat/messaging
 │   │   │   ├── collection/   # Product collection pages
-│   │   │   ├── layout.tsx    # Root layout
+│   │   │   ├── layout.tsx    # Root layout (fonts: Playfair Display, Inter)
 │   │   │   ├── page.tsx      # Landing page
 │   │   │   └── globals.css   # Tailwind config
 │   │   ├── components/       # React components
@@ -37,9 +46,20 @@ WebAI/
 │   ├── prisma/               # Database schema & seed
 │   │   ├── schema.prisma
 │   │   └── seed.ts
-│   └── public/               # Static assets
+│   ├── public/               # Static assets
+│   ├── Dockerfile            # Multi-stage production build
+│   └── .dockerignore         # Docker context exclusions
 ├── backend/                  # DB management (Prisma scripts)
 │   └── prisma/               # Schema reference
+├── monitoring/               # Prometheus & Grafana
+│   ├── prometheus/
+│   │   └── prometheus.yml
+│   └── grafana/
+│       ├── provisioning/datasources/
+│       ├── provisioning/dashboards/
+│       └── dashboards/likefood-overview.json
+├── docker-compose.yml        # Docker orchestration (app, prometheus, grafana)
+├── .github/workflows/ci.yml  # GitHub Actions CI/CD pipeline
 └── docs/                     # Documentation
 ```
 
@@ -88,6 +108,10 @@ WebAI/
 - `PUT/DELETE /api/admin/live/[id]` - Livestream CRUD
 - `POST /api/admin/live/[id]/products` - Livestream pinned products
 - `GET /api/admin/stats` - Dashboard analytics
+
+### Infrastructure & Monitoring
+- `GET /api/health` - Health check (DB connectivity, uptime, latency)
+- `GET /api/metrics` - Prometheus metrics (http_requests_total, http_errors_total, app_uptime_seconds)
 
 ### Auth & Webhooks
 - `GET /api/auth/callback` - Supabase OAuth callback

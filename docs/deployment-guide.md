@@ -19,9 +19,10 @@ Domain (vercel.app or custom)
 ## Development Environment
 
 ### Prerequisites
-- Node.js 18+ and npm 9+
+- Node.js 20+ and npm 9+
 - PostgreSQL 14+ (local or Supabase)
 - Git
+- Docker & Docker Compose (optional, for local containerization)
 
 ### Initial Setup
 
@@ -253,6 +254,81 @@ sudo certbot certonly --standalone -d yourdomain.com
 # Update nginx.conf with SSL certificates
 ```
 
+## CI/CD Pipeline (GitHub Actions)
+
+### Automated Workflow (`ci.yml`)
+Triggered on push to any branch:
+1. **Lint Check** - ESLint validation
+2. **Type Check** - TypeScript compilation
+3. **Build Test** - Next.js production build
+4. **Docker Build** - Build production image (master branch only)
+
+### GitHub Actions Setup
+```bash
+# Workflow location: .github/workflows/ci.yml
+# Automatically runs on push
+# Sends notifications on failure
+```
+
+---
+
+## Docker Deployment
+
+### Build Image
+```bash
+# From WebAI root
+docker build -t likefood:latest -f frontend/Dockerfile .
+```
+
+### Multi-Stage Dockerfile Features
+- Stage 1 (deps): Install production dependencies
+- Stage 2 (builder): Generate Prisma client + build app
+- Stage 3 (runner): Alpine Linux, non-root user, minimal image (~150MB)
+- Healthcheck: GET /api/health (30s interval)
+
+### Local Docker Compose (Development)
+```bash
+# From WebAI root
+docker-compose up -d
+
+# Services:
+# - app: Port 3000 (Next.js application)
+# - prometheus: Port 9090 (metrics scraper)
+# - grafana: Port 4000 (monitoring dashboard)
+```
+
+### Environment Variables in Docker
+Passed via `.env` file (see Development Environment section):
+```env
+DATABASE_URL=...
+DIRECT_URL=...
+NEXT_PUBLIC_SUPABASE_URL=...
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+STRIPE_SECRET_KEY=...
+STRIPE_WEBHOOK_SECRET=...
+ADMIN_EMAIL=...
+```
+
+### Monitoring with Prometheus & Grafana
+- **Prometheus** scrapes `/api/metrics` (10s interval) and `/api/health` (30s)
+- **Grafana** dashboard auto-provisioned with 4 panels:
+  - App Uptime (uptime_seconds)
+  - HTTP Requests Rate (requests/min)
+  - HTTP Errors Rate (errors/min)
+  - Error Rate Percentage (%)
+- Access Grafana: http://localhost:4000
+
+### Health Check Endpoint
+```bash
+# Test endpoint
+curl http://localhost:3000/api/health
+
+# Response:
+# { "status": "ok", "uptime": 3600, "dbLatency": 12 }
+```
+
+---
+
 ## Stripe Webhook Configuration
 
 ### For Vercel/Production:
@@ -297,12 +373,7 @@ psql $DATABASE_URL < backup.sql
 
 ## Monitoring & Logging
 
-### Vercel
-- Real-time logs: vercel.com → Project → Settings → Logs
-- Performance metrics in Vercel Analytics
-- Error tracking via Sentry (optional)
-
-### Manual Setup
+### Docker Deployment
 ```bash
 # View application logs
 docker logs likefood-app
@@ -310,9 +381,18 @@ docker logs likefood-app
 # Monitor system resources
 docker stats likefood-app
 
-# Check Nginx errors
-tail -f /var/log/nginx/error.log
+# Check Prometheus metrics collection
+curl http://localhost:9090/api/v1/targets
+
+# Access Grafana dashboards
+# http://localhost:4000 (default: admin/admin)
 ```
+
+### Vercel Production
+- Real-time logs: vercel.com → Project → Settings → Logs
+- Performance metrics in Vercel Analytics + Speed Insights
+- Error tracking via Sentry (optional)
+- Health endpoint: `https://yourdomain.com/api/health`
 
 ## Post-Deployment Checklist
 

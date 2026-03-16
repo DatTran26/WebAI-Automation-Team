@@ -11,7 +11,7 @@ export function ProfileSidebar({ user }: ProfileSidebarProps) {
 
     const navItems = [
         { name: "Profile", path: "/account", icon: User },
-        { name: "Orders", path: "/orders", icon: Package },
+        { name: "The Archives", path: "/orders", icon: Package },
     ]
 
     return (
