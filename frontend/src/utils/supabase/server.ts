@@ -1,4 +1,4 @@
-import { createServerClient, type CookieOptions } from '@supabase/ssr'
+import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
 export async function createClient() {
@@ -17,7 +17,7 @@ export async function createClient() {
                         cookiesToSet.forEach(({ name, value, options }) => {
                             cookieStore.set(name, value, options)
                         })
-                    } catch (error) {
+                    } catch {
                         // The `set` method was called from a Server Component.
                         // This can be ignored if you have middleware refreshing
                         // user sessions.

@@ -3,9 +3,8 @@
 import { useCartStore } from "@/store/cartStore"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Loader2, ChevronRight, ShieldCheck, ArrowRight, Lock, CreditCard } from "lucide-react"
+import { Loader2, ChevronRight, ShieldCheck, ArrowRight, CreditCard } from "lucide-react"
 import { CheckoutSummary } from "./checkout-summary"
-import { Breadcrumb } from "@/components/ui/breadcrumb"
 import Link from "next/link"
 
 export default function CheckoutPage() {

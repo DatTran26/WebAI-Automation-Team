@@ -4,7 +4,7 @@ import { useState, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useCartStore } from "@/store/cartStore"
-import { Heart, ShoppingBag, Star, MapPin, Plus, Check, Loader2 } from "lucide-react"
+import { Heart, ShoppingBag, Star, MapPin, Plus, Check } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { toast } from "sonner"
 

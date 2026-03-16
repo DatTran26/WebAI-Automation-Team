@@ -264,7 +264,7 @@ export function HeaderCategoriesMegaMenu() {
                                             </div>
                                             <div className="mt-8 p-5 bg-brand/5 rounded-xl border border-brand/10">
                                                 <p className="text-[13px] text-taupe italic font-serif leading-relaxed">
-                                                    "Authenticity is the soul of cuisine." - Explore our curated selection of heritage brands.
+                                                    &ldquo;Authenticity is the soul of cuisine.&rdquo; - Explore our curated selection of heritage brands.
                                                 </p>
                                             </div>
                                         </div>

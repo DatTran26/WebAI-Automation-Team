@@ -7,7 +7,7 @@ import { createClient } from "@/utils/supabase/client"
 import { User } from "@supabase/supabase-js"
 import { ProfileSidebar } from "@/components/layout/ProfileSidebar"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
-import { Receipt, History, Download, Package, Star, ChevronRight, Search } from "lucide-react"
+import { History, Package, Star, ChevronRight, Search } from "lucide-react"
 
 type OrderItem = {
     id: string
@@ -46,9 +46,8 @@ export default function OrdersPage() {
     const [error, setError] = useState<string | null>(null)
     const [user, setUser] = useState<User | null>(null)
 
-    const supabase = createClient()
-
     useEffect(() => {
+        const supabase = createClient()
         supabase.auth.getUser().then(({ data: { user } }) => {
             setUser(user)
         })
@@ -62,7 +61,7 @@ export default function OrdersPage() {
                 return res.json()
             })
             .then(setOrders)
-            .catch((err) => setError(err.message))
+            .catch((err: Error) => setError(err.message))
             .finally(() => setLoading(false))
     }, [])
 

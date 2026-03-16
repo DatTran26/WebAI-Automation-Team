@@ -1,9 +1,8 @@
 "use client"
 
-import { ChevronDown, Search, SlidersHorizontal, X, Heart, ShoppingBag, ArrowLeft, ArrowRight, Filter } from "lucide-react"
+import { ChevronDown, Search, X, ArrowLeft, ArrowRight, Filter } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
-import { useState, useEffect, useCallback, Suspense } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { ProductCard } from "@/components/product-card"
 import { CollectionFilterSidebar } from "./components/collection-filter-sidebar"
 import { useSearchParams } from "next/navigation"
@@ -35,60 +34,70 @@ function CollectionContent() {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
     const limit = 12
 
-    const fetchProducts = useCallback(async () => {
-        setLoading(true)
-        const params = new URLSearchParams({ page: String(page), limit: String(limit) })
-        if (search) params.set("search", search)
-        if (selectedCategory) params.set("category", selectedCategory)
-        if (selectedTag) params.set("tag", selectedTag)
-        if (selectedOrigin) params.set("origin", selectedOrigin)
-        if (selectedFlavor) params.set("flavor", selectedFlavor)
-        if (selectedRegion) params.set("region", selectedRegion)
-        if (selectedRating) params.set("rating", selectedRating)
-        if (selectedStock) params.set("stock", selectedStock)
-        if (selectedDiscount) params.set("discount", selectedDiscount)
-        
-        try {
-            const res = await fetch(`/api/products?${params}`)
-            const data = await res.json()
-            const serializedProducts = (data.products || []).map((p: any) => ({
-                ...p,
-                price: Number(p.price),
-                salePrice: p.salePrice ? Number(p.salePrice) : null,
-                rating: p.rating ? Number(p.rating) : null,
-            }))
-            setProducts(serializedProducts)
-            setTotal(data.pagination?.total ?? (data.products || []).length)
-        } catch { setProducts([]); setTotal(0) }
-        setLoading(false)
-    }, [page, search, selectedCategory, selectedTag, selectedOrigin, selectedFlavor, selectedRegion, selectedRating, selectedStock, selectedDiscount])
-
     useEffect(() => {
         fetch("/api/categories").then(r => r.json()).then(setCategories).catch(() => {})
     }, [])
 
-    useEffect(() => { fetchProducts() }, [fetchProducts])
+    // Fetch products when filters change
+    useEffect(() => {
+        let cancelled = false
+        const loadProducts = async () => {
+            const params = new URLSearchParams({ page: String(page), limit: String(limit) })
+            if (search) params.set("search", search)
+            if (selectedCategory) params.set("category", selectedCategory)
+            if (selectedTag) params.set("tag", selectedTag)
+            if (selectedOrigin) params.set("origin", selectedOrigin)
+            if (selectedFlavor) params.set("flavor", selectedFlavor)
+            if (selectedRegion) params.set("region", selectedRegion)
+            if (selectedRating) params.set("rating", selectedRating)
+            if (selectedStock) params.set("stock", selectedStock)
+            if (selectedDiscount) params.set("discount", selectedDiscount)
+            try {
+                const res = await fetch(`/api/products?${params}`)
+                const data = await res.json()
+                if (cancelled) return
+                const serializedProducts = (data.products || []).map((p: Product & { price: string; salePrice: string | null; rating: string | null }) => ({
+                    ...p,
+                    price: Number(p.price),
+                    salePrice: p.salePrice ? Number(p.salePrice) : null,
+                    rating: p.rating ? Number(p.rating) : null,
+                }))
+                setProducts(serializedProducts)
+                setTotal(data.pagination?.total ?? (data.products || []).length)
+            } catch { if (!cancelled) { setProducts([]); setTotal(0) } }
+            if (!cancelled) setLoading(false)
+        }
+        loadProducts()
+        return () => { cancelled = true }
+    }, [page, search, selectedCategory, selectedTag, selectedOrigin, selectedFlavor, selectedRegion, selectedRating, selectedStock, selectedDiscount])
 
     // Sync state with URL params when they change
+    // Sync state with URL params when they change
+    const syncedSearchParams = searchParams.toString()
     useEffect(() => {
-        setSearch(searchParams.get("search") || "")
-        setSelectedCategory(searchParams.get("category") || "")
-        setSelectedTag(searchParams.get("tag") || "")
-        setSelectedOrigin(searchParams.get("origin") || "")
-        setSelectedFlavor(searchParams.get("flavor") || "")
-        setSelectedRegion(searchParams.get("region") || "")
-        setSelectedRating(searchParams.get("rating") || "")
-        setSelectedStock(searchParams.get("stock") || "")
-        setSelectedDiscount(searchParams.get("discount") || "")
-        setPage(1)
-    }, [searchParams])
+        const sp = new URLSearchParams(syncedSearchParams)
+        const updates = () => {
+            setSearch(sp.get("search") || "")
+            setSelectedCategory(sp.get("category") || "")
+            setSelectedTag(sp.get("tag") || "")
+            setSelectedOrigin(sp.get("origin") || "")
+            setSelectedFlavor(sp.get("flavor") || "")
+            setSelectedRegion(sp.get("region") || "")
+            setSelectedRating(sp.get("rating") || "")
+            setSelectedStock(sp.get("stock") || "")
+            setSelectedDiscount(sp.get("discount") || "")
+            setPage(1)
+        }
+        // Defer state sync to avoid synchronous cascading renders
+        const id = requestAnimationFrame(updates)
+        return () => cancelAnimationFrame(id)
+    }, [syncedSearchParams])
 
     const totalPages = Math.max(1, Math.ceil(total / limit))
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault()
         setPage(1)
-        fetchProducts()
     }
 
     const clearFilters = () => {

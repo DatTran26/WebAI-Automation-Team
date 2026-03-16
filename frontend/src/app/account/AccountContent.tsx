@@ -101,8 +101,8 @@ export function AccountContent() {
                     const addrData = await addrRes.json()
                     setAddresses(Array.isArray(addrData) ? addrData : [])
                 }
-            } catch (_err) {
-                console.error("Failed to load user data", _err)
+            } catch (err) {
+                console.error("Failed to load user data", err)
                 toast.error("Failed to sync your profile")
             } finally {
                 setLoading(false)
@@ -127,7 +127,7 @@ export function AccountContent() {
             } else {
                 toast.error("Failed to update profile")
             }
-        } catch (_err) {
+        } catch {
             toast.error("An error occurred")
         } finally {
             setUpdating(false)
@@ -152,7 +152,7 @@ export function AccountContent() {
             } else {
                 toast.error("Failed to add address")
             }
-        } catch (_err) {
+        } catch {
             toast.error("An error occurred while saving the address")
         } finally {
             setIsAddingAddress(false)

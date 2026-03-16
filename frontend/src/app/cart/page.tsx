@@ -3,7 +3,7 @@
 import { useCartStore } from "@/store/cartStore"
 import Link from "next/link"
 import Image from "next/image"
-import { ShoppingBag, Trash2, Minus, Plus, Tag, Lock, CreditCard, Landmark, Banknote, Star, Truck, Zap, Info, ArrowRight } from "lucide-react"
+import { ShoppingBag, Trash2, Minus, Plus, Tag, Lock, CreditCard, Landmark, Banknote, Star, Truck, Zap, ArrowRight } from "lucide-react"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
 
 import { toast } from "sonner"
@@ -29,7 +29,7 @@ const RECOMMENDATIONS = [
 export default function CartPage() {
     const { items, removeItem, updateQuantity, totalPrice, addItem } = useCartStore()
 
-    const handleAddRecommendation = (product: any) => {
+    const handleAddRecommendation = (product: typeof RECOMMENDATIONS[number]) => {
         addItem({ ...product, quantity: 1 })
         toast.success(`Successfully added`, {
             description: `${product.name} has been added to your cart.`,
@@ -261,7 +261,7 @@ export default function CartPage() {
     )
 }
 
-function Sparkles(props: any) {
+function Sparkles(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}

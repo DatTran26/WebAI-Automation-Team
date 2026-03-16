@@ -1,6 +1,6 @@
 "use client"
 
-import { Search, ChevronDown, Star, Flame, Leaf, Droplets, Sun, Check, Radio } from "lucide-react"
+import { Search, ChevronDown, Star, Flame, Leaf, Droplets, Sun, Check } from "lucide-react"
 import { useState } from "react"
 
 /* ---------- Types ---------- */

@@ -14,7 +14,7 @@ export async function findOrCreateDbUser(authUser: SupabaseUser) {
 
     if (existing) {
         // Update existing user with metadata if fields are missing in DB but present in metadata
-        const updates: any = {};
+        const updates: Record<string, string | Date> = {};
         if (!existing.phone && metadata.phone) updates.phone = metadata.phone;
         if (!existing.gender && metadata.gender) updates.gender = metadata.gender;
         if (!existing.birthday && metadata.birthday) updates.birthday = new Date(metadata.birthday);

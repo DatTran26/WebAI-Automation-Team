@@ -46,7 +46,7 @@ export function GiftBundles({ products }: { products: Product[] }) {
 
             <div className="mt-12 p-8 rounded-3xl bg-brand/[0.03] border border-brand/10 text-center backdrop-blur-sm">
                 <p className="text-taupe text-base italic font-serif leading-relaxed max-w-2xl mx-auto">
-                    "Every LikeFood gift set is meticulously prepared with sustainable premium packaging and includes a personalized handwritten calligraphy card to convey your deepest sentiments."
+                    &ldquo;Every LikeFood gift set is meticulously prepared with sustainable premium packaging and includes a personalized handwritten calligraphy card to convey your deepest sentiments.&rdquo;
                 </p>
             </div>
         </section>

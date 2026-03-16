@@ -1,6 +1,6 @@
 "use client"
 
-import { Truck, Lock, CreditCard, ShoppingCart, Download, MessageCircle, Package, ChevronLeft, FileText, BadgeCheck } from "lucide-react"
+import { Truck, Lock, CreditCard, ShoppingCart, Download, MessageCircle, Package } from "lucide-react"
 import { useEffect, useState, use } from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -9,7 +9,6 @@ import { User } from "@supabase/supabase-js"
 import { notFound } from "next/navigation"
 import { ProfileSidebar } from "@/components/layout/ProfileSidebar"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
-import { motion } from "framer-motion"
 
 type Address = {
     firstName: string
@@ -68,9 +67,8 @@ export default function OrderDetailsPage({
     const [error, setError] = useState<string | null>(null)
     const [user, setUser] = useState<User | null>(null)
 
-    const supabase = createClient()
-
     useEffect(() => {
+        const supabase = createClient()
         supabase.auth.getUser().then(({ data: { user } }) => {
             setUser(user)
         })
@@ -85,7 +83,7 @@ export default function OrderDetailsPage({
                 return res.json()
             })
             .then(setOrder)
-            .catch((err) => setError(err.message))
+            .catch((err: Error) => setError(err.message))
             .finally(() => setLoading(false))
     }, [id])
 
@@ -257,7 +255,7 @@ export default function OrderDetailsPage({
     )
 }
 
-function MapPin(props: any) {
+function MapPin(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}

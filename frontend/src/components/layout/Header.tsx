@@ -4,18 +4,11 @@ import Link from "next/link"
 import { useCartStore } from "@/store/cartStore"
 import { useEffect, useState } from "react"
 import { createClient } from "@/utils/supabase/client"
-import type { User as SupabaseUser } from "@supabase/supabase-js"
-import { Search, ShoppingBag, LogOut, User, LayoutDashboard, Menu, X, Heart, Radio, MessageCircle } from "lucide-react"
+import { Search, ShoppingBag, LogOut, LayoutDashboard, Menu, X, Radio, MessageCircle } from "lucide-react"
 import { useCartDrawerStore } from "@/store/cart-drawer-store"
 import { HeaderCategoriesMegaMenu } from "./header-categories-mega-menu"
 import { usePathname } from "next/navigation"
-
-function isAdminUser(user: SupabaseUser | null): boolean {
-    if (!user) return false
-    if (user.app_metadata?.role === "admin") return true
-    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL
-    return !!(adminEmail && user.email === adminEmail)
-}
+import type { User as SupabaseUser } from "@supabase/supabase-js"
 
 const NAV_LINKS = [
     { label: "Shop", href: "/collection" },
@@ -29,22 +22,22 @@ export function Header() {
     const totalItems = useCartStore((state) => state.totalItems())
     const toggleCartDrawer = useCartDrawerStore((s) => s.toggle)
     const [user, setUser] = useState<SupabaseUser | null>(null)
-    const [dbUser, setDbUser] = useState<any>(null)
+    const [dbUser, setDbUser] = useState<{ role: string; name?: string } | null>(null)
     const [mobileOpen, setMobileOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
     const [isCartBumping, setIsCartBumping] = useState(false)
     const pathname = usePathname()
-    const supabase = createClient()
 
     // Trigger bump animation when totalItems changes
     useEffect(() => {
         if (totalItems === 0) return
-        setIsCartBumping(true)
+        const frameId = requestAnimationFrame(() => setIsCartBumping(true))
         const timer = setTimeout(() => setIsCartBumping(false), 300)
-        return () => clearTimeout(timer)
+        return () => { cancelAnimationFrame(frameId); clearTimeout(timer) }
     }, [totalItems])
 
     useEffect(() => {
+        const supabase = createClient()
         const fetchDbUser = async () => {
             const res = await fetch("/api/user/me");
             if (res.ok) {
@@ -76,6 +69,7 @@ export function Header() {
     }, [])
 
     const handleSignOut = async () => {
+        const supabase = createClient()
         await supabase.auth.signOut()
         setUser(null)
         setDbUser(null)

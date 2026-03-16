@@ -26,7 +26,15 @@ export default function AdminCategoriesPage() {
         setLoading(false);
     };
 
-    useEffect(() => { fetchCategories(); }, []);
+    useEffect(() => {
+        // Initial load — loading already starts as true
+        const load = async () => {
+            const res = await fetch("/api/admin/categories");
+            if (res.ok) setCategories(await res.json());
+            setLoading(false);
+        };
+        load();
+    }, []);
 
     const openNew = () => { setEditId(null); setForm(EMPTY_FORM); setError(""); setShowForm(true); };
     const openEdit = (c: Category) => {

@@ -19,9 +19,11 @@ export default async function Home() {
     }),
   ])
 
-  const serializedProducts = products.map((p: any) => ({
+  const serializedProducts = products.map((p) => ({
     ...p,
     price: Number(p.price),
+    salePrice: p.salePrice ? Number(p.salePrice) : null,
+    rating: p.rating ? Number(p.rating) : null,
   }))
 
   return (
@@ -93,7 +95,7 @@ export default async function Home() {
           </div>
 
           <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar -mx-4 px-4 md:mx-0 md:px-0 justify-start md:justify-center">
-            {categories.map((cat: any) => (
+            {categories.map((cat) => (
               <Link key={cat.id} href={`/collection?category=${cat.slug}`} className="group flex flex-col items-center gap-3 min-w-[130px] p-5 rounded-2xl bg-white dark:bg-surface-dark border border-stone-beige/50 dark:border-white/10 hover:border-brand/30 hover:shadow-md transition-all">
                 <div className="h-12 w-12 rounded-xl bg-brand/8 text-brand flex items-center justify-center transition-transform group-hover:scale-110">
                   <Utensils className="w-6 h-6" />
@@ -124,7 +126,7 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
-            {serializedProducts.map((product: any) => (
+            {serializedProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

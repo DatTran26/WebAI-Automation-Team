@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { jsonResponse, errorResponse } from "@/lib/api-helpers";
 
@@ -19,7 +20,7 @@ export async function GET(request: NextRequest) {
         const limit = Math.min(50, Math.max(1, Number(searchParams.get("limit") || "12")));
         const skip = (page - 1) * limit;
 
-        const where: any = {};
+        const where: Prisma.ProductWhereInput = {};
         if (category) where.categoryId = category;
         if (search) where.name = { contains: search, mode: "insensitive" };
         
@@ -47,19 +48,9 @@ export async function GET(request: NextRequest) {
         }
 
         if (discount) {
-            const minDiscount = Number(discount) / 100;
-            // Discount level based on salePrice / price
-            where.AND = [
-                { salePrice: { not: null } },
-                {
-                    // Logic: (price - salePrice) / price >= minDiscount
-                    // price - salePrice >= minDiscount * price
-                    // price * (1 - minDiscount) >= salePrice
-                }
-            ];
-            // Prisma doesn't support complex math in where directly for Decimal
-            // For now, let's filter products that HAVE a salePrice if any discount selected
-            // Real math filtering would require raw SQL or post-processing for small sets
+            // Prisma doesn't support complex math in where for Decimal fields
+            // Filter to products that HAVE a salePrice when any discount is selected
+            where.salePrice = { not: null };
         }
 
         const [products, total] = await Promise.all([

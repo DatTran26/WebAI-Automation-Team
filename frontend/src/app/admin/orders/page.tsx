@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { ShoppingCart, ChevronDown } from "lucide-react";
 
 type OrderItem = { quantity: number; product: { name: string; imageUrl: string | null } };
@@ -29,15 +29,15 @@ export default function AdminOrdersPage() {
     const [updatingId, setUpdatingId] = useState<string | null>(null);
     const [expandedId, setExpandedId] = useState<string | null>(null);
 
-    const fetchOrders = useCallback(async () => {
-        setLoading(true);
-        const q = statusFilter ? `?status=${statusFilter}` : "";
-        const res = await fetch(`/api/admin/orders${q}`);
-        if (res.ok) { const d = await res.json(); setOrders(d.orders); setTotal(d.total); }
-        setLoading(false);
+    useEffect(() => {
+        const load = async () => {
+            const q = statusFilter ? `?status=${statusFilter}` : "";
+            const res = await fetch(`/api/admin/orders${q}`);
+            if (res.ok) { const d = await res.json(); setOrders(d.orders); setTotal(d.total); }
+            setLoading(false);
+        };
+        load();
     }, [statusFilter]);
-
-    useEffect(() => { fetchOrders(); }, [fetchOrders]);
 
     const updateStatus = async (orderId: string, status: string) => {
         setUpdatingId(orderId);
@@ -101,8 +101,8 @@ export default function AdminOrdersPage() {
                         </thead>
                         <tbody className="divide-y divide-stone-50">
                             {orders.map((order) => (
-                                <>
-                                    <tr key={order.id}
+                                <Fragment key={order.id}>
+                                    <tr
                                         className="hover:bg-stone-50/50 transition-colors cursor-pointer"
                                         onClick={() => setExpandedId(expandedId === order.id ? null : order.id)}>
                                         <td className="px-4 py-3">
@@ -165,7 +165,7 @@ export default function AdminOrdersPage() {
                                             </td>
                                         </tr>
                                     )}
-                                </>
+                                </Fragment>
                             ))}
                         </tbody>
                     </table>

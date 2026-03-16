@@ -1,11 +1,10 @@
 "use client"
 
-import { Users, Play, Volume2, Settings, Maximize, ShoppingBag, ArrowRight, Plus, MoreHorizontal, BadgeCheck, ShoppingCart, Smile, Send, X, Check, ArrowLeft, MessageSquare, ShoppingFixed } from "lucide-react"
-import { useState, useEffect } from "react"
+import { Users, Play, ShoppingBag, ArrowRight, Plus, BadgeCheck, ShoppingCart, Smile, Send, X, ArrowLeft, MessageSquare } from "lucide-react"
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useCartStore } from "@/store/cartStore"
-import { Breadcrumb } from "@/components/ui/breadcrumb"
 import { toast } from "sonner"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -58,7 +57,7 @@ export default function LivePage() {
     const addItem = useCartStore((s) => s.addItem)
     const totalPrice = useCartStore((s) => s.totalPrice())
 
-    const handleAddToCart = (product: any) => {
+    const handleAddToCart = (product: typeof LIVE_PRODUCTS[number]) => {
         addItem({ 
             id: product.id, 
             name: product.name, 

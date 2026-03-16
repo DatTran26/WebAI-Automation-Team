@@ -16,7 +16,6 @@ function getStripe(): Stripe {
 }
 
 // Lazy-initialize Stripe to avoid build-time crash when env var is missing
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const stripe = new Proxy({} as Stripe, {
     get(_target, prop) {
         const instance = getStripe() as unknown as Record<string | symbol, unknown>;

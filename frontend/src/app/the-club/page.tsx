@@ -1,6 +1,5 @@
-import Link from "next/link"
 import Image from "next/image"
-import { Star, ShieldCheck, Truck, Clock, ArrowRight, Sparkles, Diamond } from "lucide-react"
+import { Truck, Clock, ArrowRight, Sparkles, Diamond } from "lucide-react"
 
 export default function TheClubPage() {
     return (

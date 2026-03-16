@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation"
 import { User, Package } from "lucide-react"
 
 type ProfileSidebarProps = {
-    user: any
+    user: { email?: string } | null
 }
 
 export function ProfileSidebar({ user }: ProfileSidebarProps) {
