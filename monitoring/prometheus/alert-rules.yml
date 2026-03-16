@@ -1,0 +1,111 @@
+groups:
+  # --- Application Health ---
+  - name: app-health
+    rules:
+      - alert: AppDown
+        expr: up{job="likefood-app"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "LIKEFOOD app is down"
+          description: "App instance {{ $labels.instance }} unreachable for >1 minute."
+
+      - alert: AppRestarted
+        expr: app_uptime_seconds < 120 and changes(app_uptime_seconds[5m]) > 0
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: "App recently restarted"
+          description: "Uptime is {{ $value }}s — possible crash loop or deploy."
+
+      - alert: HighMemoryUsage
+        expr: app_memory_usage_mb > 512
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage: {{ $value }}MB"
+          description: "Heap usage exceeds 512MB for >5 minutes. Possible memory leak."
+
+      - alert: CriticalMemoryUsage
+        expr: app_memory_usage_mb > 1024
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical memory usage: {{ $value }}MB"
+          description: "Heap exceeds 1GB. OOM crash imminent."
+
+  # --- HTTP Traffic ---
+  - name: http-traffic
+    rules:
+      - alert: HighErrorRate
+        expr: rate(http_errors_total[5m]) / rate(http_requests_total[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Error rate above 5%"
+          description: "{{ $value | humanizePercentage }} of requests are failing."
+
+      - alert: CriticalErrorRate
+        expr: rate(http_errors_total[5m]) / rate(http_requests_total[5m]) > 0.15
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Error rate above 15%"
+          description: "{{ $value | humanizePercentage }} of requests failing. Immediate action needed."
+
+      - alert: High5xxRate
+        expr: rate(http_requests_5xx_total[5m]) > 0.5
+        for: 3m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High 5xx server errors"
+          description: "Server errors at {{ $value }}/s for >3 minutes."
+
+      - alert: NoTraffic
+        expr: rate(http_requests_total[10m]) == 0 and http_requests_total > 0
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "No HTTP traffic for 10 minutes"
+          description: "App received zero requests. Possible routing or DNS issue."
+
+  # --- Database ---
+  - name: database
+    rules:
+      - alert: DatabaseErrors
+        expr: rate(db_query_errors_total[5m]) > 0.1
+        for: 3m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Database query errors detected"
+          description: "DB errors at {{ $value }}/s. Check Supabase connection."
+
+  # --- Prometheus Self-Monitoring ---
+  - name: prometheus-self
+    rules:
+      - alert: PrometheusTargetDown
+        expr: up == 0
+        for: 3m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Scrape target {{ $labels.job }} is down"
+          description: "Target {{ $labels.instance }} has been unreachable for >3 minutes."
+
+      - alert: PrometheusScrapeErrors
+        expr: increase(prometheus_target_scrapes_exceeded_sample_limit_total[5m]) > 0
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Prometheus scrape sample limit exceeded"
+          description: "Some metrics are being dropped due to sample limit."

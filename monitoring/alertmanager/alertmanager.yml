@@ -1,0 +1,25 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: "default"
+  group_by: ["alertname", "severity"]
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  routes:
+    - receiver: "critical"
+      match:
+        severity: critical
+      repeat_interval: 1h
+
+receivers:
+  - name: "default"
+    # TODO: Add webhook/email/Slack integration
+    # webhook_configs:
+    #   - url: "http://app:3000/api/webhooks/alerts"
+
+  - name: "critical"
+    # TODO: Add webhook/email/Slack integration for critical alerts
+    # webhook_configs:
+    #   - url: "http://app:3000/api/webhooks/alerts"
