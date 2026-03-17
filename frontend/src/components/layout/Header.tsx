@@ -203,7 +203,7 @@ export function Header() {
                                 </button>
                             </div>
                         ) : (
-                            <Link href={`/login?redirect=${pathname || ""}`} className="hidden md:flex items-center gap-2 rounded-full h-10 px-6 bg-brand hover:opacity-90 text-white text-sm font-bold transition-all shadow-lg shadow-brand/20" title="Sign In">
+                            <Link href={`/auth/login?redirect=${pathname || ""}`} className="hidden md:flex items-center gap-2 rounded-full h-10 px-6 bg-brand hover:opacity-90 text-white text-sm font-bold transition-all shadow-lg shadow-brand/20" title="Sign In">
                                 Sign In
                             </Link>
                         )}                    </div>
@@ -258,7 +258,7 @@ export function Header() {
                                 </button>
                             </>
                         ) : (
-                            <Link href={`/login?redirect=${pathname || ""}`} onClick={() => setMobileOpen(false)}
+                            <Link href={`/auth/login?redirect=${pathname || ""}`} onClick={() => setMobileOpen(false)}
                                 className="block mx-4 mt-2 text-center py-3 bg-brand hover:bg-brand-hover text-white rounded-xl text-sm font-bold uppercase tracking-wide transition-colors">
                                 Sign In
                             </Link>

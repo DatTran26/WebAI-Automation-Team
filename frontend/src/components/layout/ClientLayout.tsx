@@ -43,7 +43,7 @@ export function ClientLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isAuthPage = ["/login", "/create-account", "/verify-email", "/forgot-password"].includes(pathname || "");
+  const isAuthPage = ["/auth/login", "/auth/create-account", "/auth/verify-email", "/auth/forgot-password"].includes(pathname || "");
   const isAdminPage = pathname?.startsWith("/admin");
 
   return (

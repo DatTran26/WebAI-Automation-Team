@@ -75,7 +75,7 @@ export function AccountContent() {
         const loadData = async () => {
             const { data: { user: authUser } } = await supabase.auth.getUser()
             if (!authUser) {
-                router.push("/login")
+                router.push("/auth/login")
                 return
             }
             setUser(authUser)
@@ -170,7 +170,7 @@ export function AccountContent() {
 
     const handleSignOut = async () => {
         await supabase.auth.signOut()
-        router.push("/login")
+        router.push("/auth/login")
     }
 
     if (loading || !user) {

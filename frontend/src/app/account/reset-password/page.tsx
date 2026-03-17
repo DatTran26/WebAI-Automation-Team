@@ -70,7 +70,7 @@ export default function ResetPasswordPage() {
                 toast.success("Security credentials updated successfully.")
                 // Sign out after reset to ensure clean state or redirect to login
                 await supabase.auth.signOut()
-                router.push("/login?message=password-updated")
+                router.push("/auth/login?message=password-updated")
             }
         } catch (err) {
             toast.error("An unexpected error occurred.")
@@ -98,10 +98,10 @@ export default function ResetPasswordPage() {
                     <h1 className="font-serif text-3xl text-soft-black">Session Expired</h1>
                     <p className="text-taupe font-serif italic text-lg">Your security window has closed or the link is invalid. Please request a new link.</p>
                     <div className="flex flex-col gap-4 pt-4">
-                        <Link href="/forgot-password" className="inline-block bg-brand text-white px-10 py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] shadow-xl shadow-brand/20 transition-all hover:-translate-y-1">
+                        <Link href="/auth/forgot-password" className="inline-block bg-brand text-white px-10 py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] shadow-xl shadow-brand/20 transition-all hover:-translate-y-1">
                             Request New Link
                         </Link>
-                        <Link href="/login" className="text-taupe hover:text-brand text-[10px] font-black uppercase tracking-[0.2em] transition-colors">
+                        <Link href="/auth/login" className="text-taupe hover:text-brand text-[10px] font-black uppercase tracking-[0.2em] transition-colors">
                             Return to Login
                         </Link>
                     </div>
@@ -181,7 +181,7 @@ export default function ResetPasswordPage() {
                         </form>
 
                         <footer className="mt-10 text-center border-t border-stone-beige/20 pt-8">
-                            <Link href="/login" className="text-taupe hover:text-brand text-[10px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-2 transition-colors">
+                            <Link href="/auth/login" className="text-taupe hover:text-brand text-[10px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-2 transition-colors">
                                 <ArrowLeft className="w-3 h-3" /> Back to Login
                             </Link>
                         </footer>
