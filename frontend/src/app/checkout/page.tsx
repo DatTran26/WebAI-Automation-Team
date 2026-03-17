@@ -88,7 +88,7 @@ export default function CheckoutPage() {
                     <section>
                         <div className="flex items-center justify-between mb-8 pb-3 border-b border-brand/10">
                             <h3 className="text-2xl font-serif font-medium text-soft-black dark:text-white italic">Contact Information</h3>
-                            <Link className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand hover:text-brand-hover transition-colors border-b-2 border-brand/10 hover:border-brand pb-1" href="/login?redirect=/checkout">Sign In</Link>
+                            <Link className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand hover:text-brand-hover transition-colors border-b-2 border-brand/10 hover:border-brand pb-1" href="/auth/login?redirect=/checkout">Sign In</Link>
                         </div>
                         <div className="space-y-6">
                             <label className="block">

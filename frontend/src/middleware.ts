@@ -45,7 +45,7 @@ export async function middleware(request: NextRequest) {
     // Admin routes: require admin role
     if (path.startsWith("/admin")) {
         if (!user) {
-            const url = new URL("/account", request.url);
+            const url = new URL("/auth/login", request.url);
             url.searchParams.set("redirect", path);
             return NextResponse.redirect(url);
         }
@@ -58,7 +58,7 @@ export async function middleware(request: NextRequest) {
     const protectedPaths = ["/checkout", "/orders"];
     const isProtected = protectedPaths.some((p) => path.startsWith(p));
     if (isProtected && !user) {
-        const redirectUrl = new URL("/account", request.url);
+        const redirectUrl = new URL("/auth/login", request.url);
         redirectUrl.searchParams.set("redirect", path);
         return NextResponse.redirect(redirectUrl);
     }
