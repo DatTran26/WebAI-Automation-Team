@@ -1,6 +1,6 @@
 "use client"
 
-import { Users, Play, Volume2, Settings, Maximize, ShoppingBag, ArrowRight, Plus, MoreHorizontal, BadgeCheck, ShoppingCart, Smile, Send, X, Check, ArrowLeft, MessageSquare, ShoppingFixed } from "lucide-react"
+import { Users, Play, Volume2, Settings, Maximize, ShoppingBag, ArrowRight, Plus, MoreHorizontal, BadgeCheck, ShoppingCart, Smile, Send, X, Check, ArrowLeft, MessageSquare } from "lucide-react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
