@@ -31,7 +31,10 @@ export async function getIsAdmin(): Promise<boolean> {
     if (!user) return false;
     if (user.app_metadata?.role === "admin") return true;
     const adminEmail = process.env.ADMIN_EMAIL;
-    if (adminEmail && user.email === adminEmail) return true;
+    if (adminEmail && user.email) {
+        const adminEmails = adminEmail.split(",").map((e) => e.trim());
+        if (adminEmails.includes(user.email)) return true;
+    }
     return false;
 }
 

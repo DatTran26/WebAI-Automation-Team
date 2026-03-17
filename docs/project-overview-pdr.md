@@ -66,15 +66,16 @@ Focuses on Vietnamese specialty product groups:
 - **Channels:** E-commerce website (primary), Facebook & TikTok (marketing).
 - **Strategy:** Livestreams hosted directly on the site; payment fully automated via Stripe.
 
-## 8. Definition of MVP (Stage 2)
+## 8. Definition of MVP (Stage 2) — 85% Complete
 
 A fully working system capable of:
-- Searching/browsing products and categories.
-- Streaming live sessions on the website with real-time pinned products and cart addition.
-- Checking out with automated Stripe payments handling status updates to PAID.
-- Acting as an AI product assistant (chatbot).
-- A basic admin control panel for live stream and product control.
-- Designed with strong foundations to continue scaling post-competition.
+- Searching/browsing products and categories. ✓ DONE
+- Streaming live sessions on the website with real-time pinned products and cart addition. ✓ DONE
+- Checking out with automated Stripe payments handling status updates to PAID. ✓ DONE
+- Acting as an AI product assistant (chatbot). ✓ DONE
+- A basic admin control panel for live stream and product control. ✓ DONE
+- Production-ready infrastructure (Docker, CI/CD, monitoring). ✓ DONE (Mar 15 2026)
+- Designed with strong foundations to continue scaling post-competition. ✓ ONGOING
 
 ## 9. Functional Requirements
 
